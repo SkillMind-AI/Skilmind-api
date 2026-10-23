@@ -1,1 +1,211 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123B64">
+  <meta name="description" content="Skill Mind AI - আধুনিক দক্ষতা শিখুন, অনুশীলন করুন এবং নিজের ভবিষ্যৎ গড়ুন।">
+  <title>Skill Mind AI | শিখুন, দক্ষতা গড়ুন</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #172b4d;
+      background: #f4f7fb;
+      line-height: 1.6;
+    }
+    header {
+      background: #123b64;
+      color: white;
+      padding: 16px 20px;
+    }
+    .nav {
+      max-width: 1050px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .logo { font-size: 21px; font-weight: bold; }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 7px;
+      font-size: 14px;
+    }
+    main { max-width: 1050px; margin: auto; padding: 24px 16px; }
+    .hero {
+      background: #e2edff;
+      border-radius: 18px;
+      padding: 35px 24px;
+      text-align: center;
+    }
+    .hero h1 { font-size: clamp(27px, 5vw, 42px); margin: 0 0 12px; }
+    .hero p { max-width: 620px; margin: 0 auto 22px; }
+    .button {
+      display: inline-block;
+      background: #123b64;
+      color: white;
+      border: 0;
+      border-radius: 9px;
+      padding: 12px 18px;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    h2 { margin-top: 30px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid #e0e7f0;
+    }
+    .card h3 { margin-top: 0; }
+    .muted { color: #53657d; }
+    .chat {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      margin-top: 24px;
+      border: 1px solid #e0e7f0;
+    }
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #cbd5e1;
+      border-radius: 9px;
+      margin: 8px 0 12px;
+      font-size: 16px;
+    }
+    #reply {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      margin-top: 14px;
+    }
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      color: #53657d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">Skill Mind AI</div>
+      <nav>
+        <a href="#courses">কোর্স</a>
+        <a href="#skills">দক্ষতা</a>
+        <a href="#assistant">AI সহকারী</a>
+      </nav>
+    </div>
+  </header>
 
+  <main>
+    <section class="hero">
+      <h1>শিখুন। অনুশীলন করুন। নিজের ভবিষ্যৎ গড়ুন।</h1>
+      <p>আধুনিক দক্ষতা শিখুন, নিজের প্রজেক্ট তৈরি করুন এবং ধাপে ধাপে শেখার পথে এগিয়ে যান।</p>
+      <a class="button" href="#courses">শেখা শুরু করুন</a>
+    </section>
+
+    <section id="courses">
+      <h2>শেখার বিভাগ</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>💻 ওয়েব ডেভেলপমেন্ট</h3>
+          <p class="muted">HTML, CSS ও JavaScript-এর প্রাথমিক ধারণা।</p>
+        </article>
+        <article class="card">
+          <h3>🤖 কৃত্রিম বুদ্ধিমত্তা</h3>
+          <p class="muted">AI কীভাবে কাজ করে এবং শেখার কাজে কীভাবে ব্যবহার করবেন।</p>
+        </article>
+        <article class="card">
+          <h3>📈 ডিজিটাল মার্কেটিং</h3>
+          <p class="muted">কনটেন্ট, সামাজিক মাধ্যম ও অনলাইন মার্কেটিংয়ের ভিত্তি।</p>
+        </article>
+        <article class="card">
+          <h3>🎨 ডিজাইন ও সৃজনশীলতা</h3>
+          <p class="muted">ডিজাইনের মৌলিক ধারণা এবং পোর্টফোলিওর প্রস্তুতি।</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>শেখা থেকে বাস্তব প্রজেক্ট</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>১. শেখার রোডম্যাপ</h3>
+          <p class="muted">শুরু থেকে পরবর্তী ধাপে যাওয়ার পরিকল্পনা করুন।</p>
+        </article>
+        <article class="card">
+          <h3>২. অনুশীলন</h3>
+          <p class="muted">নিজের শেখা বিষয়গুলো হাতে-কলমে প্রয়োগ করুন।</p>
+        </article>
+        <article class="card">
+          <h3>৩. প্রজেক্ট ও পোর্টফোলিও</h3>
+          <p class="muted">নিজের কাজ সাজিয়ে ভবিষ্যতের সুযোগের জন্য প্রস্তুত হন।</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="assistant" class="chat">
+      <h2>Skill Mind AI সহকারী</h2>
+      <p class="muted">শেখার বিষয়ে প্রশ্ন করুন। এই ফিচারটি আপনার Render API-এর সঙ্গে যুক্ত হবে।</p>
+      <form id="chatForm">
+        <label for="question">আপনার প্রশ্ন</label>
+        <input id="question" maxlength="4000" required
+          placeholder="যেমন: HTML কী?">
+        <button class="button" id="askButton" type="submit">AI-কে প্রশ্ন করুন</button>
+      </form>
+      <p id="reply" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>© 2026 Skill Mind AI · শিখুন, দক্ষতা গড়ুন</footer>
+
+  <script>
+    const API_URL = "https://skilmind-api.onrender.com/chat";
+    const form = document.getElementById("chatForm");
+    const question = document.getElementById("question");
+    const reply = document.getElementById("reply");
+    const button = document.getElementById("askButton");
+
+    form.addEventListener("submit", async function(event) {
+      event.preventDefault();
+      const message = question.value.trim();
+      if (!message) return;
+
+      button.disabled = true;
+      reply.textContent = "উত্তর খোঁজা হচ্ছে...";
+
+      try {
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message })
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.detail || "অনুরোধ সফল হয়নি।");
+        }
+        reply.textContent = data.reply || "কোনো উত্তর পাওয়া যায়নি।";
+      } catch (error) {
+        reply.textContent =
+          "দুঃখিত, এই মুহূর্তে AI-এর সঙ্গে সংযোগ করা যাচ্ছে না। পরে আবার চেষ্টা করুন।";
+        console.error(error);
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+  </html>
