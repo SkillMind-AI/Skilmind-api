@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#071426">
+<meta name="description" content="Skill Mind AI Learning Hub — AI-এর সাহায্যে নতুন দক্ষতা শিখুন এবং নিজের Learning Roadmap তৈরি করুন।">
+
 <title>Learning Hub | Skill Mind AI</title>
 
 <style>
@@ -15,7 +19,8 @@
 
 body {
   background: #071426;
-  color: white;
+  color: #fff;
+  min-height: 100vh;
 }
 
 header {
@@ -23,6 +28,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 15px;
   border-bottom: 1px solid #1b3552;
 }
 
@@ -35,17 +41,22 @@ header {
   color: #28a8ff;
 }
 
-select, input {
+select, input, textarea {
   background: #102a46;
-  color: white;
+  color: #fff;
   border: 1px solid #315477;
-  padding: 11px;
+  padding: 12px;
   border-radius: 8px;
   outline: none;
+  font-size: 14px;
 }
 
-select:focus, input:focus {
+select:focus, input:focus, textarea:focus {
   border-color: #28a8ff;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #91a9c0;
 }
 
 .container {
@@ -84,11 +95,12 @@ select:focus, input:focus {
 .skill-tools input {
   flex: 1;
   min-width: 180px;
+  width: 100%;
 }
 
 .skills {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -99,12 +111,18 @@ select:focus, input:focus {
   padding: 22px;
   cursor: pointer;
   transition: 0.2s;
+  overflow-wrap: anywhere;
 }
 
 .skill:hover, .skill.active {
   border-color: #28a8ff;
   background: #14395e;
   transform: translateY(-3px);
+}
+
+.skill:focus-visible {
+  outline: 2px solid #28a8ff;
+  outline-offset: 3px;
 }
 
 .skill .icon {
@@ -140,10 +158,14 @@ select:focus, input:focus {
   border-radius: 15px;
 }
 
+.custom-section h2 {
+  font-size: 21px;
+}
+
 .custom-section p {
   color: #a9bdd2;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.7;
   margin: 10px 0 17px;
 }
 
@@ -161,15 +183,22 @@ select:focus, input:focus {
 .action {
   border: none;
   background: #168cf0;
-  color: white;
+  color: #fff;
   padding: 12px 19px;
   border-radius: 9px;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.2s;
+  font-size: 14px;
 }
 
 .action:hover {
   background: #35a9ff;
+}
+
+.action:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .ai-section {
@@ -197,14 +226,91 @@ select:focus, input:focus {
   font-size: 14px;
 }
 
+.ai-form {
+  margin-top: 20px;
+}
+
+.ai-form input,
+.ai-form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.ai-form textarea {
+  resize: vertical;
+  min-height: 95px;
+  line-height: 1.6;
+}
+
 .ai-status {
   display: inline-block;
   margin-top: 14px;
-  padding: 6px 10px;
+  padding: 7px 11px;
   background: #173653;
   color: #8ecaff;
   border-radius: 7px;
   font-size: 12px;
+}
+
+.ai-loading {
+  display: none;
+  margin-top: 20px;
+  padding: 15px;
+  background: #0a1d32;
+  color: #8ecaff;
+  border-radius: 10px;
+  line-height: 1.7;
+}
+
+.spinner {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 8px;
+  vertical-align: middle;
+  border: 2px solid #54738f;
+  border-top-color: #28a8ff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.ai-error {
+  display: none;
+  margin-top: 18px;
+  padding: 15px;
+  border: 1px solid #9b4848;
+  border-radius: 10px;
+  background: #351c2a;
+  color: #ffc1c1;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.ai-result {
+  display: none;
+  margin-top: 22px;
+  padding: 22px;
+  background: #0a1d32;
+  border: 1px solid #28639b;
+  border-radius: 12px;
+}
+
+.ai-result h3 {
+  margin-bottom: 15px;
+  color: #8ecaff;
+}
+
+.ai-answer {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.9;
+  color: #dceafa;
+  font-size: 15px;
 }
 
 #learningArea {
@@ -218,6 +324,7 @@ select:focus, input:focus {
 
 #learningArea h2 {
   margin-bottom: 12px;
+  overflow-wrap: anywhere;
 }
 
 #learningArea p {
@@ -242,14 +349,14 @@ select:focus, input:focus {
 .lesson span {
   color: #a9bdd2;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .note {
   margin-top: 18px;
   color: #91a9c0;
   font-size: 13px;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .back {
@@ -259,17 +366,26 @@ select:focus, input:focus {
   text-decoration: none;
 }
 
+.back:hover {
+  color: #28a8ff;
+}
+
 footer {
   text-align: center;
   padding: 22px;
   color: #8198af;
   border-top: 1px solid #1b3552;
   font-size: 13px;
+  line-height: 1.7;
 }
 
 @media(max-width: 700px) {
   .skills {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .container {
+    padding: 30px 16px;
   }
 }
 
@@ -281,6 +397,16 @@ footer {
   header {
     padding: 15px 5%;
   }
+
+  .custom-section,
+  .ai-section,
+  #learningArea {
+    padding: 18px;
+  }
+
+  .action {
+    width: 100%;
+  }
 }
 </style>
 </head>
@@ -290,7 +416,7 @@ footer {
 <header>
   <div class="logo">Skill Mind <span>AI</span></div>
 
-  <select id="language" onchange="changeLanguage()">
+  <select id="language" aria-label="Select language">
     <option value="bn">বাংলা</option>
     <option value="en">English</option>
   </select>
@@ -305,73 +431,53 @@ footer {
     </p>
   </section>
 
-  <h2 class="section-title" id="sectionTitle">
-    জনপ্রিয় স্কিলসমূহ
-  </h2>
+  <h2 class="section-title" id="sectionTitle">জনপ্রিয় স্কিলসমূহ</h2>
 
   <div class="skill-tools">
     <input
       type="search"
       id="skillSearch"
       placeholder="স্কিল খুঁজুন..."
-      oninput="searchSkills()"
+      aria-label="Search skills"
     >
   </div>
 
   <section class="skills" id="skills">
 
-    <div class="skill" data-name="web development" onclick="selectSkill('web', this)">
+    <div class="skill" data-name="web development" tabindex="0" role="button" data-skill="web">
       <div class="icon">💻</div>
       <h3>Web Development</h3>
-      <p data-bn="ওয়েবসাইট তৈরি ও প্রোগ্রামিং শিখুন।"
-         data-en="Learn website development and programming.">
-         ওয়েবসাইট তৈরি ও প্রোগ্রামিং শিখুন।
-      </p>
+      <p data-bn="ওয়েবসাইট তৈরি ও প্রোগ্রামিং শিখুন।" data-en="Learn website development and programming.">ওয়েবসাইট তৈরি ও প্রোগ্রামিং শিখুন।</p>
     </div>
 
-    <div class="skill" data-name="graphic design" onclick="selectSkill('design', this)">
+    <div class="skill" data-name="graphic design" tabindex="0" role="button" data-skill="design">
       <div class="icon">🎨</div>
       <h3>Graphic Design</h3>
-      <p data-bn="লোগো, ব্যানার ও ডিজাইন তৈরি শিখুন।"
-         data-en="Learn to create logos, banners and designs.">
-         লোগো, ব্যানার ও ডিজাইন তৈরি শিখুন।
-      </p>
+      <p data-bn="লোগো, ব্যানার ও ডিজাইন তৈরি শিখুন।" data-en="Learn to create logos, banners and designs.">লোগো, ব্যানার ও ডিজাইন তৈরি শিখুন।</p>
     </div>
 
-    <div class="skill" data-name="digital marketing" onclick="selectSkill('marketing', this)">
+    <div class="skill" data-name="digital marketing" tabindex="0" role="button" data-skill="marketing">
       <div class="icon">📱</div>
       <h3>Digital Marketing</h3>
-      <p data-bn="সোশ্যাল মিডিয়া ও মার্কেটিং শিখুন।"
-         data-en="Learn social media and marketing.">
-         সোশ্যাল মিডিয়া ও মার্কেটিং শিখুন।
-      </p>
+      <p data-bn="সোশ্যাল মিডিয়া ও মার্কেটিং শিখুন।" data-en="Learn social media and marketing.">সোশ্যাল মিডিয়া ও মার্কেটিং শিখুন।</p>
     </div>
 
-    <div class="skill" data-name="video editing" onclick="selectSkill('video', this)">
+    <div class="skill" data-name="video editing" tabindex="0" role="button" data-skill="video">
       <div class="icon">🎬</div>
       <h3>Video Editing</h3>
-      <p data-bn="ভিডিও এডিটিং ও কনটেন্ট তৈরি শিখুন।"
-         data-en="Learn video editing and content creation.">
-         ভিডিও এডিটিং ও কনটেন্ট তৈরি শিখুন।
-      </p>
+      <p data-bn="ভিডিও এডিটিং ও কনটেন্ট তৈরি শিখুন।" data-en="Learn video editing and content creation.">ভিডিও এডিটিং ও কনটেন্ট তৈরি শিখুন।</p>
     </div>
 
-    <div class="skill" data-name="ai skills" onclick="selectSkill('ai', this)">
+    <div class="skill" data-name="ai skills" tabindex="0" role="button" data-skill="ai">
       <div class="icon">🤖</div>
       <h3>AI Skills</h3>
-      <p data-bn="AI টুল ও Prompt Engineering শিখুন।"
-         data-en="Learn AI tools and Prompt Engineering.">
-         AI টুল ও Prompt Engineering শিখুন।
-      </p>
+      <p data-bn="AI টুল ও Prompt Engineering শিখুন।" data-en="Learn AI tools and prompt engineering.">AI টুল ও Prompt Engineering শিখুন।</p>
     </div>
 
-    <div class="skill" data-name="content creation" onclick="selectSkill('content', this)">
+    <div class="skill" data-name="content creation" tabindex="0" role="button" data-skill="content">
       <div class="icon">✍️</div>
       <h3>Content Creation</h3>
-      <p data-bn="লেখালেখি ও ডিজিটাল কনটেন্ট তৈরি শিখুন।"
-         data-en="Learn writing and digital content creation.">
-         লেখালেখি ও ডিজিটাল কনটেন্ট তৈরি শিখুন।
-      </p>
+      <p data-bn="লেখালেখি ও ডিজিটাল কনটেন্ট তৈরি শিখুন।" data-en="Learn writing and digital content creation.">লেখালেখি ও ডিজিটাল কনটেন্ট তৈরি শিখুন।</p>
     </div>
 
   </section>
@@ -384,7 +490,7 @@ footer {
     <h2 id="customTitle">আপনার পছন্দের Skill খুঁজে পাচ্ছেন না?</h2>
 
     <p id="customDescription">
-      নিজের পছন্দমতো যেকোনো Skill লিখুন। আমরা আপনার জন্য শেখার পরিকল্পনা তৈরির ব্যবস্থা রাখছি।
+      নিজের পছন্দমতো যেকোনো Skill যোগ করুন। এরপর AI দিয়ে তার শেখার পরিকল্পনা তৈরি করতে পারবেন।
     </p>
 
     <div class="custom-input">
@@ -395,7 +501,7 @@ footer {
         maxlength="60"
       >
 
-      <button class="action" onclick="addCustomSkill()" id="addButton">
+      <button class="action" type="button" id="addButton">
         + Skill যোগ করুন
       </button>
     </div>
@@ -408,12 +514,48 @@ footer {
     </div>
 
     <p id="aiDescription">
-      আপনার আগ্রহ, দক্ষতা ও শেখার লক্ষ্য অনুযায়ী AI-এর সাহায্যে ব্যক্তিগত Learning Roadmap তৈরি করার সুবিধা এখানে যুক্ত হবে।
+      আপনার পছন্দের স্কিল লিখুন। Gemini AI আপনার জন্য ব্যক্তিগত Learning Roadmap তৈরি করবে।
     </p>
 
-    <span class="ai-status" id="aiStatus">
-      AI Integration Coming Soon
-    </span>
+    <form class="ai-form" id="aiForm">
+      <input
+        type="text"
+        id="aiSkillInput"
+        maxlength="100"
+        required
+        placeholder="যেমন: Web Development, Python, Freelancing..."
+        aria-label="Skill to learn"
+      >
+
+      <textarea
+        id="aiGoalInput"
+        maxlength="500"
+        placeholder="আপনার শেখার লক্ষ্য লিখুন (ঐচ্ছিক)"
+        aria-label="Your learning goal"
+      ></textarea>
+
+      <button
+        class="action"
+        type="submit"
+        id="generateRoadmapButton"
+      >
+        ✨ AI দিয়ে Learning Roadmap তৈরি করুন
+      </button>
+    </form>
+
+    <div class="ai-loading" id="aiLoading" role="status" aria-live="polite">
+      <span class="spinner"></span>
+      <span id="loadingText">Gemini AI উত্তর তৈরি করছে...</span>
+    </div>
+
+    <div class="ai-error" id="aiError" role="alert"></div>
+
+    <div class="ai-result" id="aiResult">
+      <h3 id="resultTitle">আপনার AI Learning Roadmap</h3>
+      <div class="ai-answer" id="aiAnswer"></div>
+    </div>
+
+    <span class="ai-status" id="aiStatus">Gemini AI Learning Assistant</span>
   </section>
 
   <section id="learningArea">
@@ -425,12 +567,12 @@ footer {
 
     <div id="lessons"></div>
 
-    <button class="action" onclick="startLearning()" id="startButton">
-      শেখা শুরু করুন →
+    <button class="action" type="button" id="startButton">
+      AI Roadmap তৈরি করুন →
     </button>
 
     <p class="note" id="note">
-      এটি একটি প্রাথমিক ডেমো পরিকল্পনা। Gemini AI, বাস্তব লেসন, অগ্রগতি সংরক্ষণ ও প্র্যাকটিস সুবিধা পরবর্তী ধাপে যুক্ত করা হবে।
+      এটি একটি প্রাথমিক ডেমো পরিকল্পনা। বিস্তারিত ব্যক্তিগত Roadmap-এর জন্য উপরের AI Learning Assistant ব্যবহার করুন।
     </p>
   </section>
 
@@ -445,8 +587,22 @@ footer {
 </footer>
 
 <script>
+"use strict";
+
+/*
+ * Skill Mind AI Learning Hub
+ * Existing backend endpoint:
+ * https://skilmind-api.onrender.com/chat
+ *
+ * Never put your Gemini API key in this frontend file.
+ */
+
+const API_URL = "https://skilmind-api.onrender.com/chat";
+
 let selectedSkill = "";
 let currentLanguage = "bn";
+let requestController = null;
+let requestTimeout = null;
 
 const plans = {
   web: {
@@ -469,7 +625,7 @@ const plans = {
 
   design: {
     title: "Graphic Design",
-    description: "ডিজাইনের মৌলিক ধারণা থেকে শুরু করে বাস্তব ডিজাইন প্রজেক্ট তৈরি শিখুন।",
+    description: "ডিজাইনের মৌলিক ধারণা থেকে বাস্তব ডিজাইন প্রজেক্ট তৈরি শিখুন।",
     descriptionEn: "Learn design fundamentals and create real design projects.",
     lessons: [
       "ডিজাইনের মৌলিক ধারণা",
@@ -564,16 +720,21 @@ const translations = {
     sectionTitle: "জনপ্রিয় স্কিলসমূহ",
     search: "স্কিল খুঁজুন...",
     customTitle: "আপনার পছন্দের Skill খুঁজে পাচ্ছেন না?",
-    customDescription: "নিজের পছন্দমতো যেকোনো Skill লিখুন। আমরা আপনার জন্য শেখার পরিকল্পনা তৈরির ব্যবস্থা রাখছি।",
+    customDescription: "নিজের পছন্দমতো যেকোনো Skill যোগ করুন। এরপর AI দিয়ে তার শেখার পরিকল্পনা তৈরি করতে পারবেন।",
     customPlaceholder: "যেমন: Python, Freelancing, Arabic...",
     addButton: "+ Skill যোগ করুন",
     aiTitle: "AI Learning Assistant",
-    aiDescription: "আপনার আগ্রহ, দক্ষতা ও শেখার লক্ষ্য অনুযায়ী AI-এর সাহায্যে ব্যক্তিগত Learning Roadmap তৈরি করার সুবিধা এখানে যুক্ত হবে।",
-    aiStatus: "AI Integration Coming Soon",
+    aiDescription: "আপনার পছন্দের স্কিল লিখুন। Gemini AI আপনার জন্য ব্যক্তিগত Learning Roadmap তৈরি করবে।",
+    skillPlaceholder: "যেমন: Web Development, Python, Freelancing...",
+    goalPlaceholder: "আপনার শেখার লক্ষ্য লিখুন (ঐচ্ছিক)",
+    generate: "✨ AI দিয়ে Learning Roadmap তৈরি করুন",
+    loading: "Gemini AI উত্তর তৈরি করছে। অনুগ্রহ করে অপেক্ষা করুন...",
+    aiStatus: "Gemini AI Learning Assistant",
+    resultTitle: "আপনার AI Learning Roadmap",
     selectedTitle: "আপনার শেখার পরিকল্পনা",
     lessonTitle: "শেখার ধাপসমূহ",
-    startButton: "শেখা শুরু করুন →",
-    note: "এটি একটি প্রাথমিক ডেমো পরিকল্পনা। Gemini AI, বাস্তব লেসন, অগ্রগতি সংরক্ষণ ও প্র্যাকটিস সুবিধা পরবর্তী ধাপে যুক্ত করা হবে।",
+    startButton: "AI Roadmap তৈরি করুন →",
+    note: "এটি একটি প্রাথমিক ডেমো পরিকল্পনা। বিস্তারিত ব্যক্তিগত Roadmap-এর জন্য উপরের AI Learning Assistant ব্যবহার করুন।",
     back: "← আগের পেজে ফিরে যান",
     footer: "© 2026 Skill Mind AI. All rights reserved.",
     empty: "কোনো Skill পাওয়া যায়নি।",
@@ -581,8 +742,12 @@ const translations = {
     added: "Skill যোগ করা হয়েছে!",
     duplicate: "এই Skill ইতিমধ্যে যোগ করা হয়েছে।",
     invalid: "অনুগ্রহ করে একটি Skill-এর নাম লিখুন।",
-    coming: "বিস্তারিত লেসন ও AI Teacher পরবর্তী ধাপে যুক্ত হবে।",
-    customDescriptionPlan: "আপনার নির্বাচিত Skill-এর জন্য একটি প্রাথমিক শেখার পরিকল্পনা। Gemini AI যুক্ত হলে আরও বিস্তারিত ব্যক্তিগত Roadmap তৈরি হবে।"
+    timeout: "উত্তর পেতে অনেক সময় লাগছে। Backend সচল আছে কি না পরীক্ষা করে আবার চেষ্টা করুন।",
+    network: "Backend-এর সঙ্গে সংযোগ করা যাচ্ছে না। নেটওয়ার্ক, সার্ভার ও Render Logs পরীক্ষা করুন।",
+    server: "AI উত্তর তৈরি করা যায়নি।",
+    serverBusy: "সার্ভার বর্তমানে উত্তর দিতে পারছে না। কিছুক্ষণ পরে আবার চেষ্টা করুন।",
+    customDescriptionPlan: "আপনার নির্বাচিত Skill-এর জন্য প্রাথমিক শেখার পরিকল্পনা। আরও বিস্তারিত Roadmap পেতে AI Assistant ব্যবহার করুন।",
+    customSkillDescription: "আপনার নির্বাচিত নতুন Skill।"
   },
 
   en: {
@@ -590,16 +755,21 @@ const translations = {
     sectionTitle: "Popular Skills",
     search: "Search skills...",
     customTitle: "Can't find your preferred skill?",
-    customDescription: "Enter any skill you want to learn. A learning plan can be prepared for your chosen skill.",
+    customDescription: "Add any skill you want to learn, then generate a learning roadmap with AI.",
     customPlaceholder: "e.g. Python, Freelancing, Arabic...",
     addButton: "+ Add Skill",
     aiTitle: "AI Learning Assistant",
-    aiDescription: "A personalized learning roadmap based on your interests, skills and goals will be available here with AI assistance.",
-    aiStatus: "AI Integration Coming Soon",
+    aiDescription: "Enter your preferred skill. Gemini AI will create a personalized learning roadmap for you.",
+    skillPlaceholder: "e.g. Web Development, Python, Freelancing...",
+    goalPlaceholder: "Describe your learning goal (optional)",
+    generate: "✨ Generate Learning Roadmap with AI",
+    loading: "Gemini AI is generating your roadmap. Please wait...",
+    aiStatus: "Gemini AI Learning Assistant",
+    resultTitle: "Your AI Learning Roadmap",
     selectedTitle: "Your Learning Plan",
     lessonTitle: "Learning Steps",
-    startButton: "Start Learning →",
-    note: "This is a preliminary demo plan. Gemini AI, real lessons, saved progress and practice features will be added in later stages.",
+    startButton: "Generate AI Roadmap →",
+    note: "This is a preliminary demo plan. Use the AI Learning Assistant above for a detailed personalized roadmap.",
     back: "← Back to Previous Page",
     footer: "© 2026 Skill Mind AI. All rights reserved.",
     empty: "No skills found.",
@@ -607,40 +777,65 @@ const translations = {
     added: "Skill added!",
     duplicate: "This skill has already been added.",
     invalid: "Please enter a skill name.",
-    coming: "Detailed lessons and AI Teacher will be added in a later stage.",
-    customDescriptionPlan: "A preliminary learning plan for your selected skill. A personalized roadmap will be available when Gemini AI is integrated."
+    timeout: "The request timed out. Check whether the backend is running and try again.",
+    network: "Could not connect to the backend. Check your network, server, and Render logs.",
+    server: "Could not generate the AI response.",
+    serverBusy: "The server could not complete the request. Please try again later.",
+    customDescriptionPlan: "A preliminary learning plan for your selected skill. Use the AI Assistant for a detailed roadmap.",
+    customSkillDescription: "Your newly added skill."
   }
 };
+
+function text(id, value) {
+  const element = document.getElementById(id);
+  if (element) element.textContent = value;
+}
 
 function renderPlan(plan, custom = false) {
   const t = translations[currentLanguage];
 
   document.getElementById("learningArea").style.display = "block";
 
-  document.getElementById("selectedTitle").textContent =
-    (currentLanguage === "bn" ? "আপনার শেখার পরিকল্পনা: " : "Your Learning Plan: ") + plan.title;
+  text(
+    "selectedTitle",
+    (currentLanguage === "bn"
+      ? "আপনার শেখার পরিকল্পনা: "
+      : "Your Learning Plan: ") + plan.title
+  );
 
-  document.getElementById("selectedDescription").textContent =
+  text(
+    "selectedDescription",
     currentLanguage === "bn"
       ? (custom ? t.customDescriptionPlan : plan.description)
-      : (custom ? t.customDescriptionPlan : plan.descriptionEn);
+      : (custom ? t.customDescriptionPlan : plan.descriptionEn)
+  );
 
-  document.getElementById("lessonTitle").textContent = t.lessonTitle;
+  text("lessonTitle", t.lessonTitle);
 
   const lessonList = currentLanguage === "bn"
     ? plan.lessons
     : (plan.lessonsEn || plan.lessons);
 
-  document.getElementById("lessons").innerHTML =
-    lessonList.map((lesson, index) =>
-      `<div class="lesson">
-        <strong>${currentLanguage === "bn" ? "ধাপ" : "Step"} ${index + 1}</strong>
-        <span>${escapeHTML(lesson)}</span>
-      </div>`
-    ).join("");
+  const lessonContainer = document.getElementById("lessons");
+  lessonContainer.replaceChildren();
 
-  document.getElementById("startButton").textContent = t.startButton;
-  document.getElementById("note").textContent = t.note;
+  lessonList.forEach((lesson, index) => {
+    const box = document.createElement("div");
+    box.className = "lesson";
+
+    const title = document.createElement("strong");
+    title.textContent =
+      (currentLanguage === "bn" ? "ধাপ " : "Step ") + (index + 1);
+
+    const detail = document.createElement("span");
+    detail.textContent = lesson;
+
+    box.append(title, detail);
+    lessonContainer.appendChild(box);
+  });
+
+  text("startButton", t.startButton);
+  text("note", t.note);
 
   document.getElementById("learningArea").scrollIntoView({
     behavior: "smooth",
@@ -657,7 +852,18 @@ function selectSkill(skill, element) {
 
   element.classList.add("active");
 
-  renderPlan(plans[skill]);
+  const plan = plans[skill];
+
+  if (plan) {
+    renderPlan(plan);
+  }
+
+  const skillInput = document.getElementById("aiSkillInput");
+  skillInput.value = plan ? plan.title : "";
+
+  document.getElementById("aiGoalInput").focus({
+    preventScroll: true
+  });
 }
 
 function addCustomSkill() {
@@ -667,13 +873,17 @@ function addCustomSkill() {
 
   if (!name) {
     alert(t.invalid);
+    input.focus();
     return;
   }
 
-  const existing = [...document.querySelectorAll(".skill")].some(card =>
-    card.dataset.customName &&
-    card.dataset.customName.toLowerCase() === name.toLowerCase()
-  );
+  const existing = [...document.querySelectorAll(".skill")].some(card => {
+    const existingName = card.dataset.customName ||
+      card.dataset.name ||
+      card.querySelector("h3").textContent;
+
+    return existingName.toLowerCase() === name.toLowerCase();
+  });
 
   if (existing) {
     alert(t.duplicate);
@@ -683,6 +893,8 @@ function addCustomSkill() {
   const card = document.createElement("div");
   card.className = "skill";
   card.dataset.customName = name.toLowerCase();
+  card.tabIndex = 0;
+  card.setAttribute("role", "button");
 
   const icon = document.createElement("div");
   icon.className = "icon";
@@ -692,17 +904,15 @@ function addCustomSkill() {
   title.textContent = name;
 
   const description = document.createElement("p");
-  description.textContent =
-    currentLanguage === "bn"
-      ? "আপনার নির্বাচিত নতুন Skill।"
-      : "Your newly added skill.";
+  description.dataset.customDescription = "true";
+  description.textContent = t.customSkillDescription;
 
   card.append(icon, title, description);
 
-  card.addEventListener("click", () => {
-    document.querySelectorAll(".skill").forEach(item =>
-      item.classList.remove("active")
-    );
+  const choose = () => {
+    document.querySelectorAll(".skill").forEach(item => {
+      item.classList.remove("active");
+    });
 
     card.classList.add("active");
     selectedSkill = "custom:" + name;
@@ -724,6 +934,17 @@ function addCustomSkill() {
         "Create a real project"
       ]
     }, true);
+
+    document.getElementById("aiSkillInput").value = name;
+  };
+
+  card.addEventListener("click", choose);
+
+  card.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      choose();
+    }
   });
 
   document.getElementById("skills").appendChild(card);
@@ -735,18 +956,20 @@ function addCustomSkill() {
 }
 
 function searchSkills() {
-  const query = document.getElementById("skillSearch").value
-    .trim().toLowerCase();
+  const query = document.getElementById("skillSearch")
+    .value.trim().toLowerCase();
 
-  const cards = document.querySelectorAll(".skill");
   let visible = 0;
 
-  cards.forEach(card => {
-    const text = (
-      card.innerText + " " + (card.dataset.name || "")
+  document.querySelectorAll(".skill").forEach(card => {
+    const searchableText = (
+      card.innerText + " " +
+      (card.dataset.name || "") + " " +
+      (card.dataset.customName || "")
     ).toLowerCase();
 
-    const match = text.includes(query);
+    const match = searchableText.includes(query);
+
     card.style.display = match ? "" : "none";
 
     if (match) visible++;
@@ -757,89 +980,295 @@ function searchSkills() {
 }
 
 function startLearning() {
-  if (!selectedSkill) {
-    alert(translations[currentLanguage].choose);
+  const skillInput = document.getElementById("aiSkillInput");
+
+  if (!skillInput.value.trim() && selectedSkill) {
+    if (plans[selectedSkill]) {
+      skillInput.value = plans[selectedSkill].title;
+    } else if (selectedSkill.startsWith("custom:")) {
+      skillInput.value = selectedSkill.substring(7);
+    }
+  }
+
+  document.getElementById("aiForm").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+  skillInput.focus({
+    preventScroll: true
+  });
+}
+
+async function generateAIRoadmap(event) {
+  if (event) event.preventDefault();
+
+  const skill = document.getElementById("aiSkillInput")
+    .value.trim();
+
+  const goal = document.getElementById("aiGoalInput")
+    .value.trim();
+
+  const button = document.getElementById("generateRoadmapButton");
+  const loading = document.getElementById("aiLoading");
+  const errorBox = document.getElementById("aiError");
+  const resultBox = document.getElementById("aiResult");
+  const answerBox = document.getElementById("aiAnswer");
+  const t = translations[currentLanguage];
+
+  if (!skill) {
+    errorBox.textContent = t.invalid;
+    errorBox.style.display = "block";
+    resultBox.style.display = "none";
+    document.getElementById("aiSkillInput").focus();
     return;
   }
 
-  alert(translations[currentLanguage].coming);
-}
+  /*
+   * Stop an earlier request if one is still active.
+   */
+  if (requestController) {
+    requestController.abort();
+    clearTimeout(requestTimeout);
+  }
 
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#039;"
-  })[char]);
+  requestController = new AbortController();
+
+  const prompt = `
+You are Skill Mind AI, a practical and responsible learning assistant.
+
+Create a useful, beginner-friendly learning roadmap.
+
+Skill to learn: ${skill}
+Learning goal: ${goal || "Learn from beginner level and build practical skills"}
+Daily available time: Not specified; suggest a manageable routine.
+Preferred response language: ${currentLanguage === "bn" ? "Bengali" : "English"}
+
+Please include:
+1. An introduction to the skill.
+2. Prerequisites and necessary tools.
+3. A numbered, step-by-step learning roadmap.
+4. Practical exercises for each stage.
+5. A portfolio project.
+6. A realistic daily practice routine.
+7. Free learning resources and official documentation when known.
+8. A clear task the learner can start today.
+
+Use clear headings and readable formatting.
+Be realistic about the time required.
+Do not promise guaranteed income, employment, or success.
+Do not invent specific links or claim a resource is free if uncertain.
+If the skill is ambiguous, explain the likely interpretation.
+`;
+
+  button.disabled = true;
+  button.textContent = currentLanguage === "bn"
+    ? "রোডম্যাপ তৈরি হচ্ছে..."
+    : "Generating roadmap...";
+
+  loading.style.display = "block";
+  errorBox.style.display = "none";
+  resultBox.style.display = "none";
+  answerBox.textContent = "";
+
+  requestTimeout = setTimeout(() => {
+    if (requestController) {
+      requestController.abort();
+    }
+  }, 90000);
+
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: prompt
+      }),
+      signal: requestController.signal
+    });
+
+    const data = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      if (response.status === 502 || response.status === 503 ||
+          response.status === 504) {
+        throw new Error("BACKEND_BUSY");
+      }
+
+      if (response.status === 429) {
+        throw new Error("RATE_LIMIT");
+      }
+
+      if (response.status >= 500) {
+        throw new Error("SERVER_ERROR");
+      }
+
+      throw new Error(
+        typeof data.detail === "string"
+          ? data.detail
+          : "HTTP_" + response.status
+      );
+    }
+
+    if (!data.reply || typeof data.reply !== "string") {
+      throw new Error("EMPTY_REPLY");
+    }
+
+    /*
+     * Use textContent so AI-generated text is displayed as text,
+     * not interpreted as HTML.
+     */
+    answerBox.textContent = data.reply;
+    text("resultTitle", t.resultTitle);
+    resultBox.style.display = "block";
+
+    resultBox.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+  } catch (error) {
+    console.error("Skill Mind AI request failed:", error);
+
+    let message;
+
+    if (error.name === "AbortError") {
+      message = t.timeout;
+    } else if (error instanceof TypeError) {
+      message = t.network +
+        " (CORS বা নেটওয়ার্ক সমস্যাও হতে পারে।)";
+    } else if (error.message === "BACKEND_BUSY") {
+      message = t.serverBusy +
+        " (HTTP 502/503/504)";
+    } else if (error.message === "RATE_LIMIT") {
+      message = currentLanguage === "bn"
+        ? "অনেক বেশি অনুরোধ পাঠানো হয়েছে। কিছুক্ষণ পরে আবার চেষ্টা করুন।"
+        : "Too many requests. Please wait and try again.";
+    } else if (error.message === "EMPTY_REPLY") {
+      message = currentLanguage === "bn"
+        ? "সার্ভার থেকে AI-এর উত্তর পাওয়া যায়নি। আবার চেষ্টা করুন।"
+        : "The server returned no AI answer. Please try again.";
+    } else {
+      message = t.server + " " + error.message;
+    }
+
+    errorBox.textContent = message;
+    errorBox.style.display = "block";
+
+  } finally {
+    clearTimeout(requestTimeout);
+    requestTimeout = null;
+    requestController = null;
+
+    loading.style.display = "none";
+    button.disabled = false;
+    button.textContent = t.generate;
+  }
 }
 
 function changeLanguage() {
   currentLanguage = document.getElementById("language").value;
+
   const t = translations[currentLanguage];
 
   document.documentElement.lang = currentLanguage;
 
-  const ids = [
-    "subtitle", "sectionTitle", "customTitle",
-    "customDescription", "addButton", "aiTitle",
-    "aiDescription", "aiStatus", "back", "footer"
-  ];
-
-  ids.forEach(id => {
-    const element = document.getElementById(id);
-    if (element) element.textContent = t[id];
-  });
+  text("subtitle", t.subtitle);
+  text("sectionTitle", t.sectionTitle);
+  text("customTitle", t.customTitle);
+  text("customDescription", t.customDescription);
+  text("addButton", t.addButton);
+  text("aiTitle", t.aiTitle);
+  text("aiDescription", t.aiDescription);
+  text("aiStatus", t.aiStatus);
+  text("back", t.back);
+  text("footer", t.footer);
+  text("emptyMessage", t.empty);
+  text("loadingText", t.loading);
+  text("resultTitle", t.resultTitle);
 
   document.getElementById("skillSearch").placeholder = t.search;
   document.getElementById("customSkill").placeholder = t.customPlaceholder;
-  document.getElementById("emptyMessage").textContent = t.empty;
+  document.getElementById("aiSkillInput").placeholder = t.skillPlaceholder;
+  document.getElementById("aiGoalInput").placeholder = t.goalPlaceholder;
 
-  document.querySelectorAll(".skill p").forEach(p => {
-    if (p.dataset.bn) {
-      p.textContent = currentLanguage === "bn"
-        ? p.dataset.bn
-        : p.dataset.en;
-    } else if (p.parentElement.dataset.customName) {
-      p.textContent = currentLanguage === "bn"
-        ? "আপনার নির্বাচিত নতুন Skill।"
-        : "Your newly added skill.";
-    }
-  });
+  const button = document.getElementById("generateRoadmapButton");
 
-  document.querySelectorAll(".skill h3").forEach(title => {
-    if (title.parentElement.dataset.customName) return;
-    // Sample skill names remain in English.
-  });
-
-  if (selectedSkill) {
-    const activeCard = document.querySelector(".skill.active");
-
-    if (selectedSkill.startsWith("custom:") && activeCard) {
-      activeCard.click();
-    } else if (plans[selectedSkill]) {
-      renderPlan(plans[selectedSkill]);
-    }
+  if (!button.disabled) {
+    button.textContent = t.generate;
   }
+
+  document.querySelectorAll(".skill p[data-bn]").forEach(paragraph => {
+    paragraph.textContent = currentLanguage === "bn"
+      ? paragraph.dataset.bn
+      : paragraph.dataset.en;
+  });
+
+  document.querySelectorAll(".skill p[data-custom-description]").forEach(paragraph => {
+    paragraph.textContent = t.customSkillDescription;
+  });
+
+  if (document.getElementById("learningArea").style.display === "block") {
+    text("lessonTitle", t.lessonTitle);
+    text("note", t.note);
+    text("startButton", t.startButton);
+  }
+
+  localStorage.setItem("skillmind-language", currentLanguage);
+
+  searchSkills();
 }
 
-document.getElementById("customSkill").addEventListener("keydown", event => {
-  if (event.key === "Enter") addCustomSkill();
+document.getElementById("skillSearch")
+  .addEventListener("input", searchSkills);
+
+document.getElementById("customSkill")
+  .addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      addCustomSkill();
+    }
+  });
+
+document.getElementById("addButton")
+  .addEventListener("click", addCustomSkill);
+
+document.getElementById("aiForm")
+  .addEventListener("submit", generateAIRoadmap);
+
+document.getElementById("startButton")
+  .addEventListener("click", startLearning);
+
+document.getElementById("language")
+  .addEventListener("change", changeLanguage);
+
+document.querySelectorAll("[data-skill]").forEach(card => {
+  const choose = () => selectSkill(card.dataset.skill, card);
+
+  card.addEventListener("click", choose);
+
+  card.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      choose();
+    }
+  });
 });
 
-const savedLanguage = localStorage.getItem("skillmind-language");
+try {
+  const savedLanguage = localStorage.getItem("skillmind-language");
 
-if (savedLanguage && translations[savedLanguage]) {
-  document.getElementById("language").value = savedLanguage;
+  if (savedLanguage && translations[savedLanguage]) {
+    document.getElementById("language").value = savedLanguage;
+  }
+} catch (error) {
+  console.warn("Could not restore saved language preference.");
 }
 
 changeLanguage();
-
-document.getElementById("language").addEventListener("change", () => {
-  localStorage.setItem("skillmind-language", currentLanguage);
-});
 </script>
 
 </body>
-    </html>
+  </html>
