@@ -1,584 +1,504 @@
-Writing
 <!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Skill Mind AI Earning Hub — বাংলাদেশ ও আন্তর্জাতিক কাজের প্ল্যাটফর্ম ডিরেক্টরি।">
 <title>Earning Hub | Skill Mind AI</title>
-
 <style>
-:root {
-  --bg: #071426;
-  --panel: #102a46;
-  --panel2: #15395c;
-  --text: #f4f7ff;
-  --muted: #a9bdd2;
-  --blue: #168cf0;
-  --cyan: #35b5ff;
-  --border: #254765;
+:root{
+  --bg:#081426;
+  --panel:#10213a;
+  --panel2:#142943;
+  --blue:#247cff;
+  --cyan:#36c9ed;
+  --text:#f3f7ff;
+  --muted:#a8b7cc;
+  --border:#263c59;
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
-
-body {
-  font-family: Arial, "Noto Sans Bengali", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
+a{text-decoration:none;color:inherit}
+header{
+  padding:18px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+  background:#0b1930;
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
+.logo{font-size:21px;font-weight:800}
+.logo span{color:var(--cyan)}
+.header-link{
+  color:var(--muted);
+  font-size:14px;
 }
-
-button, input {
-  font: inherit;
+.container{width:min(1150px,92%);margin:auto}
+.hero{
+  text-align:center;
+  padding:55px 10px 30px;
 }
-
-.container {
-  width: min(1120px, 92%);
-  margin: auto;
+.hero h1{font-size:36px;margin:0 0 12px}
+.hero h1 span{color:var(--cyan)}
+.hero p{
+  max-width:650px;
+  margin:auto;
+  color:var(--muted);
+  line-height:1.8;
 }
-
-/* HEADER */
-
-header {
-  border-bottom: 1px solid var(--border);
-  background: #091a2e;
+.search-area{
+  max-width:760px;
+  margin:28px auto 18px;
 }
-
-.nav {
-  min-height: 72px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
+.search{
+  width:100%;
+  padding:17px 20px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--panel);
+  color:white;
+  font-size:16px;
+  outline:none;
 }
-
-.logo {
-  font-size: 21px;
-  font-weight: 800;
+.search:focus{border-color:var(--blue)}
+.filters{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:18px 0 28px;
 }
-
-.logo span {
-  color: var(--cyan);
+.filter-btn,.category-select{
+  border:1px solid var(--border);
+  background:var(--panel);
+  color:var(--text);
+  padding:11px 18px;
+  border-radius:9px;
+  cursor:pointer;
+  font-size:14px;
 }
-
-.nav-links {
-  display: flex;
-  gap: 20px;
-  color: var(--muted);
-  font-size: 14px;
+.filter-btn.active{
+  background:var(--blue);
+  border-color:var(--blue);
 }
-
-.nav-links a:hover {
-  color: white;
+.category-area{
+  display:flex;
+  justify-content:center;
+  margin-bottom:28px;
 }
-
-.home-btn {
-  background: var(--blue);
-  padding: 9px 15px;
-  border-radius: 9px;
-  font-size: 13px;
-  font-weight: bold;
+.category-select{
+  min-width:230px;
+  cursor:pointer;
 }
-
-/* INTRO */
-
-.intro {
-  text-align: center;
-  padding: 58px 15px 35px;
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin:35px 0 18px;
 }
-
-.eyebrow {
-  color: var(--cyan);
-  font-size: 13px;
-  letter-spacing: 2px;
-  margin-bottom: 13px;
+.section-title h2{font-size:22px;margin:0}
+.section-title p{color:var(--muted);font-size:13px}
+.count{color:var(--cyan);font-size:13px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
 }
-
-.intro h1 {
-  font-size: clamp(30px, 5vw, 46px);
-  line-height: 1.3;
-  margin-bottom: 14px;
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:19px;
+  display:flex;
+  flex-direction:column;
+  min-height:220px;
+  transition:.2s;
 }
-
-.intro h1 span {
-  color: var(--cyan);
+.card:hover{
+  transform:translateY(-3px);
+  border-color:var(--blue);
 }
-
-.intro p {
-  max-width: 650px;
-  margin: auto;
-  color: var(--muted);
-  font-size: 15px;
+.card-top{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
-
-/* DIRECTORY */
-
-.directory {
-  padding: 25px 0 65px;
+.logo-box{
+  width:43px;height:43px;
+  border-radius:11px;
+  display:grid;
+  place-items:center;
+  background:var(--panel2);
+  color:var(--cyan);
+  font-weight:800;
+  font-size:17px;
+  flex-shrink:0;
 }
-
-.search-wrap {
-  max-width: 760px;
-  margin: 0 auto 17px;
+.card h3{font-size:17px;margin:0}
+.tag{
+  display:inline-block;
+  margin-top:5px;
+  font-size:11px;
+  color:#8fdcf3;
 }
-
-.search-wrap input {
-  width: 100%;
-  padding: 17px 20px;
-  border: 1px solid var(--border);
-  border-radius: 13px;
-  background: var(--panel);
-  color: white;
-  font-size: 15px;
-  outline: none;
+.popular{
+  background:#263b19;
+  color:#c7f58c;
+  font-size:10px;
+  padding:4px 7px;
+  border-radius:20px;
+  margin-left:auto;
 }
-
-.search-wrap input:focus {
-  border-color: var(--cyan);
-  box-shadow: 0 0 0 3px rgba(53,181,255,.1);
+.card p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+  margin:15px 0;
+  flex:1;
 }
-
-.search-wrap input::placeholder {
-  color: #8da5bd;
+.card-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  border-top:1px solid var(--border);
+  padding-top:13px;
 }
-
-/* ONE FILTER BAR */
-
-.filters {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 28px;
+.region{
+  color:var(--muted);
+  font-size:11px;
 }
-
-.filter-btn {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  color: var(--muted);
-  border-radius: 10px;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: .2s;
+.visit{
+  background:var(--blue);
+  padding:8px 13px;
+  border-radius:7px;
+  font-size:12px;
+  font-weight:bold;
 }
-
-.filter-btn:hover {
-  border-color: var(--cyan);
-  color: white;
+.empty{
+  text-align:center;
+  padding:50px 10px;
+  color:var(--muted);
+  display:none;
 }
-
-.filter-btn.active {
-  background: var(--blue);
-  color: white;
-  border-color: var(--blue);
-  font-weight: bold;
+.notice{
+  margin:35px 0;
+  padding:18px;
+  background:#132b43;
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
 }
-
-/* RESULTS */
-
-.results {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 17px;
-  color: var(--muted);
-  font-size: 13px;
+footer{
+  border-top:1px solid var(--border);
+  text-align:center;
+  padding:25px;
+  color:var(--muted);
+  font-size:13px;
 }
-
-/* CARDS */
-
-.platform-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 17px;
+@media(max-width:850px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-
-.platform-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  transition: .2s;
-}
-
-.platform-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--cyan);
-}
-
-.card-top {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 13px;
-}
-
-.card-icon {
-  width: 46px;
-  height: 46px;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  background: var(--panel2);
-  border-radius: 12px;
-  font-size: 24px;
-}
-
-.card-top h3 {
-  font-size: 17px;
-  overflow-wrap: anywhere;
-}
-
-.region {
-  display: inline-block;
-  width: fit-content;
-  font-size: 11px;
-  padding: 4px 9px;
-  border-radius: 20px;
-  margin-bottom: 10px;
-  background: rgba(53,181,255,.12);
-  color: #82ceff;
-}
-
-.platform-card p {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-
-.category {
-  font-size: 12px;
-  color: #d8e8f7;
-  margin-bottom: 17px;
-}
-
-.category strong {
-  color: #61d9bd;
-}
-
-.platform-link {
-  display: block;
-  text-align: center;
-  margin-top: auto;
-  padding: 11px;
-  border-radius: 9px;
-  background: var(--blue);
-  color: white;
-  font-size: 13px;
-  font-weight: bold;
-  transition: .2s;
-}
-
-.platform-link:hover {
-  background: #35a9ff;
-}
-
-/* EMPTY */
-
-.empty {
-  display: none;
-  text-align: center;
-  padding: 45px 15px;
-  background: var(--panel);
-  border-radius: 15px;
-  color: var(--muted);
-}
-
-/* NOTICE */
-
-.notice {
-  max-width: 900px;
-  margin: 55px auto 0;
-  padding: 20px;
-  border: 1px solid #70562d;
-  background: rgba(255,190,80,.05);
-  border-radius: 13px;
-}
-
-.notice h3 {
-  color: #ffd28a;
-  margin-bottom: 9px;
-  font-size: 16px;
-}
-
-.notice p {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-/* FOOTER */
-
-footer {
-  border-top: 1px solid var(--border);
-  padding: 25px 0;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-footer a {
-  color: var(--cyan);
-}
-
-/* RESPONSIVE */
-
-@media(max-width: 850px) {
-  .platform-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media(max-width: 560px) {
-  .nav {
-    min-height: 65px;
-  }
-
-  .logo {
-    font-size: 17px;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .intro {
-    padding-top: 42px;
-  }
-
-  .platform-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .filter-btn {
-    padding: 9px 14px;
-    font-size: 13px;
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-  }
+@media(max-width:550px){
+  .grid{grid-template-columns:1fr}
+  .hero h1{font-size:28px}
+  .section-title{align-items:flex-start;flex-direction:column}
+  header{padding:16px 4%}
 }
 </style>
 </head>
-
 <body>
 
 <header>
-  <div class="container nav">
-    <a href="index.html" class="logo">
-      Skill Mind <span>AI</span>
-    </a>
-
-    <nav class="nav-links">
-      <a href="index.html">হোম</a>
-      <a href="learning.html">Learning Hub</a>
-      <a href="onboarding.html">Get Started</a>
-    </nav>
-
-    <a href="index.html" class="home-btn">হোমপেজ →</a>
-  </div>
+  <a class="logo" href="index.html">Skill Mind <span>AI</span></a>
+  <a class="header-link" href="index.html">← Home</a>
 </header>
 
-<main>
+<main class="container">
+  <section class="hero">
+    <h1>Explore <span>Earning Hub</span></h1>
+    <p>
+      দেশীয় ও আন্তর্জাতিক কাজের প্ল্যাটফর্ম খুঁজুন।
+      আপনার দক্ষতা অনুযায়ী সুযোগ আবিষ্কার করুন।
+    </p>
+  </section>
 
-<section class="intro">
-  <div class="eyebrow">SKILL MIND AI · EARNING HUB</div>
+  <div class="search-area">
+    <input id="searchInput" class="search" type="search"
+      placeholder="প্ল্যাটফর্ম, কাজ বা ক্যাটাগরি খুঁজুন...">
+  </div>
 
-  <h1>
-    দক্ষতা থেকে <span>কাজের সুযোগ</span>
-  </h1>
+  <div class="filters">
+    <button class="filter-btn active" data-region="all">সবগুলো</button>
+    <button class="filter-btn" data-region="bd">বাংলাদেশ</button>
+    <button class="filter-btn" data-region="global">আন্তর্জাতিক</button>
+  </div>
 
-  <p>
-    আপনার দক্ষতা ও আগ্রহ অনুযায়ী কাজের প্ল্যাটফর্ম খুঁজুন।
-    বাংলাদেশ ও আন্তর্জাতিক সুযোগগুলো এক জায়গায় দেখুন।
-  </p>
-</section>
+  <div class="category-area">
+    <select id="categorySelect" class="category-select">
+      <option value="all">সব ক্যাটাগরি</option>
+      <option value="freelance">Freelancing</option>
+      <option value="jobs">Remote & Jobs</option>
+      <option value="design">Design & Creative</option>
+      <option value="development">Development & Tech</option>
+      <option value="video">Video & Content</option>
+      <option value="writing">Writing & Translation</option>
+      <option value="marketing">Digital Marketing</option>
+      <option value="teaching">Teaching & Education</option>
+      <option value="commerce">E-commerce & Products</option>
+      <option value="local">Local Services</option>
+    </select>
+  </div>
 
-<section class="directory" id="platforms">
-  <div class="container">
-
-    <div class="search-wrap">
-      <input
-        type="search"
-        id="searchInput"
-        placeholder="🔍 প্ল্যাটফর্ম, কাজ বা দক্ষতা খুঁজুন..."
-        aria-label="প্ল্যাটফর্ম খুঁজুন"
-      >
+  <section id="popularSection">
+    <div class="section-title">
+      <h2>⭐ Popular Platforms</h2>
+      <span class="count">জনপ্রিয় প্ল্যাটফর্ম</span>
     </div>
+    <div class="grid" id="popularGrid"></div>
+  </section>
 
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">
-        সব ক্যাটাগরি
-      </button>
-
-      <button class="filter-btn" data-filter="bd">
-        🇧🇩 বাংলাদেশ
-      </button>
-
-      <button class="filter-btn" data-filter="global">
-        🌍 আন্তর্জাতিক
-      </button>
+  <section>
+    <div class="section-title">
+      <h2 id="listTitle">All Platforms</h2>
+      <span class="count" id="resultCount"></span>
     </div>
-
-    <div class="results">
-      <span id="resultCount">প্ল্যাটফর্ম লোড হচ্ছে...</span>
-      <span>অফিসিয়াল লিংক</span>
+    <div class="grid" id="platformGrid"></div>
+    <div class="empty" id="emptyMessage">
+      <h3>কোনো প্ল্যাটফর্ম পাওয়া যায়নি</h3>
+      <p>অন্য নাম বা ক্যাটাগরি দিয়ে খুঁজে দেখুন।</p>
     </div>
+  </section>
 
-    <div class="platform-grid" id="platformGrid">
+  <div class="notice">
+    <strong>গুরুত্বপূর্ণ তথ্য:</strong>
+    প্রতিটি প্ল্যাটফর্মের দেশভিত্তিক সুবিধা, বয়সসীমা,
+    পরিচয় যাচাই, কাজের শর্ত এবং পেমেন্ট পদ্ধতি আলাদা।
+    কাজ শুরু করার আগে অফিসিয়াল ওয়েবসাইটে নিয়ম যাচাই করুন।
+    কোনো চাকরি বা কাজ পাওয়ার নিশ্চয়তা এই তালিকা দেয় না।
+    কাজ পাওয়ার জন্য আগে টাকা জমা দিতে বলে এমন অফার থেকে সতর্ক থাকুন।
+  </div>
+</main>
 
-      <!-- BANGLADESH -->
+<footer>
+  © 2026 Skill Mind AI. Learn Skills. Build Projects. Explore Opportunities.
+</footer>
 
-      <article class="platform-card" data-region="bd"
-      data-search="bdjobs বাংলাদেশ চাকরি career employment">
-        <div class="card-top">
-          <div class="card-icon">🇧🇩</div>
-          <h3>Bdjobs</h3>
-        </div>
-        <span class="region">বাংলাদেশ</span>
-        <p>বাংলাদেশের বিভিন্ন প্রতিষ্ঠানের চাকরির বিজ্ঞপ্তি ও ক্যারিয়ারের সুযোগ খুঁজুন।</p>
-        <div class="category"><strong>কাজের ধরন:</strong> চাকরি</div>
-        <a class="platform-link" href="https://www.bdjobs.com/" target="_blank" rel="noopener noreferrer">ওয়েবসাইট দেখুন ↗</a>
-      </article>
+<script>
+const platforms = [
+  // BANGLADESH
+  {name:"Bdjobs",region:"bd",category:"jobs",desc:"বাংলাদেশের বিভিন্ন প্রতিষ্ঠানের চাকরির বিজ্ঞপ্তি খুঁজুন।",url:"https://www.bdjobs.com",popular:true},
+  {name:"Chakri.com",region:"bd",category:"jobs",desc:"বাংলাদেশের চাকরির বিজ্ঞপ্তি ও ক্যারিয়ার সুযোগ।",url:"https://www.chakri.com"},
+  {name:"Bikroy",region:"bd",category:"commerce",desc:"পণ্য কেনাবেচা ও স্থানীয় বিজ্ঞাপন প্রকাশের প্ল্যাটফর্ম।",url:"https://bikroy.com"},
+  {name:"Daraz Seller",region:"bd",category:"commerce",desc:"অনলাইন মার্কেটপ্লেসে পণ্য বিক্রির সুযোগ।",url:"https://sellercenter.daraz.com.bd"},
+  {name:"Sheba.xyz",region:"bd",category:"local",desc:"বাংলাদেশে বিভিন্ন স্থানীয় সেবা খোঁজার প্ল্যাটফর্ম।",url:"https://www.sheba.xyz"},
+  {name:"PretendMind",region:"bd",category:"freelance",desc:"বাংলাদেশভিত্তিক ডিজিটাল সেবা ও ফ্রিল্যান্স মার্কেটপ্লেস।",url:"https://pretendmind.com"},
+  {name:"Freelancers.gov.bd",region:"bd",category:"local",desc:"বাংলাদেশ সরকারের Freelancer ID ও ফ্রিল্যান্সারদের স্বীকৃতি সংক্রান্ত সেবা।",url:"https://www.freelancers.gov.bd"},
+  {name:"Teletalk Jobs",region:"bd",category:"jobs",desc:"সরকারি নিয়োগ ও আবেদন সংক্রান্ত ওয়েবসাইট।",url:"https://alljobs.teletalk.com.bd"},
+  {name:"AllJobs",region:"bd",category:"jobs",desc:"বিভিন্ন চাকরির বিজ্ঞপ্তি খোঁজার সরকারি পোর্টাল।",url:"https://alljobs.teletalk.com.bd"},
 
-      <article class="platform-card" data-region="bd"
-      data-search="sheba xyz বাংলাদেশ local service সেবা">
-        <div class="card-top">
-          <div class="card-icon">🛠️</div>
-          <h3>Sheba.xyz</h3>
-        </div>
-        <span class="region">বাংলাদেশ</span>
-        <p>স্থানীয় সেবা ও সেবা-ভিত্তিক ব্যবসার প্ল্যাটফর্ম সম্পর্কে জানুন।</p>
-        <div class="category"><strong>কাজের ধরন:</strong> স্থানীয় সেবা</div>
-        <a class="platform-link" href="https://www.sheba.xyz/" target="_blank" rel="noopener noreferrer">ওয়েবসাইট দেখুন ↗</a>
-      </article>
+  // INTERNATIONAL FREELANCING
+  {name:"Upwork",region:"global",category:"freelance",desc:"বিভিন্ন দক্ষতায় ক্লায়েন্টের সঙ্গে কাজ করার আন্তর্জাতিক মার্কেটপ্লেস।",url:"https://www.upwork.com",popular:true},
+  {name:"Fiverr",region:"global",category:"freelance",desc:"নিজের সার্ভিস বা Gig তৈরি করে ক্রেতার কাছে পৌঁছানোর প্ল্যাটফর্ম।",url:"https://www.fiverr.com",popular:true},
+  {name:"Freelancer.com",region:"global",category:"freelance",desc:"বিভিন্ন প্রজেক্টে বিড ও প্রতিযোগিতার মাধ্যমে কাজের সুযোগ।",url:"https://www.freelancer.com",popular:true},
+  {name:"Guru",region:"global",category:"freelance",desc:"ডিজাইন, প্রোগ্রামিং, লেখা ও অন্যান্য পেশার ফ্রিল্যান্স কাজ।",url:"https://www.guru.com"},
+  {name:"PeoplePerHour",region:"global",category:"freelance",desc:"ঘণ্টাভিত্তিক ও নির্দিষ্ট মূল্যের ডিজিটাল কাজ।",url:"https://www.peopleperhour.com"},
+  {name:"Toptal",region:"global",category:"freelance",desc:"অভিজ্ঞ পেশাজীবীদের জন্য নির্বাচিত ট্যালেন্ট নেটওয়ার্ক।",url:"https://www.toptal.com"},
+  {name:"Contra",region:"global",category:"freelance",desc:"স্বাধীন পেশাজীবীদের প্রোফাইল ও ক্লায়েন্ট কাজের প্ল্যাটফর্ম।",url:"https://contra.com"},
+  {name:"Workana",region:"global",category:"freelance",desc:"বিভিন্ন পেশায় ফ্রিল্যান্স প্রজেক্টের মার্কেটপ্লেস।",url:"https://www.workana.com"},
+  {name:"Truelancer",region:"global",category:"freelance",desc:"বিভিন্ন দেশের ক্লায়েন্ট ও ফ্রিল্যান্সারদের মার্কেটপ্লেস।",url:"https://www.truelancer.com"},
+  {name:"SEOClerks",region:"global",category:"marketing",desc:"SEO ও ডিজিটাল মার্কেটিং-সম্পর্কিত সার্ভিস মার্কেটপ্লেস।",url:"https://www.seoclerks.com"},
 
-      <article class="platform-card" data-region="bd"
-      data-search="daraz bangladesh seller ecommerce পণ্য বিক্রি">
-        <div class="card-top">
-          <div class="card-icon">🛍️</div>
-          <h3>Daraz Bangladesh</h3>
-        </div>
-        <span class="region">বাংলাদেশ</span>
-        <p>অনলাইন পণ্য বিক্রি ও ই-কমার্স ব্যবসার সুযোগ সম্পর্কে জানুন।</p>
-        <div class="category"><strong>কাজের ধরন:</strong> ই-কমার্স</div>
-        <a class="platform-link" href="https://www.daraz.com.bd/" target="_blank" rel="noopener noreferrer">ওয়েবসাইট দেখুন ↗</a>
-      </article>
+  // DESIGN
+  {name:"99designs",region:"global",category:"design",desc:"লোগো, ব্র্যান্ডিং ও গ্রাফিক ডিজাইনের কাজ।",url:"https://99designs.com",popular:true},
+  {name:"Behance",region:"global",category:"design",desc:"ডিজাইন পোর্টফোলিও প্রকাশ ও সৃজনশীল কাজ আবিষ্কার।",url:"https://www.behance.net",popular:true},
+  {name:"Dribbble",region:"global",category:"design",desc:"ডিজাইনারদের পোর্টফোলিও ও ডিজাইন চাকরির সুযোগ।",url:"https://dribbble.com"},
+  {name:"DesignCrowd",region:"global",category:"design",desc:"ডিজাইন প্রজেক্ট ও ক্রাউডসোর্সড ডিজাইন কাজ।",url:"https://www.designcrowd.com"},
+  {name:"Envato Market",region:"global",category:"design",desc:"ডিজাইন, থিম, টেমপ্লেট ও ডিজিটাল অ্যাসেট বিক্রির মার্কেটপ্লেস।",url:"https://market.envato.com"},
+  {name:"Adobe Stock",region:"global",category:"design",desc:"অনুমোদিত ছবি, ভিডিও ও ডিজিটাল অ্যাসেট কনট্রিবিউট করার প্ল্যাটফর্ম।",url:"https://contributor.stock.adobe.com"},
+  {name:"Shutterstock Contributor",region:"global",category:"design",desc:"ছবি, ভিডিও ও অন্যান্য অনুমোদিত কনটেন্ট জমা দেওয়ার প্ল্যাটফর্ম।",url:"https://submit.shutterstock.com"},
 
-      <article class="platform-card" data-region="bd"
-      data-search="bikroy বাংলাদেশ পণ্য বিক্রি বিজ্ঞাপন">
-        <div class="card-top">
-          <div class="card-icon">📦</div>
-          <h3>Bikroy</h3>
-        </div>
-        <span class="region">বাংলাদেশ</span>
-        <p>স্থানীয় পণ্য কেনাবেচা ও বিজ্ঞাপন প্রকাশের প্ল্যাটফর্ম।</p>
-        <div class="category"><strong>কাজের ধরন:</strong> পণ্য বিক্রি</div>
-        <a class="platform-link" href="https://bikroy.com/" target="_blank" rel="noopener noreferrer">ওয়েবসাইট দেখুন ↗</a>
-      </article>
+  // DEVELOPMENT
+  {name:"Arc",region:"global",category:"development",desc:"ডেভেলপার ও প্রযুক্তি পেশাজীবীদের চাকরি খোঁজার প্ল্যাটফর্ম।",url:"https://arc.dev"},
+  {name:"Gun.io",region:"global",category:"development",desc:"অভিজ্ঞ সফটওয়্যার ইঞ্জিনিয়ারদের জন্য কাজের নেটওয়ার্ক।",url:"https://www.gun.io"},
+  {name:"Wellfound",region:"global",category:"development",desc:"স্টার্টআপ ও প্রযুক্তি প্রতিষ্ঠানের চাকরির সুযোগ।",url:"https://wellfound.com"},
+  {name:"Lemon.io",region:"global",category:"development",desc:"ডেভেলপারদের সঙ্গে প্রযুক্তি প্রতিষ্ঠানের কাজের সংযোগ।",url:"https://lemon.io"},
 
-      <article class="platform-card" data-region="bd"
-      data-search="alljobs teletalk বাংলাদেশ চাকরি government">
-        <div class="card-top">
-          <div class="card-icon">📋</div>
-          <h3>AllJobs / Teletalk</h3>
-        </div>
-        <span class="region">বাংলাদেশ</span>
-        <p>বিভিন্ন নিয়োগ বিজ্ঞপ্তি ও অনলাইন আবেদন সংক্রান্ত তথ্য দেখুন।</p>
-        <div class="category"><strong>কাজের ধরন:</strong> চাকরি</div>
-        <a class="platform-link" href="https://alljobs.teletalk.com.bd/" target="_blank" rel="noopener noreferrer">ওয়েবসাইট দেখুন ↗</a>
-      </article>
+  // REMOTE JOBS
+  {name:"LinkedIn Jobs",region:"global",category:"jobs",desc:"বিভিন্ন দেশের চাকরি ও রিমোট কাজের বিজ্ঞপ্তি।",url:"https://www.linkedin.com/jobs",popular:true},
+  {name:"Indeed",region:"global",category:"jobs",desc:"বিভিন্ন দেশ ও পেশার চাকরি খোঁজার সার্চ প্ল্যাটফর্ম।",url:"https://www.indeed.com",popular:true},
+  {name:"We Work Remotely",region:"global",category:"jobs",desc:"রিমোট চাকরির বিজ্ঞপ্তি ও সুযোগ।",url:"https://weworkremotely.com"},
+  {name:"Remote OK",region:"global",category:"jobs",desc:"প্রযুক্তি ও অন্যান্য ক্ষেত্রে রিমোট চাকরির তালিকা।",url:"https://remoteok.com"},
+  {name:"Remotive",region:"global",category:"jobs",desc:"রিমোট চাকরি ও আন্তর্জাতিক কর্মসংস্থানের বিজ্ঞপ্তি।",url:"https://remotive.com"},
+  {name:"Himalayas",region:"global",category:"jobs",desc:"দেশ ও পেশাভিত্তিক রিমোট চাকরি খোঁজার প্ল্যাটফর্ম।",url:"https://himalayas.app"},
+  {name:"Working Nomads",region:"global",category:"jobs",desc:"বিভিন্ন পেশার রিমোট চাকরির তালিকা।",url:"https://www.workingnomads.com"},
+  {name:"Remote.co",region:"global",category:"jobs",desc:"রিমোট চাকরি ও রিমোট কাজ সম্পর্কিত তথ্য।",url:"https://remote.co"},
+  {name:"FlexJobs",region:"global",category:"jobs",desc:"যাচাই করা রিমোট ও নমনীয় চাকরির তালিকা; কিছু সুবিধা পেইড।",url:"https://www.flexjobs.com"},
+  {name:"Jobspresso",region:"global",category:"jobs",desc:"রিমোট প্রযুক্তি, মার্কেটিং ও অন্যান্য চাকরি।",url:"https://jobspresso.co"},
+  {name:"Wellfound Jobs",region:"global",category:"jobs",desc:"স্টার্টআপে চাকরি ও পেশাগত সুযোগ খুঁজুন।",url:"https://wellfound.com/jobs"},
 
-      <!-- INTERNATIONAL FREELANCE -->
+  // WRITING
+  {name:"ProBlogger",region:"global",category:"writing",desc:"ব্লগিং ও লেখালেখির চাকরির বিজ্ঞপ্তি।",url:"https://problogger.com/jobs"},
+  {name:"Textbroker",region:"global",category:"writing",desc:"লেখালেখি ও কনটেন্ট তৈরির মার্কেটপ্লেস; দেশভিত্তিক যোগ্যতা যাচাই করুন।",url:"https://www.textbroker.com"},
+  {name:"WriterAccess",region:"global",category:"writing",desc:"কনটেন্ট লেখক ও ব্যবসার মধ্যে কাজের সংযোগ।",url:"https://www.writeraccess.com"},
+  {name:"Scripted",region:"global",category:"writing",desc:"কনটেন্ট রাইটিং ও লেখক নিয়োগের প্ল্যাটফর্ম।",url:"https://www.scripted.com"},
 
-      <article class="platform-card" data-region="global"
-      data-search="upwork freelance programming design writing marketing">
-        <div class="card-top">
-          <div class="card-icon">💻</div>
-          <h3>Upwork</h3>
-        </div>
-        <span class="region">আন্তর্জাতিক</span>
-        <p>প্রোগ্রামিং, ডিজাইন, লেখালেখি ও মার্কেটিংয়ের প্রজেক্ট খুঁজুন।</p>
-        <div class="category"><strong>কাজের ধরন:</strong> ফ্রিল্যান্সিং</div>
-        <a class="platform-link" href="https://www.upwork.com/" target="_blank" rel="noopener noreferrer">ওয়েবসাইট দেখুন ↗</a>
-      </article>
+  // VIDEO & CONTENT
+  {name:"YouTube",region:"global",category:"video",desc:"ভিডিও প্রকাশ ও যোগ্যতা পূরণ করলে নির্মাতা-আয়ের সুযোগ।",url:"https://www.youtube.com",popular:true},
+  {name:"Twitch",region:"global",category:"video",desc:"লাইভ স্ট্রিমিং ও নির্মাতাদের জন্য প্ল্যাটফর্ম।",url:"https://www.twitch.tv"},
+  {name:"Dailymotion",region:"global",category:"video",desc:"ভিডিও প্রকাশ ও নির্মাতা-সংক্রান্ত সুবিধা।",url:"https://www.dailymotion.com"},
+  {name:"Vimeo",region:"global",category:"video",desc:"ভিডিও হোস্টিং, পোর্টফোলিও ও পেশাদার ভিডিও সেবা।",url:"https://vimeo.com"},
 
-      <article class="platform-card" data-region="global"
-      data-search="fiverr graphic design video editing writing seo">
-        <div class="card-top">
-          <div class="card-icon">🎯</div>
-          <h3>Fiverr</h3>
-        </div>
-        <span class="region">আন্তর্জাতিক</span>
-        <p>নিজের ডিজিটাল সেবা তৈরি করে ক্লায়েন্টের কাছে উপস্থাপন করুন।</p>
-        <div class="category"><strong>কাজের ধরন:</strong> সার্ভিস বিক্রি</div>
-        <a class="platform-link" href="https://www.fiverr.com/" target="_blank" rel="noopener noreferrer">ওয়েবসাইট দেখুন ↗</a>
-      </article>
+  // MARKETING
+  {name:"Impact",region:"global",category:"marketing",desc:"ব্র্যান্ড পার্টনারশিপ ও অ্যাফিলিয়েট মার্কেটিং প্ল্যাটফর্ম।",url:"https://impact.com"},
+  {name:"PartnerStack",region:"global",category:"marketing",desc:"সফটওয়্যার ও প্রযুক্তি প্রতিষ্ঠানের পার্টনার প্রোগ্রাম।",url:"https://partnerstack.com"},
+  {name:"Awin",region:"global",category:"marketing",desc:"বিভিন্ন ব্র্যান্ডের অ্যাফিলিয়েট পার্টনার নেটওয়ার্ক।",url:"https://www.awin.com"},
+  {name:"CJ Affiliate",region:"global",category:"marketing",desc:"ব্র্যান্ড ও প্রকাশকদের অ্যাফিলিয়েট মার্কেটিং নেটওয়ার্ক।",url:"https://www.cj.com"},
 
-      <article class="platform-card" data-region="global"
-      data-search="freelancer freelance projects programming writing">
-        <div class="card-top">
-          <div class="card-icon">🌐</div>
-          <h3>Freelancer.com</h3>
-        </div>
-        <span class="region">আন্তর্জাতিক</span>
-        <p>বিভিন্ন প্রজেক্টে প্রস্তাব পাঠানো ও কাজের সুযোগ খুঁজুন।</p>
-        <div class="category"><strong>কাজের ধরন:</strong> ফ্রিল্যান্সিং</div>
-        <a class="platform-link" href="https://www.freelancer.com/" target="_blank" rel="noopener noreferrer">ওয়েবসাইট দেখুন ↗</a>
-      </article>
+  // TEACHING
+  {name:"Preply",region:"global",category:"teaching",desc:"অনলাইন ভাষা ও অন্যান্য বিষয়ে টিউটর খোঁজার প্ল্যাটফর্ম।",url:"https://preply.com"},
+  {name:"italki",region:"global",category:"teaching",desc:"ভাষা শেখা ও ভাষা শিক্ষকের সঙ্গে সংযোগের প্ল্যাটফর্ম।",url:"https://www.italki.com"},
+  {name:"Superprof",region:"global",category:"teaching",desc:"বিভিন্ন বিষয়ে শিক্ষার্থী ও শিক্ষকের সংযোগ।",url:"https://www.superprof.com"},
+  {name:"TeacherOn",region:"global",category:"teaching",desc:"অনলাইন ও সরাসরি টিউটর খোঁজার আন্তর্জাতিক প্ল্যাটফর্ম।",url:"https://www.teacheron.com"},
 
-      <article class="platform-card" data-region="global"
-      data-search="guru freelance design business programming writing">
-        <div class="card-top">
-          <div class="card-icon">🤝</div>
-          <h3>Guru</h3>
-        </div>
-        <span class="region">আন্তর্জাতিক</span>
-        <p>ডিজাইন, ব্যবসা, লেখালেখি ও প্রোগ্রামিংয়ের কাজ খুঁজুন।</p>
-        <div class="category"><strong>কাজের ধরন:</strong> ফ্রিল্যান্সিং</div>
-        <a class="platform-link" href="https://www.guru.com/" target="_blank" rel="noopener noreferrer">ওয়েবসাইট দেখুন ↗</a>
-      </article>
+  // DIGITAL PRODUCTS
+  {name:"Gumroad",region:"global",category:"commerce",desc:"ডিজিটাল পণ্য, ই-বুক ও অন্যান্য পণ্য বিক্রির প্ল্যাটফর্ম।",url:"https://gumroad.com"},
+  {name:"Ko-fi",region:"global",category:"commerce",desc:"নির্মাতাদের ডিজিটাল পণ্য ও সাপোর্ট গ্রহণের প্ল্যাটফর্ম।",url:"https://ko-fi.com"},
+  {name:"Patreon",region:"global",category:"commerce",desc:"সদস্যভিত্তিক কনটেন্ট ও নির্মাতা সাপোর্ট প্ল্যাটফর্ম।",url:"https://www.patreon.com"},
+  {name:"Etsy",region:"global",category:"commerce",desc:"হ্যান্ডমেড ও ডিজিটাল পণ্য বিক্রির মার্কেটপ্লেস; দেশভিত্তিক বিক্রেতা সুবিধা যাচাই করুন।",url:"https://www.etsy.com"}
+];
 
-      <article class="platform-card" data-region="global"
-      data-search="peopleperhour freelance design marketing development">
-        <div class="card-top">
-          <div class="card-icon">⏱️</div>
-          <h3>PeoplePerHour</h3>
-        </div>
-        <span class="region">আন্তর্জাতিক</span>
-        <p>ডিজাইন, মার্কেটিং ও ওয়েব ডেভেলপমেন্টের সেবা-ভিত্তিক কাজ খুঁজুন।</p>
-        <div class="category"><strong>কাজের ধরন:</strong> ফ্রিল্যান্সিং</div>
-        <a class="platform-link" href="https://www.peopleperhour.com/" target="_blank" rel="noopener noreferrer">ওয়েবসাইট দেখুন ↗</a>
-      </article>
+const grid=document.getElementById("platformGrid");
+const popularGrid=document.getElementById("popularGrid");
+const searchInput=document.getElementById("searchInput");
+const categorySelect=document.getElementById("categorySelect");
+const resultCount=document.getElementById("resultCount");
+const emptyMessage=document.getElementById("emptyMessage");
+const popularSection=document.getElementById("popularSection");
+const listTitle=document.getElementById("listTitle");
 
-      <!-- REMOTE JOBS -->
+let currentRegion="all";
 
-      <article class="platform-card" data-region="global"
-      data-search="we work remotely remote job programming design">
-        <div class="card-top">
-          <div class="card-icon">🏠</div>
-          <h3>We Work Remotely</h3>
-        </div>
-        <span class="region">আন্তর্জাতিক</span>
-        <p>বিভিন্ন প্রতিষ্ঠানের দূরবর্তী চাকরির বিজ্ঞপ্তি খুঁজুন।</p>
+const categoryNames={
+  freelance:"Freelancing",
+  jobs:"Remote & Jobs",
+  design:"Design & Creative",
+  development:"Development & Tech",
+  video:"Video & Content",
+  writing:"Writing & Translation",
+  marketing:"Digital Marketing",
+  teaching:"Teaching & Education",
+  commerce:"E-commerce & Products",
+  local:"Local Services"
+};
+
+function createCard(p){
+  const div=document.createElement("article");
+  div.className="card";
+
+  const top=document.createElement("div");
+  top.className="card-top";
+
+  const logo=document.createElement("div");
+  logo.className="logo-box";
+  logo.textContent=p.name.substring(0,1).toUpperCase();
+
+  const info=document.createElement("div");
+  const title=document.createElement("h3");
+  title.textContent=p.name;
+
+  const tag=document.createElement("span");
+  tag.className="tag";
+  tag.textContent=categoryNames[p.category] || "Other";
+
+  info.append(title,tag);
+  top.append(logo,info);
+
+  if(p.popular){
+    const badge=document.createElement("span");
+    badge.className="popular";
+    badge.textContent="POPULAR";
+    top.append(badge);
+  }
+
+  const desc=document.createElement("p");
+  desc.textContent=p.desc;
+
+  const bottom=document.createElement("div");
+  bottom.className="card-bottom";
+
+  const region=document.createElement("span");
+  region.className="region";
+  region.textContent=p.region==="bd"?"🇧🇩 Bangladesh":"🌐 International";
+
+  const link=document.createElement("a");
+  link.className="visit";
+  link.href=p.url;
+  link.target="_blank";
+  link.rel="noopener noreferrer";
+  link.textContent="Official Website ↗";
+
+  bottom.append(region,link);
+  div.append(top,desc,bottom);
+  return div;
+}
+
+function render(){
+  const query=searchInput.value.trim().toLowerCase();
+  const category=categorySelect.value;
+
+  const filtered=platforms.filter(p=>{
+    const regionMatch=currentRegion==="all" || p.region===currentRegion;
+    const categoryMatch=category==="all" || p.category===category;
+    const text=(p.name+" "+p.desc+" "+categoryNames[p.category]).toLowerCase();
+    const searchMatch=text.includes(query);
+    return regionMatch && categoryMatch && searchMatch;
+  });
+
+  grid.replaceChildren();
+  filtered.forEach(p=>grid.appendChild(createCard(p)));
+
+  const showPopular=currentRegion==="all" && category==="all" && query==="";
+
+  popularGrid.replaceChildren();
+  if(showPopular){
+    platforms.filter(p=>p.popular).forEach(p=>{
+      popularGrid.appendChild(createCard(p));
+    });
+  }
+  popularSection.style.display=showPopular?"block":"none";
+
+  resultCount.textContent=filtered.length+"টি প্ল্যাটফর্ম";
+
+  emptyMessage.style.display=filtered.length?"none":"block";
+
+  listTitle.textContent=currentRegion==="bd"
+    ?"Bangladesh Platforms"
+    :currentRegion==="global"
+    ?"International Platforms"
+    :"All Platforms";
+}
+
+document.querySelectorAll(".filter-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    currentRegion=btn.dataset.region;
+    render();
+  });
+});
+
+searchInput.addEventListener("input",render);
+categorySelect.addEventListener("change",render);
+
+render();
+</script>
+</body>
+  </html>
