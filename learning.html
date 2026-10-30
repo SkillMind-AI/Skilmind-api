@@ -2,208 +2,433 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#09152e">
-<title>Learning Center | Skill Mind AI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Hub | Skill Mind AI</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,"Noto Sans Bengali",sans-serif;background:#09152e;color:#f5f7ff;line-height:1.7}
-a{text-decoration:none;color:inherit}
-.container{width:min(1100px,92%);margin:auto}
-header{padding:18px 0;border-bottom:1px solid #ffffff18;background:#0b1b35}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:15px}
-.logo{font-size:22px;font-weight:bold}
-.logo span{color:#46ded2}
-.back{color:#b8c7df;font-size:14px}
-.hero{padding:50px 0 30px}
-.label{display:inline-block;padding:6px 13px;background:#123b4a;color:#6ce9dd;border-radius:25px;font-size:13px;margin-bottom:14px}
-h1{font-size:clamp(30px,5vw,43px);line-height:1.3;margin-bottom:12px}
-.hero p,.muted{color:#a9b8d0}
-.section{padding:30px 0}
-.section-title{font-size:25px;margin-bottom:8px}
-.section-desc{color:#a9b8d0;margin-bottom:22px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.skill{
-  text-align:left;padding:22px;background:#102442;color:white;
-  border:1px solid #ffffff18;border-radius:17px;cursor:pointer;transition:.2s
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
-.skill:hover,.skill.selected{border-color:#46ded2;background:#153052;transform:translateY(-2px)}
-.icon{font-size:29px;margin-bottom:10px}
-.skill h3{font-size:17px;margin-bottom:5px}
-.skill p{font-size:13px;color:#a9b8d0}
-.primary{
-  display:inline-block;border:0;border-radius:10px;padding:13px 20px;
-  background:linear-gradient(100deg,#4f8cff,#7459ff);color:white;
-  font-weight:bold;cursor:pointer
+
+body {
+  background: #071426;
+  color: white;
 }
-.primary:disabled{opacity:.45;cursor:not-allowed}
-.actions{margin-top:22px}
-.panel{padding:25px;background:#102442;border:1px solid #ffffff18;border-radius:18px}
-.plan-list{list-style:none;margin-top:15px}
-.plan-list li{padding:12px 0;border-bottom:1px solid #ffffff15}
-.plan-list li:last-child{border-bottom:0}
-.plan-list strong{display:block}
-.plan-list span{font-size:13px;color:#a9b8d0}
-.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.project{padding:20px;background:#102442;border:1px solid #ffffff18;border-radius:15px}
-.project h3{margin-bottom:6px}
-.project p{font-size:14px;color:#a9b8d0}
-.notice{font-size:13px;color:#91a5c4;margin-top:16px}
-footer{padding:30px 0;color:#8498b7;font-size:13px;border-top:1px solid #ffffff18;margin-top:35px}
-@media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:430px){.grid,.project-grid{grid-template-columns:1fr}.skill{padding:18px}}
+
+header {
+  padding: 18px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #1b3552;
+}
+
+.logo {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #28a8ff;
+}
+
+select {
+  background: #102a46;
+  color: white;
+  border: 1px solid #315477;
+  padding: 9px;
+  border-radius: 8px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 45px 20px;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.heading h1 {
+  font-size: clamp(28px, 5vw, 40px);
+  margin-bottom: 12px;
+}
+
+.heading p {
+  color: #a9bdd2;
+  line-height: 1.7;
+}
+
+.section-title {
+  margin: 35px 0 20px;
+  font-size: 22px;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.skill {
+  background: #102a46;
+  border: 1px solid #254969;
+  border-radius: 15px;
+  padding: 23px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.skill:hover, .skill.active {
+  border-color: #28a8ff;
+  background: #14395e;
+  transform: translateY(-3px);
+}
+
+.skill .icon {
+  font-size: 34px;
+  margin-bottom: 15px;
+}
+
+.skill h3 {
+  margin-bottom: 10px;
+}
+
+.skill p {
+  color: #a9bdd2;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+#learningArea {
+  display: none;
+  margin-top: 30px;
+  background: #102a46;
+  border: 1px solid #28639b;
+  border-radius: 16px;
+  padding: 25px;
+}
+
+#learningArea h2 {
+  margin-bottom: 12px;
+}
+
+#learningArea p {
+  color: #b9cadd;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.lesson {
+  background: #0a1d32;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 12px 0;
+}
+
+.lesson strong {
+  display: block;
+  margin-bottom: 7px;
+}
+
+.lesson span {
+  color: #a9bdd2;
+  font-size: 14px;
+}
+
+.action {
+  display: inline-block;
+  border: none;
+  background: #168cf0;
+  color: white;
+  padding: 13px 20px;
+  border-radius: 9px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.action:hover {
+  background: #35a9ff;
+}
+
+.note {
+  margin-top: 20px;
+  color: #91a9c0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 30px;
+  color: #8dbce4;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  padding: 22px;
+  color: #8198af;
+  border-top: 1px solid #1b3552;
+  font-size: 13px;
+}
+
+@media(max-width: 700px) {
+  .skills {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 430px) {
+  .skills {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 </head>
 
 <body>
+
 <header>
-  <div class="container nav">
-    <a class="logo" href="index.html">Skill Mind <span>AI</span></a>
-    <a class="back" href="onboarding.html">← লক্ষ্য পরিবর্তন</a>
-  </div>
+  <div class="logo">Skill Mind <span>AI</span></div>
+
+  <select id="language" onchange="changeLanguage()">
+    <option value="bn">বাংলা</option>
+    <option value="en">English</option>
+  </select>
 </header>
 
 <main class="container">
-  <section class="hero">
-    <span class="label">YOUR LEARNING JOURNEY</span>
-    <h1>কোন দক্ষতা শিখতে চান?</h1>
-    <p>একটি দক্ষতা বেছে নিন। তারপর আপনার শেখার লক্ষ্য অনুযায়ী পরিকল্পনা তৈরি করুন।</p>
+
+  <section class="heading">
+    <h1 id="heading">Learning Hub</h1>
+    <p id="subtitle">
+      আপনার আগ্রহের স্কিল নির্বাচন করুন এবং শেখার যাত্রা শুরু করুন।
+    </p>
   </section>
 
-  <section class="section">
-    <h2 class="section-title">দক্ষতা নির্বাচন করুন</h2>
-    <p class="section-desc">আপনি যে বিষয়ে শিখতে আগ্রহী, সেটিতে চাপ দিন।</p>
+  <h2 class="section-title" id="sectionTitle">
+    আপনার পছন্দের স্কিল নির্বাচন করুন
+  </h2>
 
-    <div class="grid" id="skills">
-      <button class="skill" data-skill="ওয়েব ডেভেলপমেন্ট">
-        <div class="icon">💻</div><h3>ওয়েব ডেভেলপমেন্ট</h3><p>HTML, CSS, JavaScript</p>
-      </button>
-      <button class="skill" data-skill="গ্রাফিক ডিজাইন">
-        <div class="icon">🎨</div><h3>গ্রাফিক ডিজাইন</h3><p>লেআউট, ব্র্যান্ডিং, ডিজাইন</p>
-      </button>
-      <button class="skill" data-skill="ডিজিটাল মার্কেটিং">
-        <div class="icon">📱</div><h3>ডিজিটাল মার্কেটিং</h3><p>সোশ্যাল মিডিয়া ও মার্কেটিং</p>
-      </button>
-      <button class="skill" data-skill="ভিডিও এডিটিং">
-        <div class="icon">🎬</div><h3>ভিডিও এডিটিং</h3><p>ভিডিও, রিলস ও স্টোরিটেলিং</p>
-      </button>
-      <button class="skill" data-skill="AI দক্ষতা">
-        <div class="icon">🤖</div><h3>AI দক্ষতা</h3><p>AI টুল ও প্রম্পট লেখা</p>
-      </button>
-      <button class="skill" data-skill="কনটেন্ট তৈরি">
-        <div class="icon">✍️</div><h3>কনটেন্ট তৈরি</h3><p>লেখা, স্ক্রিপ্ট ও কনটেন্ট</p>
-      </button>
+  <section class="skills">
+
+    <div class="skill" onclick="selectSkill('web', this)">
+      <div class="icon">💻</div>
+      <h3 id="s1">Web Development</h3>
+      <p id="d1">ওয়েবসাইট তৈরি ও প্রোগ্রামিং শিখুন।</p>
     </div>
 
-    <div class="actions">
-      <button class="primary" id="createPlan" disabled>আমার শেখার পরিকল্পনা তৈরি করুন →</button>
+    <div class="skill" onclick="selectSkill('design', this)">
+      <div class="icon">🎨</div>
+      <h3 id="s2">Graphic Design</h3>
+      <p id="d2">লোগো, ব্যানার ও ডিজাইন তৈরি শিখুন।</p>
     </div>
+
+    <div class="skill" onclick="selectSkill('marketing', this)">
+      <div class="icon">📱</div>
+      <h3 id="s3">Digital Marketing</h3>
+      <p id="d3">সোশ্যাল মিডিয়া ও মার্কেটিং শিখুন।</p>
+    </div>
+
+    <div class="skill" onclick="selectSkill('video', this)">
+      <div class="icon">🎬</div>
+      <h3 id="s4">Video Editing</h3>
+      <p id="d4">ভিডিও এডিটিং ও কনটেন্ট তৈরি শিখুন।</p>
+    </div>
+
+    <div class="skill" onclick="selectSkill('ai', this)">
+      <div class="icon">🤖</div>
+      <h3 id="s5">AI Skills</h3>
+      <p id="d5">AI টুল ও Prompt Engineering শিখুন।</p>
+    </div>
+
+    <div class="skill" onclick="selectSkill('content', this)">
+      <div class="icon">✍️</div>
+      <h3 id="s6">Content Creation</h3>
+      <p id="d6">লেখালেখি ও ডিজিটাল কনটেন্ট তৈরি শিখুন।</p>
+    </div>
+
   </section>
 
-  <section class="section" id="planSection" hidden>
-    <h2 class="section-title">আপনার শেখার পরিকল্পনা</h2>
-    <p class="section-desc" id="selectedSkill"></p>
-    <div class="panel">
-      <h3>প্রস্তাবিত শেখার ধাপ</h3>
-      <ul class="plan-list" id="planList"></ul>
-      <p class="notice">এটি একটি প্রাথমিক নমুনা পরিকল্পনা। এখনো AI দিয়ে ব্যক্তিগত পরিকল্পনা তৈরির সুবিধা যুক্ত হয়নি।</p>
-    </div>
+  <section id="learningArea">
+    <h2 id="selectedTitle">আপনার শেখার পরিকল্পনা</h2>
+    <p id="selectedDescription"></p>
+
+    <h3 id="lessonTitle">শেখার ধাপসমূহ</h3>
+
+    <div id="lessons"></div>
+
+    <button class="action" onclick="startLearning()" id="startButton">
+      শেখা শুরু করুন →
+    </button>
+
+    <p class="note" id="note">
+      এটি বর্তমানে একটি প্রাথমিক ডেমো পরিকল্পনা। AI Teacher, বাস্তব লেসন,
+      অগ্রগতি সংরক্ষণ ও প্র্যাকটিস সুবিধা পরবর্তী ধাপে যুক্ত করা হবে।
+    </p>
   </section>
 
-  <section class="section">
-    <h2 class="section-title">প্র্যাকটিস ও প্রজেক্ট</h2>
-    <p class="section-desc">শেখার পাশাপাশি নিজের কাজ তৈরি করুন।</p>
-    <div class="project-grid">
-      <div class="project"><h3>🧩 ছোট অনুশীলন</h3><p>প্রতিটি নতুন বিষয় শেখার পর নিজে হাতে অনুশীলন করুন।</p></div>
-      <div class="project"><h3>🚀 বাস্তব প্রজেক্ট</h3><p>নিজের কাজ তৈরি করে পোর্টফোলিওতে যুক্ত করার প্রস্তুতি নিন।</p></div>
-    </div>
-  </section>
+  <a href="onboarding.html" class="back" id="back">
+    ← আগের পেজে ফিরে যান
+  </a>
+
 </main>
 
-<footer>
-  <div class="container">© 2026 Skill Mind AI · Learn. Practice. Build. Grow.</div>
+<footer id="footer">
+  © 2026 Skill Mind AI. All rights reserved.
 </footer>
 
 <script>
-const skillButtons = document.querySelectorAll('.skill');
-const createPlanButton = document.getElementById('createPlan');
-const planSection = document.getElementById('planSection');
-const selectedSkillText = document.getElementById('selectedSkill');
-const planList = document.getElementById('planList');
-
-let selectedSkill = '';
+let selectedSkill = "";
 
 const plans = {
-  'ওয়েব ডেভেলপমেন্ট': [
-    ['ধাপ ১: HTML','ওয়েবপেজের কাঠামো তৈরি শিখুন।'],
-    ['ধাপ ২: CSS','রং, লেআউট ও রেসপনসিভ ডিজাইন শিখুন।'],
-    ['ধাপ ৩: JavaScript','ওয়েবপেজে ইন্টারঅ্যাকশন যোগ করুন।'],
-    ['ধাপ ৪: প্রজেক্ট','একটি ব্যক্তিগত পোর্টফোলিও ওয়েবসাইট তৈরি করুন।']
-  ],
-  'গ্রাফিক ডিজাইন': [
-    ['ধাপ ১: ডিজাইনের ভিত্তি','রং, টাইপোগ্রাফি ও লেআউট শিখুন।'],
-    ['ধাপ ২: ডিজাইন টুল','একটি উপযুক্ত ডিজাইন টুল ব্যবহার শিখুন।'],
-    ['ধাপ ৩: অনুশীলন','পোস্টার ও সোশ্যাল মিডিয়া ডিজাইন তৈরি করুন।'],
-    ['ধাপ ৪: পোর্টফোলিও','নিজের সেরা ডিজাইনগুলো সাজিয়ে রাখুন।']
-  ],
-  'ডিজিটাল মার্কেটিং': [
-    ['ধাপ ১: ভিত্তি','ডিজিটাল মার্কেটিংয়ের মূল ধারণা শিখুন।'],
-    ['ধাপ ২: কনটেন্ট','কনটেন্ট পরিকল্পনা ও তৈরি শিখুন।'],
-    ['ধাপ ৩: অ্যানালিটিক্স','ফলাফল বিশ্লেষণ করার অনুশীলন করুন।'],
-    ['ধাপ ৪: প্রজেক্ট','একটি নমুনা মার্কেটিং পরিকল্পনা তৈরি করুন।']
-  ],
-  'ভিডিও এডিটিং': [
-    ['ধাপ ১: ভিত্তি','কাট, ট্রিম ও টাইমলাইন শিখুন।'],
-    ['ধাপ ২: অডিও ও টেক্সট','সাউন্ড, সাবটাইটেল ও টাইটেল যোগ করুন।'],
-    ['ধাপ ৩: স্টোরিটেলিং','দৃশ্যের ধারাবাহিকতা তৈরি করুন।'],
-    ['ধাপ ৪: প্রজেক্ট','একটি সম্পূর্ণ ছোট ভিডিও তৈরি করুন।']
-  ],
-  'AI দক্ষতা': [
-    ['ধাপ ১: AI পরিচিতি','AI টুল কীভাবে কাজ করে তা শিখুন।'],
-    ['ধাপ ২: প্রম্পট লেখা','স্পষ্ট ও কার্যকর নির্দেশনা লেখা শিখুন।'],
-    ['ধাপ ৩: যাচাই','AI-এর উত্তর যাচাই ও সংশোধন করুন।'],
-    ['ধাপ ৪: প্রজেক্ট','AI ব্যবহার করে একটি বাস্তব কাজ সম্পন্ন করুন।']
-  ],
-  'কনটেন্ট তৈরি': [
-    ['ধাপ ১: পরিকল্পনা','লক্ষ্যপাঠক ও বিষয় নির্বাচন করুন।'],
-    ['ধাপ ২: লেখা','শিরোনাম, স্ক্রিপ্ট ও ক্যাপশন লিখুন।'],
-    ['ধাপ ৩: প্রকাশযোগ্য কনটেন্ট','লেখা বা ভিডিওর খসড়া তৈরি করুন।'],
-    ['ধাপ ৪: পোর্টফোলিও','নিজের সেরা কাজগুলো সংরক্ষণ করুন।']
-  ]
+  web: {
+    title: "Web Development",
+    description: "ওয়েব ডেভেলপমেন্ট শেখার জন্য HTML, CSS ও JavaScript দিয়ে শুরু করুন।",
+    lessons: ["HTML পরিচিতি ও ওয়েবপেজ তৈরি", "CSS দিয়ে ডিজাইন", "JavaScript-এর ভিত্তি", "একটি বাস্তব ওয়েবসাইট তৈরি"]
+  },
+  design: {
+    title: "Graphic Design",
+    description: "ডিজাইনের মৌলিক ধারণা থেকে শুরু করে বাস্তব ডিজাইন প্রজেক্ট তৈরি শিখুন।",
+    lessons: ["ডিজাইনের মৌলিক ধারণা", "রং ও Typography", "Canva দিয়ে ডিজাইন", "লোগো ও সোশ্যাল মিডিয়া ডিজাইন"]
+  },
+  marketing: {
+    title: "Digital Marketing",
+    description: "ডিজিটাল মার্কেটিংয়ের বিভিন্ন কৌশল ও বাস্তব প্রয়োগ শিখুন।",
+    lessons: ["Digital Marketing পরিচিতি", "Social Media Marketing", "Content Strategy", "Marketing Campaign পরিকল্পনা"]
+  },
+  video: {
+    title: "Video Editing",
+    description: "ভিডিও এডিটিংয়ের মৌলিক বিষয় থেকে প্রফেশনাল প্রজেক্ট পর্যন্ত শিখুন।",
+    lessons: ["ভিডিও এডিটিং পরিচিতি", "CapCut-এর ব্যবহার", "Transitions ও Effects", "একটি সম্পূর্ণ ভিডিও তৈরি"]
+  },
+  ai: {
+    title: "AI Skills",
+    description: "AI টুল ব্যবহার ও কার্যকর Prompt তৈরির দক্ষতা অর্জন করুন।",
+    lessons: ["Artificial Intelligence পরিচিতি", "AI Tools ব্যবহার", "Prompt Engineering", "AI দিয়ে বাস্তব প্রজেক্ট"]
+  },
+  content: {
+    title: "Content Creation",
+    description: "লেখালেখি, পরিকল্পনা ও ডিজিটাল কনটেন্ট তৈরি শিখুন।",
+    lessons: ["Content Creation পরিচিতি", "Content Research", "Script ও Caption Writing", "নিজস্ব Content Project"]
+  }
 };
 
-skillButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    skillButtons.forEach(item => item.classList.remove('selected'));
-    button.classList.add('selected');
-    selectedSkill = button.dataset.skill;
-    createPlanButton.disabled = false;
-    planSection.hidden = true;
-  });
-});
+const translations = {
+  bn: {
+    heading: "Learning Hub",
+    subtitle: "আপনার আগ্রহের স্কিল নির্বাচন করুন এবং শেখার যাত্রা শুরু করুন।",
+    sectionTitle: "আপনার পছন্দের স্কিল নির্বাচন করুন",
+    selectedTitle: "আপনার শেখার পরিকল্পনা",
+    lessonTitle: "শেখার ধাপসমূহ",
+    startButton: "শেখা শুরু করুন →",
+    note: "এটি বর্তমানে একটি প্রাথমিক ডেমো পরিকল্পনা। AI Teacher, বাস্তব লেসন, অগ্রগতি সংরক্ষণ ও প্র্যাকটিস সুবিধা পরবর্তী ধাপে যুক্ত করা হবে।",
+    back: "← আগের পেজে ফিরে যান",
+    footer: "© 2026 Skill Mind AI. All rights reserved.",
+    choose: "প্রথমে একটি স্কিল নির্বাচন করুন।",
+    s1: "ওয়েবসাইট তৈরি ও প্রোগ্রামিং শিখুন।",
+    s2: "লোগো, ব্যানার ও ডিজাইন তৈরি শিখুন।",
+    s3: "সোশ্যাল মিডিয়া ও মার্কেটিং শিখুন।",
+    s4: "ভিডিও এডিটিং ও কনটেন্ট তৈরি শিখুন।",
+    s5: "AI টুল ও Prompt Engineering শিখুন।",
+    s6: "লেখালেখি ও ডিজিটাল কনটেন্ট তৈরি শিখুন।"
+  },
+  en: {
+    heading: "Learning Hub",
+    subtitle: "Choose a skill based on your interests and start learning.",
+    sectionTitle: "Choose Your Preferred Skill",
+    selectedTitle: "Your Learning Plan",
+    lessonTitle: "Learning Steps",
+    startButton: "Start Learning →",
+    note: "This is currently a demo learning plan. AI Teacher, real lessons, saved progress and practice features will be added in later stages.",
+    back: "← Back to Previous Page",
+    footer: "© 2026 Skill Mind AI. All rights reserved.",
+    choose: "Please select a skill first.",
+    s1: "Learn website development and programming.",
+    s2: "Learn to create logos, banners and designs.",
+    s3: "Learn social media and marketing.",
+    s4: "Learn video editing and content creation.",
+    s5: "Learn AI tools and Prompt Engineering.",
+    s6: "Learn writing and digital content creation."
+  }
+};
 
-createPlanButton.addEventListener('click', () => {
+let currentLanguage = "bn";
+
+function selectSkill(skill, element) {
+  selectedSkill = skill;
+
+  document.querySelectorAll(".skill").forEach(card => {
+    card.classList.remove("active");
+  });
+
+  element.classList.add("active");
+
+  const plan = plans[skill];
+  document.getElementById("learningArea").style.display = "block";
+
+  document.getElementById("selectedTitle").textContent =
+    currentLanguage === "bn" ? "আপনার শেখার পরিকল্পনা: " + plan.title : "Your Learning Plan: " + plan.title;
+
+  document.getElementById("selectedDescription").textContent = plan.description;
+
+  document.getElementById("lessons").innerHTML = plan.lessons.map((lesson, index) =>
+    `<div class="lesson"><strong>Step ${index + 1}</strong><span>${lesson}</span></div>`
+  ).join("");
+
+  document.getElementById("learningArea").scrollIntoView({behavior: "smooth"});
+}
+
+function startLearning() {
   if (!selectedSkill) return;
 
-  selectedSkillText.textContent = 'নির্বাচিত দক্ষতা: ' + selectedSkill;
-  planList.replaceChildren();
+  const plan = plans[selectedSkill];
 
-  plans[selectedSkill].forEach(step => {
-    const li = document.createElement('li');
-    const strong = document.createElement('strong');
-    const description = document.createElement('span');
+  alert(
+    currentLanguage === "bn"
+      ? plan.title + " শেখার বিস্তারিত লেসন পরবর্তী ধাপে যুক্ত করা হবে।"
+      : "Detailed lessons for " + plan.title + " will be added in the next stage."
+  );
+}
 
-    strong.textContent = step[0];
-    description.textContent = step[1];
+function changeLanguage() {
+  currentLanguage = document.getElementById("language").value;
+  const t = translations[currentLanguage];
 
-    li.append(strong, description);
-    planList.appendChild(li);
+  document.documentElement.lang = currentLanguage;
+
+  Object.keys(t).forEach(key => {
+    const element = document.getElementById(key);
+    if (element) element.textContent = t[key];
   });
 
-  planSection.hidden = false;
-  planSection.scrollIntoView({behavior:'smooth'});
-});
+  localStorage.setItem("skillmind-language", currentLanguage);
+
+  if (selectedSkill) {
+    const plan = plans[selectedSkill];
+    document.getElementById("selectedTitle").textContent =
+      currentLanguage === "bn" ? "আপনার শেখার পরিকল্পনা: " + plan.title : "Your Learning Plan: " + plan.title;
+    document.getElementById("selectedDescription").textContent = plan.description;
+    document.getElementById("lessons").innerHTML = plan.lessons.map((lesson, index) =>
+      `<div class="lesson"><strong>Step ${index + 1}</strong><span>${lesson}</span></div>`
+    ).join("");
+  }
+}
+
+const savedLanguage = localStorage.getItem("skillmind-language");
+if (savedLanguage && translations[savedLanguage]) {
+  document.getElementById("language").value = savedLanguage;
+  changeLanguage();
+}
 </script>
+
 </body>
 </html>
