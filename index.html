@@ -4,40 +4,66 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#07152e">
-<meta name="description" content="Skill Mind AI — Learn Skills, Build Projects and Prepare for Opportunities.">
-<title>Skill Mind AI | Learn. Build. Grow.</title>
+
+<meta name="description" content="Skill Mind AI — নতুন দক্ষতা শিখুন, প্রজেক্ট তৈরি করুন এবং কাজের সুযোগের জন্য প্রস্তুত হন।">
+
+<title>Skill Mind AI — Learn. Build. Grow.</title>
 
 <style>
 :root{
   --bg:#07152e;
   --panel:#102442;
-  --panel2:#142d50;
-  --blue:#4f8cff;
-  --cyan:#38d9d0;
+  --blue:#548cff;
+  --cyan:#43dfd1;
   --white:#f5f8ff;
   --muted:#a9b8d0;
   --border:rgba(255,255,255,.10);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   font-family:Arial,"Noto Sans Bengali",sans-serif;
   background:var(--bg);
   color:var(--white);
   line-height:1.7;
+  min-height:100vh;
 }
-a{text-decoration:none;color:inherit}
-button{font:inherit;cursor:pointer}
-.container{width:min(1140px,92%);margin:auto}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button{
+  font:inherit;
+  cursor:pointer;
+}
+
+.container{
+  width:min(1120px,92%);
+  margin:auto;
+}
+
+/* NAVIGATION */
 
 header{
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:100;
   background:rgba(7,21,46,.94);
-  backdrop-filter:blur(14px);
+  backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border);
 }
+
 .nav{
   min-height:76px;
   display:flex;
@@ -45,748 +71,844 @@ header{
   justify-content:space-between;
   gap:20px;
 }
+
 .logo{
   font-size:23px;
   font-weight:800;
-  letter-spacing:-1px;
+  letter-spacing:-.8px;
   white-space:nowrap;
 }
-.logo span{color:var(--cyan)}
+
+.logo span{
+  color:var(--cyan);
+}
+
 .navlinks{
   display:flex;
   align-items:center;
-  gap:22px;
-  color:var(--muted);
+  gap:25px;
   font-size:14px;
+  color:var(--muted);
 }
-.navlinks a:hover{color:white}
+
+.navlinks a:hover{
+  color:var(--cyan);
+}
+
 .nav-actions{
   display:flex;
   align-items:center;
   gap:10px;
 }
+
 .btn{
+  min-height:44px;
+  padding:10px 18px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:11px 19px;
   border-radius:10px;
-  font-weight:700;
   border:1px solid transparent;
-  transition:.2s;
+  font-size:14px;
+  font-weight:700;
+  transition:transform .2s,background .2s;
   text-align:center;
 }
-.btn-primary{
-  background:linear-gradient(110deg,var(--blue),#735cff);
-  color:white;
-}
-.btn-primary:hover{
+
+.btn:hover{
   transform:translateY(-2px);
-  filter:brightness(1.1);
-}
-.btn-outline{
-  border-color:var(--border);
-  color:white;
-  background:transparent;
-}
-.btn-outline:hover{background:var(--panel)}
-.menu-btn{
-  display:none;
-  background:none;
-  color:white;
-  border:0;
-  font-size:25px;
 }
 
-.hero{
-  padding:90px 0 75px;
-  overflow:hidden;
+.btn-primary{
+  background:linear-gradient(110deg,#548cff,#755cff);
+  color:white;
+  box-shadow:0 6px 22px #548cff20;
 }
+
+.btn-outline{
+  border-color:var(--border);
+  color:var(--white);
+  background:transparent;
+}
+
+.btn-outline:hover{
+  background:var(--panel);
+}
+
+.menu-btn{
+  display:none;
+  background:transparent;
+  color:white;
+  border:0;
+  font-size:27px;
+  padding:4px 8px;
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:88px 0 82px;
+  background:
+    radial-gradient(ellipse at 80% 20%,#183e7033,transparent 42%),
+    radial-gradient(ellipse at 5% 80%,#2457a01a,transparent 40%);
+}
+
 .hero-grid{
   display:grid;
-  grid-template-columns:1.1fr .9fr;
+  grid-template-columns:1.05fr .95fr;
   align-items:center;
-  gap:45px;
+  gap:55px;
 }
-.eyebrow{
-  display:inline-block;
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
   padding:7px 13px;
-  border-radius:30px;
-  background:rgba(56,217,208,.10);
+  margin-bottom:22px;
   color:var(--cyan);
-  border:1px solid rgba(56,217,208,.2);
+  background:#43dfd110;
+  border:1px solid #43dfd12a;
+  border-radius:30px;
   font-size:13px;
-  margin-bottom:20px;
 }
+
+.badge-dot{
+  width:7px;
+  height:7px;
+  background:var(--cyan);
+  border-radius:50%;
+}
+
 h1{
-  font-size:clamp(38px,5.5vw,64px);
-  line-height:1.17;
-  letter-spacing:-2px;
+  font-size:clamp(38px,5vw,59px);
+  line-height:1.2;
+  letter-spacing:-1.7px;
   margin-bottom:22px;
 }
+
 .gradient{
-  background:linear-gradient(90deg,#65a2ff,#42e1d2);
+  background:linear-gradient(90deg,#69a6ff,#43dfd1);
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
 }
-.hero p{
+
+.hero-description{
   color:var(--muted);
-  font-size:17px;
-  max-width:570px;
-  margin-bottom:28px;
-}
-.hero-buttons{
-  display:flex;
-  gap:13px;
-  flex-wrap:wrap;
-}
-.hero-note{
-  margin-top:22px;
-  color:#8ea3c3;
-  font-size:13px;
+  font-size:16px;
+  max-width:490px;
+  margin-bottom:30px;
 }
 
-.hero-art{
-  min-height:390px;
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.hero-actions .btn{
+  min-height:49px;
+  padding:12px 20px;
+  font-size:15px;
+}
+
+.hero-note{
+  margin-top:19px;
+  color:#8299bb;
+  font-size:12px;
+}
+
+/* ABSTRACT VISUAL */
+
+.visual{
+  min-height:360px;
   position:relative;
   display:flex;
   align-items:center;
   justify-content:center;
-  border:1px solid var(--border);
-  border-radius:30px;
-  background:radial-gradient(circle at 50% 40%,#214a79,#102442 58%,#0b1b35);
   overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:28px;
+  background:
+    radial-gradient(circle at 50% 45%,#204a7b,#102442 65%,#0b1b35);
 }
+
+.visual-grid{
+  position:absolute;
+  inset:0;
+  opacity:.15;
+  background-image:
+    linear-gradient(#7da8e4 1px,transparent 1px),
+    linear-gradient(90deg,#7da8e4 1px,transparent 1px);
+  background-size:35px 35px;
+  mask-image:radial-gradient(ellipse at center,black,transparent 75%);
+}
+
 .orbit{
   position:absolute;
-  width:290px;
-  height:290px;
-  border:1px solid #6c9bce44;
+  width:235px;
+  height:235px;
+  border:1px solid #77a6e455;
   border-radius:50%;
 }
-.orbit.two{width:370px;height:370px}
-.person{
+
+.orbit-two{
+  width:310px;
+  height:310px;
+  border-color:#77a6e42b;
+}
+
+.orbit-three{
+  width:380px;
+  height:380px;
+  border-color:#77a6e418;
+}
+
+.core{
   position:relative;
   z-index:2;
-  width:230px;
-  height:290px;
+  width:125px;
+  height:125px;
+  display:grid;
+  place-items:center;
+  border-radius:32px;
+  border:1px solid #8bb5ff66;
+  background:linear-gradient(145deg,#28558d,#102442);
+  box-shadow:0 0 65px #4f8cff30;
+  transform:rotate(-8deg);
 }
-.person .head{
-  width:75px;
-  height:85px;
-  border-radius:45% 45% 42% 42%;
-  background:#bd825f;
-  position:absolute;
-  top:25px;
-  left:78px;
-  border:5px solid #263b58;
-}
-.person .hair{
+
+.core-inner{
   width:78px;
-  height:38px;
-  background:#17243a;
+  height:78px;
+  display:grid;
+  place-items:center;
+  border-radius:22px;
+  background:linear-gradient(145deg,#548cff,#43cfc9);
+  color:white;
+  font-size:29px;
+  font-weight:800;
+  transform:rotate(8deg);
+}
+
+.visual-label{
   position:absolute;
-  top:19px;
-  left:76px;
-  border-radius:50% 50% 20% 20%;
   z-index:3;
-}
-.person .body{
-  position:absolute;
-  top:105px;
-  left:35px;
-  width:160px;
-  height:175px;
-  background:linear-gradient(140deg,#3c86ec,#1d4b91);
-  border-radius:65px 65px 20px 20px;
-  border:5px solid #294b78;
-}
-.person .shirt{
-  position:absolute;
-  top:120px;
-  left:104px;
-  width:24px;
-  height:115px;
-  background:#e8f2ff;
-  clip-path:polygon(50% 0,100% 100%,0 100%);
-}
-.float-card{
-  position:absolute;
-  z-index:4;
-  padding:12px 15px;
+  padding:10px 14px;
+  background:#102442ee;
   border:1px solid var(--border);
-  border-radius:13px;
-  background:#102442;
-  box-shadow:0 15px 35px #0004;
-  font-size:13px;
+  border-radius:12px;
+  font-size:12px;
+  box-shadow:0 10px 30px #0003;
 }
-.float-card strong{
+
+.visual-label strong{
   display:block;
   color:var(--cyan);
-  font-size:17px;
+  font-size:14px;
 }
-.card-one{top:55px;left:20px}
-.card-two{right:18px;bottom:48px}
 
-section{padding:75px 0}
-.section-heading{
-  text-align:center;
-  max-width:680px;
-  margin:0 auto 40px;
+.label-top{
+  top:35px;
+  left:22px;
 }
-.section-heading h2{
-  font-size:clamp(28px,4vw,39px);
-  margin-bottom:12px;
-}
-.section-heading p{color:var(--muted)}
 
-.path-grid{
+.label-bottom{
+  right:20px;
+  bottom:36px;
+}
+
+/* HUB CARDS */
+
+.hubs{
+  padding:20px 0 85px;
+}
+
+.hub-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:22px;
 }
-.path-card{
+
+.hub-card{
+  position:relative;
+  overflow:hidden;
   padding:30px;
-  border-radius:22px;
-  background:var(--panel);
   border:1px solid var(--border);
-  transition:.2s;
+  border-radius:20px;
+  background:linear-gradient(145deg,#122a4a,#0d203d);
+  transition:border-color .2s,transform .2s;
 }
-.path-card:hover{
+
+.hub-card:hover{
   transform:translateY(-4px);
-  border-color:#4f8cff88;
+  border-color:#548cff88;
 }
-.path-icon{
-  width:55px;
-  height:55px;
+
+.hub-card.learning{
+  background:
+    radial-gradient(circle at 100% 0%,#548cff17,transparent 45%),
+    #102442;
+}
+
+.hub-card.earning{
+  background:
+    radial-gradient(circle at 100% 0%,#43dfd115,transparent 45%),
+    #102442;
+}
+
+.hub-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.hub-icon{
+  width:53px;
+  height:53px;
   display:grid;
   place-items:center;
-  border-radius:15px;
-  background:#244b7b;
   font-size:25px;
-  margin-bottom:20px;
-}
-.path-card h3{
-  font-size:23px;
-  margin-bottom:10px;
-}
-.path-card p{
-  color:var(--muted);
-  margin-bottom:20px;
-}
-.path-card ul{
-  list-style:none;
-  color:#c6d4e8;
-  margin-bottom:23px;
-}
-.path-card li{margin:7px 0}
-.path-card li:before{
-  content:"✓";
-  color:var(--cyan);
-  margin-right:9px;
-}
-.path-card .btn{margin-top:2px}
-
-.skills{background:#0a1b35}
-.skill-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-.skill-card{
-  padding:22px;
-  border-radius:16px;
-  background:var(--panel);
-  border:1px solid var(--border);
-}
-.skill-card .emoji{
-  font-size:27px;
-  margin-bottom:10px;
-}
-.skill-card h3{
-  font-size:17px;
-  margin-bottom:5px;
-}
-.skill-card p{
-  font-size:13px;
-  color:var(--muted);
+  border-radius:15px;
+  background:#548cff1c;
+  border:1px solid #548cff25;
 }
 
-.steps-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
+.earning .hub-icon{
+  background:#43dfd115;
+  border-color:#43dfd12a;
 }
-.step{
-  background:var(--panel);
+
+.hub-tag{
+  color:var(--muted);
+  font-size:11px;
+  padding:5px 9px;
   border:1px solid var(--border);
-  padding:22px;
-  border-radius:16px;
+  border-radius:20px;
 }
-.step-number{
-  color:var(--cyan);
-  font-size:13px;
-  font-weight:bold;
+
+.hub-card h2{
+  font-size:25px;
+  margin-bottom:9px;
 }
-.step h3{
-  font-size:17px;
-  margin:9px 0;
-}
-.step p{
+
+.hub-card p{
   color:var(--muted);
   font-size:14px;
-}
-.cta{
-  text-align:center;
-  padding:55px 25px;
-  border-radius:25px;
-  background:linear-gradient(120deg,#163c70,#203d75,#164b62);
-  border:1px solid var(--border);
-}
-.cta h2{
-  font-size:32px;
-  margin-bottom:12px;
-}
-.cta p{
-  color:#d0def0;
-  margin-bottom:23px;
+  min-height:48px;
+  margin-bottom:22px;
 }
 
-footer{
-  padding:35px 0;
-  border-top:1px solid var(--border);
-  color:var(--muted);
+.hub-link{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  color:var(--cyan);
+  font-weight:700;
+  font-size:14px;
 }
+
+.hub-link span{
+  transition:transform .2s;
+}
+
+.hub-link:hover span{
+  transform:translateX(5px);
+}
+
+/* FOOTER */
+
+footer{
+  border-top:1px solid var(--border);
+  padding:25px 0;
+  background:#061229;
+}
+
 .footer-row{
   display:flex;
+  align-items:center;
   justify-content:space-between;
-  gap:20px;
   flex-wrap:wrap;
+  gap:20px;
 }
+
+.footer-brand p{
+  color:#8498b7;
+  font-size:12px;
+  margin-top:4px;
+}
+
 .footer-links{
   display:flex;
-  gap:18px;
   flex-wrap:wrap;
-  font-size:13px;
+  gap:20px;
+  color:var(--muted);
+  font-size:12px;
 }
-.footer-links a:hover{color:white}
+
+.footer-links a:hover{
+  color:var(--cyan);
+}
+
+.copyright{
+  color:#7186a6;
+  font-size:11px;
+  margin-top:20px;
+  padding-top:15px;
+  border-top:1px solid var(--border);
+}
+
+/* LOGIN DEMO */
 
 .modal{
   display:none;
   position:fixed;
   inset:0;
-  z-index:50;
-  background:#000a;
+  z-index:200;
+  background:#000b;
   align-items:center;
   justify-content:center;
   padding:20px;
 }
-.modal.show{display:flex}
+
+.modal.show{
+  display:flex;
+}
+
 .modal-box{
-  width:min(420px,100%);
+  width:min(400px,100%);
   padding:28px;
+  position:relative;
   background:var(--panel);
   border:1px solid var(--border);
-  border-radius:20px;
-  position:relative;
+  border-radius:18px;
 }
-.modal-box h2{margin-bottom:8px}
+
+.modal-box h2{
+  margin-bottom:8px;
+  font-size:24px;
+}
+
 .modal-box p{
   color:var(--muted);
-  font-size:14px;
+  font-size:13px;
   margin-bottom:18px;
 }
+
 .modal-box input{
   width:100%;
   padding:13px;
   margin:7px 0;
-  border-radius:9px;
-  background:#07152e;
-  color:white;
   border:1px solid var(--border);
+  border-radius:9px;
+  background:var(--bg);
+  color:white;
 }
+
 .modal-box .btn{
   width:100%;
   margin-top:10px;
 }
+
 .close{
   position:absolute;
-  right:17px;
-  top:12px;
-  background:none;
+  top:10px;
+  right:14px;
   border:0;
+  background:transparent;
   color:white;
-  font-size:25px;
-}
-.notice{
-  font-size:12px;
-  color:#9fb3d0;
-  margin-top:14px;
+  font-size:26px;
 }
 
-@media(max-width:900px){
-  .navlinks{gap:13px;font-size:13px}
-  .nav-actions .btn{padding:9px 12px}
+.notice{
+  font-size:11px!important;
+  margin-top:15px;
+  margin-bottom:0!important;
 }
-@media(max-width:800px){
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+  .navlinks{gap:14px}
+  .hero-grid{gap:30px}
+  .visual{min-height:320px}
+}
+
+@media(max-width:760px){
+  .nav{min-height:70px}
+  .menu-btn{display:block}
+
   .navlinks{
     display:none;
     position:absolute;
-    top:76px;
+    top:70px;
     left:0;
     width:100%;
-    padding:22px;
+    padding:22px 5%;
     background:#0b1b35;
+    border-bottom:1px solid var(--border);
     flex-direction:column;
     align-items:flex-start;
-    border-bottom:1px solid var(--border);
+    gap:17px;
   }
+
   .navlinks.open{display:flex}
-  .menu-btn{display:block}
-  .nav-actions .btn-outline{display:none}
-  .hero{padding:60px 0}
-  .hero-grid{grid-template-columns:1fr}
-  .hero-art{min-height:340px}
-  .skill-grid{grid-template-columns:repeat(2,1fr)}
-  .steps-grid{grid-template-columns:repeat(2,1fr)}
+
+  .nav-actions .login-btn{display:none}
+  .nav-actions .get-started{
+    padding:9px 12px;
+    min-height:39px;
+    font-size:12px;
+  }
+
+  .hero{padding:60px 0 48px}
+
+  .hero-grid{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .hero-content{text-align:center}
+  .hero-description{margin-left:auto;margin-right:auto}
+  .hero-actions{justify-content:center}
+  .hero-note{text-align:center}
+
+  .visual{min-height:300px}
+  .hubs{padding:15px 0 60px}
 }
+
 @media(max-width:520px){
-  .path-grid{grid-template-columns:1fr}
-  .skill-grid{grid-template-columns:1fr 1fr;gap:10px}
-  .skill-card{padding:15px}
-  .steps-grid{grid-template-columns:1fr 1fr}
-  .hero-buttons .btn{width:100%}
-  h1{letter-spacing:-1px}
-  .cta h2{font-size:26px}
-  .path-card{padding:23px}
   .logo{font-size:20px}
+  .nav{gap:8px}
+  .nav-actions{gap:5px}
+  .nav-actions .get-started{padding:8px 10px}
+
+  h1{
+    font-size:37px;
+    letter-spacing:-1px;
+  }
+
+  .hero-description{font-size:14px}
+
+  .hero-actions{
+    flex-direction:column;
+  }
+
+  .hero-actions .btn{width:100%}
+
+  .visual{
+    min-height:270px;
+    border-radius:20px;
+  }
+
+  .orbit{width:180px;height:180px}
+  .orbit-two{width:240px;height:240px}
+  .orbit-three{width:300px;height:300px}
+
+  .core{
+    width:100px;
+    height:100px;
+    border-radius:26px;
+  }
+
+  .core-inner{
+    width:65px;
+    height:65px;
+    font-size:24px;
+  }
+
+  .label-top{top:20px;left:12px}
+  .label-bottom{right:12px;bottom:20px}
+
+  .hub-grid{grid-template-columns:1fr}
+  .hub-card{padding:24px}
+  .hub-card h2{font-size:23px}
+  .hub-card p{min-height:auto}
+
+  .footer-row{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .footer-links{gap:15px}
 }
 </style>
 </head>
 
 <body>
+
 <header>
   <div class="container nav">
-    <a class="logo" href="index.html">Skill Mind <span>AI</span></a>
+
+    <a class="logo" href="index.html">
+      Skill Mind <span>AI</span>
+    </a>
 
     <nav class="navlinks" id="navlinks">
-      <a href="index.html">হোম</a>
-      <a href="learning.html">Learning Hub</a>
-      <a href="earning.html">Earning Hub</a>
-      <a href="#skills">দক্ষতা</a>
-      <a href="#about">আমাদের সম্পর্কে</a>
-    </nav>
-
-    <div class="nav-actions">
-      <button class="btn btn-outline" onclick="openModal('login')">Login</button>
-      <button class="btn btn-primary" onclick="openModal('signup')">Get Started</button>
-      <button class="menu-btn" onclick="toggleMenu()" aria-label="মেনু খুলুন">☰</button>
-    </div>
-  </div>
-</header>
-
-<main>
-<section class="hero" id="home">
-  <div class="container hero-grid">
-    <div>
-      <span class="eyebrow">✦ Learn • Practice • Build • Grow</span>
-
-      <h1>
-        শিখুন নতুন দক্ষতা,<br>
-        <span class="gradient">গড়ে তুলুন নিজের ভবিষ্যৎ</span>
-      </h1>
-
-      <p>
-        শুধু শেখা নয়—বাস্তব প্রজেক্ট তৈরি, নিজের পোর্টফোলিও গঠন
-        এবং কাজের সুযোগের জন্য প্রস্তুত হওয়ার একটি স্মার্ট প্ল্যাটফর্ম।
-      </p>
-
-      <div class="hero-buttons">
-        <a href="learning.html" class="btn btn-primary">Learning Hub →</a>
-        <a href="earning.html" class="btn btn-outline">Earning Hub →</a>
-      </div>
-
-      <div class="hero-note">
-        আপনার দক্ষতা • আপনার শেখার পথ • আপনার অগ্রগতি
-      </div>
-    </div>
-
-    <div class="hero-art" aria-label="একজন পুরুষ শিক্ষার্থীর ইলাস্ট্রেশন">
-      <div class="orbit"></div>
-      <div class="orbit two"></div>
-
-      <div class="float-card card-one">
-        Learning Progress
-        <strong>Keep Growing ↑</strong>
-      </div>
-
-      <div class="person">
-        <div class="hair"></div>
-        <div class="head"></div>
-        <div class="body"></div>
-        <div class="shirt"></div>
-      </div>
-
-      <div class="float-card card-two">
-        Your Next Step
-        <strong>Build a Project</strong>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="paths">
-  <div class="container">
-    <div class="section-heading">
-      <h2>আপনি কোন পথে এগোতে চান?</h2>
-      <p>আপনার বর্তমান দক্ষতা ও লক্ষ্য অনুযায়ী নিজের পথ বেছে নিন।</p>
-    </div>
-
-    <div class="path-grid">
-      <article class="path-card">
-        <div class="path-icon">📚</div>
-        <h3>আমি শিখতে চাই</h3>
-
-        <p>
-          একদম শুরু থেকে ধাপে ধাপে দক্ষতা শিখুন,
-          অনুশীলন করুন এবং বাস্তব প্রজেক্ট তৈরি করুন।
-        </p>
-
-        <ul>
-          <li>নিজের জন্য শেখার পরিকল্পনা</li>
-          <li>ধাপে ধাপে লেসন ও অনুশীলন</li>
-          <li>বাস্তব প্রজেক্ট তৈরি</li>
-          <li>পোর্টফোলিও গঠন</li>
-        </ul>
-
-        <a class="btn btn-primary" href="learning.html">
-          Learning Hub-এ যান →
-        </a>
-      </article>
-
-      <article class="path-card">
-        <div class="path-icon">💼</div>
-        <h3>আমার দক্ষতা আছে, কাজ খুঁজছি</h3>
-
-        <p>
-          নিজের দক্ষতা যাচাই করুন, পোর্টফোলিও প্রস্তুত করুন
-          এবং উপযুক্ত কাজের সুযোগ সম্পর্কে জানুন।
-        </p>
-
-        <ul>
-          <li>আন্তর্জাতিক কাজের প্ল্যাটফর্ম</li>
-          <li>বাংলাদেশের কাজের প্ল্যাটফর্ম</li>
-          <li>কাজের প্রস্তুতি ও গাইডলাইন</li>
-          <li>প্রোফাইল ও পোর্টফোলিও পরামর্শ</li>
-        </ul>
-
-        <a class="btn btn-primary" href="earning.html">
-          Earning Hub-এ যান →
-        </a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="skills" id="skills">
-  <div class="container">
-    <div class="section-heading">
-      <h2>আপনার পছন্দের দক্ষতা শিখুন</h2>
-      <p>আধুনিক ডিজিটাল দুনিয়ায় প্রয়োজনীয় দক্ষতা গড়ে তুলুন।</p>
-    </div>
-
-    <div class="skill-grid">
-      <div class="skill-card">
-        <div class="emoji">💻</div>
-        <h3>Web Development</h3>
-        <p>ওয়েবসাইট তৈরি ও প্রোগ্রামিং</p>
-      </div>
-
-      <div class="skill-card">
-        <div class="emoji">🎨</div>
-        <h3>Graphic Design</h3>
-        <p>ডিজাইন ও ভিজ্যুয়াল কনটেন্ট</p>
-      </div>
-
-      <div class="skill-card">
-        <div class="emoji">📱</div>
-        <h3>Digital Marketing</h3>
-        <p>অনলাইন মার্কেটিং ও ব্র্যান্ডিং</p>
-      </div>
-
-      <div class="skill-card">
-        <div class="emoji">🎬</div>
-        <h3>Video Editing</h3>
-        <p>ভিডিও এডিটিং ও কনটেন্ট তৈরি</p>
-      </div>
-
-      <div class="skill-card">
-        <div class="emoji">🤖</div>
-        <h3>AI Skills</h3>
-        <p>AI টুল ও প্রম্পট ব্যবহার</p>
-      </div>
-
-      <div class="skill-card">
-        <div class="emoji">🌐</div>
-        <h3>Freelancing</h3>
-        <p>ক্লায়েন্ট ও কাজের প্রস্তুতি</p>
-      </div>
-    </div>
-
-    <div style="text-align:center;margin-top:30px">
-      <a class="btn btn-primary" href="learning.html">
-        সব শেখার বিভাগ দেখুন →
-      </a>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="container">
-    <div class="section-heading">
-      <h2>শেখা থেকে বাস্তব দক্ষতা</h2>
-      <p>
-        আমাদের লক্ষ্য হলো আপনাকে শুধু তথ্য দেওয়া নয়,
-        বাস্তবে কাজ করার জন্য প্রস্তুত করা।
-      </p>
-    </div>
-
-    <div class="steps-grid">
-      <div class="step">
-        <span class="step-number">STEP 01</span>
-        <h3>লক্ষ্য নির্বাচন</h3>
-        <p>আপনি কী শিখতে চান তা নির্ধারণ করুন।</p>
-      </div>
-
-      <div class="step">
-        <span class="step-number">STEP 02</span>
-        <h3>শেখা ও অনুশীলন</h3>
-        <p>পরিকল্পনা অনুযায়ী নিয়মিত শিখুন।</p>
-      </div>
-
-      <div class="step">
-        <span class="step-number">STEP 03</span>
-        <h3>প্রজেক্ট তৈরি</h3>
-        <p>নিজের কাজ দিয়ে পোর্টফোলিও গড়ুন।</p>
-      </div>
-
-      <div class="step">
-        <span class="step-number">STEP 04</span>
-        <h3>কাজের প্রস্তুতি</h3>
-        <p>যোগ্যতা অনুযায়ী সুযোগ খুঁজুন।</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="cta">
-      <h2>আজ থেকেই শুরু হোক আপনার যাত্রা</h2>
-      <p>
-        নতুন দক্ষতা অর্জন করুন, নিজের কাজ তৈরি করুন
-        এবং সামনে এগিয়ে যান।
-      </p>
-
-      <div class="hero-buttons" style="justify-content:center">
-        <a class="btn btn-primary" href="learning.html">শেখা শুরু করুন →</a>
-        <a class="btn btn-outline" href="earning.html">কাজ খুঁজুন →</a>
-      </div>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container footer-row">
-    <div>
-      <a class="logo" href="index.html">Skill Mind <span>AI</span></a>
-      <p style="font-size:13px;margin-top:8px">
-        Learn. Practice. Build. Grow.
-      </p>
-    </div>
-
-    <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="learning.html">Learning Hub</a>
       <a href="earning.html">Earning Hub</a>
       <a href="#about">About</a>
-    </div>
-  </div>
+    </nav>
 
-  <div class="container" style="margin-top:25px;font-size:12px">
-    © 2026 Skill Mind AI. All rights reserved.
+    <div class="nav-actions">
+      <button
+        class="btn btn-outline login-btn"
+        onclick="openModal('login')">
+        Login
+      </button>
+
+      <a
+        class="btn btn-primary get-started"
+        href="onboarding.html">
+        Get Started
+      </a>
+
+      <button
+        class="menu-btn"
+        onclick="toggleMenu()"
+        aria-label="মেনু খুলুন"
+        aria-expanded="false"
+        id="menuButton">
+        ☰
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- MAIN INTRODUCTION -->
+
+  <section class="hero">
+    <div class="container hero-grid">
+
+      <div class="hero-content">
+
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Learn. Build. Grow.
+        </div>
+
+        <h1>
+          দক্ষতা শিখুন,<br>
+          <span class="gradient">সামনে এগিয়ে যান।</span>
+        </h1>
+
+        <p class="hero-description">
+          Skill Mind AI হলো দক্ষতা শেখা, বাস্তব প্রজেক্ট তৈরি
+          এবং কাজের সুযোগের জন্য প্রস্তুতি নেওয়ার একটি প্ল্যাটফর্ম।
+        </p>
+
+        <div class="hero-actions">
+
+          <a class="btn btn-primary" href="learning.html">
+            📚 Learning Hub
+          </a>
+
+          <a class="btn btn-outline" href="earning.html">
+            💼 Earning Hub →
+          </a>
+
+        </div>
+
+        <p class="hero-note">
+          শিখুন • অনুশীলন করুন • নিজের দক্ষতা গড়ুন
+        </p>
+
+      </div>
+
+      <!-- ABSTRACT AI VISUAL -->
+
+      <div class="visual" aria-label="Skill Mind AI প্রযুক্তি-অনুপ্রাণিত ইলাস্ট্রেশন">
+
+        <div class="visual-grid"></div>
+
+        <div class="orbit"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="orbit orbit-three"></div>
+
+        <div class="core">
+          <div class="core-inner">AI</div>
+        </div>
+
+        <div class="visual-label label-top">
+          Learning
+          <strong>New Skills</strong>
+        </div>
+
+        <div class="visual-label label-bottom">
+          Your Future
+          <strong>Build & Grow</strong>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TWO MAIN HUBS -->
+
+  <section class="hubs" id="about">
+    <div class="container">
+
+      <div class="hub-grid">
+
+        <article class="hub-card learning">
+
+          <div class="hub-top">
+            <div class="hub-icon">📚</div>
+            <span class="hub-tag">LEARN</span>
+          </div>
+
+          <h2>Learning Hub</h2>
+
+          <p>
+            নতুন দক্ষতা শিখুন, অনুশীলন করুন এবং
+            নিজের প্রজেক্ট ও পোর্টফোলিও তৈরি করুন।
+          </p>
+
+          <a class="hub-link" href="learning.html">
+            শেখা শুরু করুন <span>→</span>
+          </a>
+
+        </article>
+
+        <article class="hub-card earning">
+
+          <div class="hub-top">
+            <div class="hub-icon">💼</div>
+            <span class="hub-tag">OPPORTUNITIES</span>
+          </div>
+
+          <h2>Earning Hub</h2>
+
+          <p>
+            বাংলাদেশ ও আন্তর্জাতিক কাজের প্ল্যাটফর্ম,
+            সুযোগ এবং কাজের প্রস্তুতি সম্পর্কে জানুন।
+          </p>
+
+          <a class="hub-link" href="earning.html">
+            কাজের সুযোগ দেখুন <span>→</span>
+          </a>
+
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+
+    <div class="footer-row">
+
+      <div class="footer-brand">
+        <a class="logo" href="index.html">
+          Skill Mind <span>AI</span>
+        </a>
+
+        <p>Learn. Build. Grow.</p>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="learning.html">Learning Hub</a>
+        <a href="earning.html">Earning Hub</a>
+      </nav>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 Skill Mind AI. All rights reserved.
+    </div>
+
   </div>
 </footer>
 
-<div class="modal" id="authModal" onclick="outsideClose(event)">
+<!-- LOGIN DEMO -->
+
+<div
+  class="modal"
+  id="authModal"
+  onclick="outsideClose(event)">
+
   <div class="modal-box">
-    <button class="close" onclick="closeModal()" aria-label="বন্ধ করুন">×</button>
 
-    <h2 id="modalTitle">Create your account</h2>
-    <p id="modalDescription">Skill Mind AI-তে আপনার যাত্রা শুরু করুন।</p>
+    <button
+      class="close"
+      onclick="closeModal()"
+      aria-label="বন্ধ করুন">
+      ×
+    </button>
 
-    <input
-      type="text"
-      id="fullName"
-      placeholder="আপনার নাম"
-      autocomplete="name"
-    >
+    <h2>Welcome Back</h2>
+
+    <p>
+      Skill Mind AI-এর বাস্তব Login System এখনো তৈরি হয়নি।
+      এটি আপাতত একটি ডেমো।
+    </p>
 
     <input
       type="email"
-      id="emailInput"
       placeholder="Email address"
       autocomplete="email"
-    >
+      aria-label="Email address"
+      disabled>
 
     <input
       type="password"
-      id="passwordInput"
       placeholder="Password"
       autocomplete="current-password"
-    >
+      aria-label="Password"
+      disabled>
 
-    <button class="btn btn-primary" onclick="demoMessage()">
-      Continue
+    <button
+      class="btn btn-primary"
+      onclick="demoMessage()">
+      Login System Coming Soon
     </button>
 
     <p class="notice">
-      এটি আপাতত ডিজাইন ডেমো। বাস্তব অ্যাকাউন্ট তৈরি করতে
-      পরবর্তী ধাপে নিরাপদ Login System যুক্ত করা হবে।
+      এখনো অ্যাকাউন্টে প্রবেশ করা সম্ভব নয়।
     </p>
+
   </div>
+
 </div>
 
 <script>
 function toggleMenu(){
-  document.getElementById('navlinks').classList.toggle('open');
+  const nav = document.getElementById('navlinks');
+  const button = document.getElementById('menuButton');
+
+  nav.classList.toggle('open');
+
+  button.setAttribute(
+    'aria-expanded',
+    nav.classList.contains('open') ? 'true' : 'false'
+  );
 }
 
 document.querySelectorAll('.navlinks a').forEach(link=>{
   link.addEventListener('click',()=>{
     document.getElementById('navlinks').classList.remove('open');
+    document.getElementById('menuButton').setAttribute(
+      'aria-expanded','false'
+    );
   });
 });
 
-function openModal(type){
-  const signup = type === 'signup';
-
-  document.getElementById('modalTitle').textContent =
-    signup ? 'Create your account' : 'Welcome back';
-
-  document.getElementById('modalDescription').textContent =
-    signup
-      ? 'Skill Mind AI-তে আপনার যাত্রা শুরু করুন।'
-      : 'আপনার অ্যাকাউন্টে প্রবেশ করুন।';
-
-  document.getElementById('fullName').style.display =
-    signup ? 'block' : 'none';
-
-  document.getElementById('passwordInput').autocomplete =
-    signup ? 'new-password' : 'current-password';
-
+function openModal(){
   document.getElementById('authModal').classList.add('show');
 }
 
@@ -802,8 +924,8 @@ function outsideClose(event){
 
 function demoMessage(){
   alert(
-    'এটি এখনো ডেমো। বাস্তব Login ও Sign Up যুক্ত করতে ' +
-    'নিরাপদ Authentication System প্রয়োজন।'
+    'বাস্তব Login System এখনো যুক্ত করা হয়নি। ' +
+    'পরবর্তী ধাপে নিরাপদ Authentication যুক্ত করা হবে।'
   );
 }
 
@@ -811,8 +933,12 @@ document.addEventListener('keydown',event=>{
   if(event.key === 'Escape'){
     closeModal();
     document.getElementById('navlinks').classList.remove('open');
+    document.getElementById('menuButton').setAttribute(
+      'aria-expanded','false'
+    );
   }
 });
 </script>
+
 </body>
-</html>
+  </html>
