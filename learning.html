@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#09152e">
+<title>Learning Center | Skill Mind AI</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,"Noto Sans Bengali",sans-serif;background:#09152e;color:#f5f7ff;line-height:1.7}
+a{text-decoration:none;color:inherit}
+.container{width:min(1100px,92%);margin:auto}
+header{padding:18px 0;border-bottom:1px solid #ffffff18;background:#0b1b35}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:22px;font-weight:bold}
+.logo span{color:#46ded2}
+.back{color:#b8c7df;font-size:14px}
+.hero{padding:50px 0 30px}
+.label{display:inline-block;padding:6px 13px;background:#123b4a;color:#6ce9dd;border-radius:25px;font-size:13px;margin-bottom:14px}
+h1{font-size:clamp(30px,5vw,43px);line-height:1.3;margin-bottom:12px}
+.hero p,.muted{color:#a9b8d0}
+.section{padding:30px 0}
+.section-title{font-size:25px;margin-bottom:8px}
+.section-desc{color:#a9b8d0;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.skill{
+  text-align:left;padding:22px;background:#102442;color:white;
+  border:1px solid #ffffff18;border-radius:17px;cursor:pointer;transition:.2s
+}
+.skill:hover,.skill.selected{border-color:#46ded2;background:#153052;transform:translateY(-2px)}
+.icon{font-size:29px;margin-bottom:10px}
+.skill h3{font-size:17px;margin-bottom:5px}
+.skill p{font-size:13px;color:#a9b8d0}
+.primary{
+  display:inline-block;border:0;border-radius:10px;padding:13px 20px;
+  background:linear-gradient(100deg,#4f8cff,#7459ff);color:white;
+  font-weight:bold;cursor:pointer
+}
+.primary:disabled{opacity:.45;cursor:not-allowed}
+.actions{margin-top:22px}
+.panel{padding:25px;background:#102442;border:1px solid #ffffff18;border-radius:18px}
+.plan-list{list-style:none;margin-top:15px}
+.plan-list li{padding:12px 0;border-bottom:1px solid #ffffff15}
+.plan-list li:last-child{border-bottom:0}
+.plan-list strong{display:block}
+.plan-list span{font-size:13px;color:#a9b8d0}
+.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.project{padding:20px;background:#102442;border:1px solid #ffffff18;border-radius:15px}
+.project h3{margin-bottom:6px}
+.project p{font-size:14px;color:#a9b8d0}
+.notice{font-size:13px;color:#91a5c4;margin-top:16px}
+footer{padding:30px 0;color:#8498b7;font-size:13px;border-top:1px solid #ffffff18;margin-top:35px}
+@media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:430px){.grid,.project-grid{grid-template-columns:1fr}.skill{padding:18px}}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="index.html">Skill Mind <span>AI</span></a>
+    <a class="back" href="onboarding.html">← লক্ষ্য পরিবর্তন</a>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="label">YOUR LEARNING JOURNEY</span>
+    <h1>কোন দক্ষতা শিখতে চান?</h1>
+    <p>একটি দক্ষতা বেছে নিন। তারপর আপনার শেখার লক্ষ্য অনুযায়ী পরিকল্পনা তৈরি করুন।</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">দক্ষতা নির্বাচন করুন</h2>
+    <p class="section-desc">আপনি যে বিষয়ে শিখতে আগ্রহী, সেটিতে চাপ দিন।</p>
+
+    <div class="grid" id="skills">
+      <button class="skill" data-skill="ওয়েব ডেভেলপমেন্ট">
+        <div class="icon">💻</div><h3>ওয়েব ডেভেলপমেন্ট</h3><p>HTML, CSS, JavaScript</p>
+      </button>
+      <button class="skill" data-skill="গ্রাফিক ডিজাইন">
+        <div class="icon">🎨</div><h3>গ্রাফিক ডিজাইন</h3><p>লেআউট, ব্র্যান্ডিং, ডিজাইন</p>
+      </button>
+      <button class="skill" data-skill="ডিজিটাল মার্কেটিং">
+        <div class="icon">📱</div><h3>ডিজিটাল মার্কেটিং</h3><p>সোশ্যাল মিডিয়া ও মার্কেটিং</p>
+      </button>
+      <button class="skill" data-skill="ভিডিও এডিটিং">
+        <div class="icon">🎬</div><h3>ভিডিও এডিটিং</h3><p>ভিডিও, রিলস ও স্টোরিটেলিং</p>
+      </button>
+      <button class="skill" data-skill="AI দক্ষতা">
+        <div class="icon">🤖</div><h3>AI দক্ষতা</h3><p>AI টুল ও প্রম্পট লেখা</p>
+      </button>
+      <button class="skill" data-skill="কনটেন্ট তৈরি">
+        <div class="icon">✍️</div><h3>কনটেন্ট তৈরি</h3><p>লেখা, স্ক্রিপ্ট ও কনটেন্ট</p>
+      </button>
+    </div>
+
+    <div class="actions">
+      <button class="primary" id="createPlan" disabled>আমার শেখার পরিকল্পনা তৈরি করুন →</button>
+    </div>
+  </section>
+
+  <section class="section" id="planSection" hidden>
+    <h2 class="section-title">আপনার শেখার পরিকল্পনা</h2>
+    <p class="section-desc" id="selectedSkill"></p>
+    <div class="panel">
+      <h3>প্রস্তাবিত শেখার ধাপ</h3>
+      <ul class="plan-list" id="planList"></ul>
+      <p class="notice">এটি একটি প্রাথমিক নমুনা পরিকল্পনা। এখনো AI দিয়ে ব্যক্তিগত পরিকল্পনা তৈরির সুবিধা যুক্ত হয়নি।</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">প্র্যাকটিস ও প্রজেক্ট</h2>
+    <p class="section-desc">শেখার পাশাপাশি নিজের কাজ তৈরি করুন।</p>
+    <div class="project-grid">
+      <div class="project"><h3>🧩 ছোট অনুশীলন</h3><p>প্রতিটি নতুন বিষয় শেখার পর নিজে হাতে অনুশীলন করুন।</p></div>
+      <div class="project"><h3>🚀 বাস্তব প্রজেক্ট</h3><p>নিজের কাজ তৈরি করে পোর্টফোলিওতে যুক্ত করার প্রস্তুতি নিন।</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">© 2026 Skill Mind AI · Learn. Practice. Build. Grow.</div>
+</footer>
+
+<script>
+const skillButtons = document.querySelectorAll('.skill');
+const createPlanButton = document.getElementById('createPlan');
+const planSection = document.getElementById('planSection');
+const selectedSkillText = document.getElementById('selectedSkill');
+const planList = document.getElementById('planList');
+
+let selectedSkill = '';
+
+const plans = {
+  'ওয়েব ডেভেলপমেন্ট': [
+    ['ধাপ ১: HTML','ওয়েবপেজের কাঠামো তৈরি শিখুন।'],
+    ['ধাপ ২: CSS','রং, লেআউট ও রেসপনসিভ ডিজাইন শিখুন।'],
+    ['ধাপ ৩: JavaScript','ওয়েবপেজে ইন্টারঅ্যাকশন যোগ করুন।'],
+    ['ধাপ ৪: প্রজেক্ট','একটি ব্যক্তিগত পোর্টফোলিও ওয়েবসাইট তৈরি করুন।']
+  ],
+  'গ্রাফিক ডিজাইন': [
+    ['ধাপ ১: ডিজাইনের ভিত্তি','রং, টাইপোগ্রাফি ও লেআউট শিখুন।'],
+    ['ধাপ ২: ডিজাইন টুল','একটি উপযুক্ত ডিজাইন টুল ব্যবহার শিখুন।'],
+    ['ধাপ ৩: অনুশীলন','পোস্টার ও সোশ্যাল মিডিয়া ডিজাইন তৈরি করুন।'],
+    ['ধাপ ৪: পোর্টফোলিও','নিজের সেরা ডিজাইনগুলো সাজিয়ে রাখুন।']
+  ],
+  'ডিজিটাল মার্কেটিং': [
+    ['ধাপ ১: ভিত্তি','ডিজিটাল মার্কেটিংয়ের মূল ধারণা শিখুন।'],
+    ['ধাপ ২: কনটেন্ট','কনটেন্ট পরিকল্পনা ও তৈরি শিখুন।'],
+    ['ধাপ ৩: অ্যানালিটিক্স','ফলাফল বিশ্লেষণ করার অনুশীলন করুন।'],
+    ['ধাপ ৪: প্রজেক্ট','একটি নমুনা মার্কেটিং পরিকল্পনা তৈরি করুন।']
+  ],
+  'ভিডিও এডিটিং': [
+    ['ধাপ ১: ভিত্তি','কাট, ট্রিম ও টাইমলাইন শিখুন।'],
+    ['ধাপ ২: অডিও ও টেক্সট','সাউন্ড, সাবটাইটেল ও টাইটেল যোগ করুন।'],
+    ['ধাপ ৩: স্টোরিটেলিং','দৃশ্যের ধারাবাহিকতা তৈরি করুন।'],
+    ['ধাপ ৪: প্রজেক্ট','একটি সম্পূর্ণ ছোট ভিডিও তৈরি করুন।']
+  ],
+  'AI দক্ষতা': [
+    ['ধাপ ১: AI পরিচিতি','AI টুল কীভাবে কাজ করে তা শিখুন।'],
+    ['ধাপ ২: প্রম্পট লেখা','স্পষ্ট ও কার্যকর নির্দেশনা লেখা শিখুন।'],
+    ['ধাপ ৩: যাচাই','AI-এর উত্তর যাচাই ও সংশোধন করুন।'],
+    ['ধাপ ৪: প্রজেক্ট','AI ব্যবহার করে একটি বাস্তব কাজ সম্পন্ন করুন।']
+  ],
+  'কনটেন্ট তৈরি': [
+    ['ধাপ ১: পরিকল্পনা','লক্ষ্যপাঠক ও বিষয় নির্বাচন করুন।'],
+    ['ধাপ ২: লেখা','শিরোনাম, স্ক্রিপ্ট ও ক্যাপশন লিখুন।'],
+    ['ধাপ ৩: প্রকাশযোগ্য কনটেন্ট','লেখা বা ভিডিওর খসড়া তৈরি করুন।'],
+    ['ধাপ ৪: পোর্টফোলিও','নিজের সেরা কাজগুলো সংরক্ষণ করুন।']
+  ]
+};
+
+skillButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    skillButtons.forEach(item => item.classList.remove('selected'));
+    button.classList.add('selected');
+    selectedSkill = button.dataset.skill;
+    createPlanButton.disabled = false;
+    planSection.hidden = true;
+  });
+});
+
+createPlanButton.addEventListener('click', () => {
+  if (!selectedSkill) return;
+
+  selectedSkillText.textContent = 'নির্বাচিত দক্ষতা: ' + selectedSkill;
+  planList.replaceChildren();
+
+  plans[selectedSkill].forEach(step => {
+    const li = document.createElement('li');
+    const strong = document.createElement('strong');
+    const description = document.createElement('span');
+
+    strong.textContent = step[0];
+    description.textContent = step[1];
+
+    li.append(strong, description);
+    planList.appendChild(li);
+  });
+
+  planSection.hidden = false;
+  planSection.scrollIntoView({behavior:'smooth'});
+});
+</script>
+</body>
+</html>
