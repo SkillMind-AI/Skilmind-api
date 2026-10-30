@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | Skill Mind AI</title>
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;min-height:100vh;display:flex;align-items:center;
+      justify-content:center;padding:20px;font-family:Arial,sans-serif;
+      color:#fff;background:linear-gradient(135deg,#07152e,#123b64);
+    }
+    .card{
+      width:100%;max-width:430px;padding:30px;
+      border:1px solid #345477;border-radius:18px;
+      background:#102746;box-shadow:0 15px 40px #0004;
+    }
+    h1{text-align:center;font-size:27px;margin:0 0 8px}
+    .subtitle{text-align:center;color:#b9cbe0;margin-bottom:25px}
+    label{display:block;margin:15px 0 8px}
+    input{
+      width:100%;padding:13px;border-radius:9px;
+      border:1px solid #45627f;background:#091b33;
+      color:white;font-size:16px;outline:none;
+    }
+    input:focus{border-color:#60a5fa}
+    button{
+      width:100%;padding:14px;margin-top:22px;border:0;
+      border-radius:9px;background:#3b82f6;color:white;
+      font-size:16px;font-weight:bold;cursor:pointer;
+    }
+    button:disabled{opacity:.6}
+    #message{font-size:14px;line-height:1.7;margin-top:15px}
+    .links{text-align:center;margin-top:20px;color:#cbd5e1;line-height:2}
+    a{color:#7db7ff;text-decoration:none}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Skill Mind AI</h1>
+    <p class="subtitle">আজই তোমার শেখার যাত্রা শুরু করো!</p><form id="registerForm">
+  <label for="name">তোমার নাম</label>
+  <input id="name" type="text" required maxlength="80"
+         autocomplete="name" placeholder="সম্পূর্ণ নাম লিখো">
+
+  <label for="email">ইমেইল</label>
+  <input id="email" type="email" required autocomplete="email"
+         placeholder="তোমার ইমেইল লিখো">
+
+  <label for="password">পাসওয়ার্ড</label>
+  <input id="password" type="password" required minlength="8"
+         autocomplete="new-password" placeholder="কমপক্ষে ৮ অক্ষর">
+
+  <label for="confirmPassword">পাসওয়ার্ড নিশ্চিত করো</label>
+  <input id="confirmPassword" type="password" required minlength="8"
+         autocomplete="new-password" placeholder="আবার পাসওয়ার্ড লিখো">
+
+  <button id="registerButton" type="submit">অ্যাকাউন্ট তৈরি করো</button>
+  <p id="message" role="status" aria-live="polite"></p>
+</form>
+
+<div class="links">
+  আগে থেকেই অ্যাকাউন্ট আছে?
+  <a href="login.html">লগইন করো</a><br>
+  <a href="index.html">হোমপেজে ফিরে যাও</a>
+</div>
+
+  </main>  <script type="module">
+    import { createClient } from
+      'https://esm.sh/@supabase/supabase-js@2';
+
+    // login.html-এ যে একই URL ও Publishable Key ব্যবহার করেছ,
+    // এখানে ঠিক সেই দুটিই বসাবে।
+    const SUPABASE_URL = 'https://twhkrlhxapoxszhvbmyw.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_kSIkMW91GzI4H0TcWsVung_bKwCz8Ak';
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+    const form = document.getElementById('registerForm');
+    const button = document.getElementById('registerButton');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword =
+        document.getElementById('confirmPassword').value;
+
+      if (!name) {
+        message.textContent = 'তোমার নাম লিখো।';
+        return;
+      }
+
+      if (password.length < 8) {
+        message.textContent = 'পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে।';
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        message.textContent = 'দুটি পাসওয়ার্ড মিলছে না।';
+        return;
+      }
+
+      button.disabled = true;
+      message.textContent = 'অ্যাকাউন্ট তৈরি করা হচ্ছে...';
+
+      try {
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: { full_name: name }
+          }
+        });
+
+        if (error) throw error;
+
+        if (data.session) {
+          message.textContent =
+            'অ্যাকাউন্ট তৈরি হয়েছে! এখন লগইন পেজে যাচ্ছো...';
+
+          setTimeout(() => {
+            window.location.href = 'login.html';
+          }, 1500);
+        } else {
+          message.textContent =
+            'রেজিস্ট্রেশন অনুরোধ সফল হয়েছে। ইমেইলে যাচাইকরণ লিংক পাঠানো হয়ে থাকলে সেটি খুলে অ্যাকাউন্ট নিশ্চিত করো। এরপর লগইন করো।';
+        }
+      } catch (error) {
+        message.textContent =
+          'অ্যাকাউন্ট তৈরি করা যায়নি: ' + error.message;
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script></body>
+</html>
