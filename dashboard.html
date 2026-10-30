@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07152e">
+  <title>Dashboard | Skill Mind AI</title>  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial,sans-serif;
+      background:#07152e;
+      color:#fff;
+    }
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:18px 5%;
+      background:#102746;
+      border-bottom:1px solid #294361;
+    }
+    .brand{font-size:20px;font-weight:bold;color:#7db7ff}
+    button,a{cursor:pointer}
+    button{
+      border:0;border-radius:9px;padding:11px 16px;
+      font-size:14px;font-weight:bold;
+    }
+    .logout{background:#ef4444;color:#fff}
+    main{max-width:1050px;margin:auto;padding:30px 20px}
+    .welcome{
+      padding:28px;border-radius:18px;
+      background:linear-gradient(135deg,#123b64,#1d4e89);
+      margin-bottom:25px;
+    }
+    .welcome h1{font-size:28px;margin:0 0 12px}
+    .welcome p{color:#d7e7fb;line-height:1.7}
+    .section-title{margin:28px 0 16px;font-size:22px}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+    }
+    .card{
+      padding:23px;border:1px solid #294361;
+      background:#102746;border-radius:15px;
+    }
+    .icon{font-size:30px}
+    .card h3{margin:14px 0 9px}
+    .card p{color:#bdcde0;line-height:1.6;font-size:14px}
+    .open{
+      display:inline-block;margin-top:12px;padding:11px 15px;
+      background:#3b82f6;color:white;text-decoration:none;
+      border-radius:8px;font-weight:bold;font-size:14px;
+    }
+    #status{padding:25px;text-align:center;color:#bdcde0}
+    footer{text-align:center;padding:25px;color:#94a3b8;font-size:13px}
+    @media(max-width:480px){
+      header{padding:15px}
+      .brand{font-size:17px}
+      .logout{padding:10px}
+      .welcome{padding:22px}
+      .welcome h1{font-size:24px}
+    }
+  </style></head><body>
+  <header>
+    <div class="brand">Skill Mind AI</div>
+    <button id="logoutButton" class="logout" hidden>লগআউট</button>
+  </header>  <main>
+    <div id="status">তোমার অ্যাকাউন্ট যাচাই করা হচ্ছে...</div><div id="dashboardContent" hidden>
+  <section class="welcome">
+    <h1>স্বাগতম, <span id="userName">শিক্ষার্থী</span>! 👋</h1>
+    <p>
+      Skill Mind AI-তে তোমার শেখার যাত্রা চালিয়ে যাও।
+      নতুন দক্ষতা শেখো, অনুশীলন করো এবং নিজের পোর্টফোলিও তৈরি করো।
+    </p>
+  </section>
+
+  <h2 class="section-title">তোমার Learning Dashboard</h2>
+
+  <section class="grid">
+    <article class="card">
+      <div class="icon">📚</div>
+      <h3>Learning Hub</h3>
+      <p>ওয়েব ডেভেলপমেন্ট, ডিজাইন, মার্কেটিংসহ বিভিন্ন দক্ষতা শেখো।</p>
+      <a class="open" href="learning.html">শেখা শুরু করো</a>
+    </article>
+
+    <article class="card">
+      <div class="icon">🤖</div>
+      <h3>AI Learning Assistant</h3>
+      <p>AI-এর সাহায্যে শেখার পরিকল্পনা তৈরি করো এবং প্রশ্নের উত্তর খোঁজো।</p>
+      <a class="open" href="learning.html">AI ব্যবহার করো</a>
+    </article>
+
+    <article class="card">
+      <div class="icon">👤</div>
+      <h3>আমার অ্যাকাউন্ট</h3>
+      <p>তোমার নিবন্ধিত নাম ও ইমেইল ঠিকানা দেখো।</p>
+      <p><strong>নাম:</strong> <span id="profileName">—</span></p>
+      <p><strong>ইমেইল:</strong> <span id="profileEmail">—</span></p>
+    </article>
+
+    <article class="card">
+      <div class="icon">🚀</div>
+      <h3>পরবর্তী লক্ষ্য</h3>
+      <p>নিয়মিত শেখো, বাস্তব প্রজেক্ট তৈরি করো এবং নিজের অগ্রগতি ধরে রাখো।</p>
+      <a class="open" href="learning.html">দক্ষতা বেছে নাও</a>
+    </article>
+  </section>
+</div>
+
+  </main>  <footer>© Skill Mind AI — Learn Skills, Build Your Future</footer>  <script type="module">
+    import { createClient } from
+      'https://esm.sh/@supabase/supabase-js@2';
+
+    // login.html ও register.html-এর একই তথ্য বসাও।
+    const SUPABASE_URL = 'https://twhkrlhxapoxszhvbmyw.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_kSIkMW91GzI4H0TcWsVung_bKwCz8Ak';
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const status = document.getElementById('status');
+    const content = document.getElementById('dashboardContent');
+    const logoutButton = document.getElementById('logoutButton');
+
+    async function loadDashboard() {
+      try {
+        const { data, error } = await supabase.auth.getUser();
+
+        if (error || !data.user) {
+          window.location.replace('login.html');
+          return;
+        }
+
+        const user = data.user;
+        const name = user.user_metadata?.full_name || 'শিক্ষার্থী';
+
+        document.getElementById('userName').textContent = name;
+        document.getElementById('profileName').textContent = name;
+        document.getElementById('profileEmail').textContent = user.email || '—';
+
+        status.hidden = true;
+        content.hidden = false;
+        logoutButton.hidden = false;
+      } catch (error) {
+        status.textContent =
+          'অ্যাকাউন্ট যাচাই করা যায়নি। ইন্টারনেট সংযোগ ও Supabase সেটিং পরীক্ষা করো।';
+      }
+    }
+
+    logoutButton.addEventListener('click', async () => {
+      logoutButton.disabled = true;
+      logoutButton.textContent = 'লগআউট হচ্ছে...';
+
+      try {
+        const { error } = await supabase.auth.signOut();
+        if (error) throw error;
+
+        window.location.replace('login.html');
+      } catch (error) {
+        status.hidden = false;
+        status.textContent = 'লগআউট করা যায়নি। আবার চেষ্টা করো।';
+        logoutButton.disabled = false;
+        logoutButton.textContent = 'লগআউট';
+      }
+    });
+
+    loadDashboard();
+  </script></body>
+</html>
