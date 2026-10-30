@@ -1,944 +1,1499 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#07152e">
-
-<meta name="description" content="Skill Mind AI — নতুন দক্ষতা শিখুন, প্রজেক্ট তৈরি করুন এবং কাজের সুযোগের জন্য প্রস্তুত হন।">
-
-<title>Skill Mind AI — Learn. Build. Grow.</title>
-
-<style>
-:root{
-  --bg:#07152e;
-  --panel:#102442;
-  --blue:#548cff;
-  --cyan:#43dfd1;
-  --white:#f5f8ff;
-  --muted:#a9b8d0;
-  --border:rgba(255,255,255,.10);
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:Arial,"Noto Sans Bengali",sans-serif;
-  background:var(--bg);
-  color:var(--white);
-  line-height:1.7;
-  min-height:100vh;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-button{
-  font:inherit;
-  cursor:pointer;
-}
-
-.container{
-  width:min(1120px,92%);
-  margin:auto;
-}
-
-/* NAVIGATION */
-
-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:rgba(7,21,46,.94);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-}
-
-.nav{
-  min-height:76px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.logo{
-  font-size:23px;
-  font-weight:800;
-  letter-spacing:-.8px;
-  white-space:nowrap;
-}
-
-.logo span{
-  color:var(--cyan);
-}
-
-.navlinks{
-  display:flex;
-  align-items:center;
-  gap:25px;
-  font-size:14px;
-  color:var(--muted);
-}
-
-.navlinks a:hover{
-  color:var(--cyan);
-}
-
-.nav-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.btn{
-  min-height:44px;
-  padding:10px 18px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:10px;
-  border:1px solid transparent;
-  font-size:14px;
-  font-weight:700;
-  transition:transform .2s,background .2s;
-  text-align:center;
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-}
-
-.btn-primary{
-  background:linear-gradient(110deg,#548cff,#755cff);
-  color:white;
-  box-shadow:0 6px 22px #548cff20;
-}
-
-.btn-outline{
-  border-color:var(--border);
-  color:var(--white);
-  background:transparent;
-}
-
-.btn-outline:hover{
-  background:var(--panel);
-}
-
-.menu-btn{
-  display:none;
-  background:transparent;
-  color:white;
-  border:0;
-  font-size:27px;
-  padding:4px 8px;
-}
-
-/* HERO */
-
-.hero{
-  position:relative;
-  overflow:hidden;
-  padding:88px 0 82px;
-  background:
-    radial-gradient(ellipse at 80% 20%,#183e7033,transparent 42%),
-    radial-gradient(ellipse at 5% 80%,#2457a01a,transparent 40%);
-}
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  align-items:center;
-  gap:55px;
-}
-
-.badge{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:7px 13px;
-  margin-bottom:22px;
-  color:var(--cyan);
-  background:#43dfd110;
-  border:1px solid #43dfd12a;
-  border-radius:30px;
-  font-size:13px;
-}
-
-.badge-dot{
-  width:7px;
-  height:7px;
-  background:var(--cyan);
-  border-radius:50%;
-}
-
-h1{
-  font-size:clamp(38px,5vw,59px);
-  line-height:1.2;
-  letter-spacing:-1.7px;
-  margin-bottom:22px;
-}
-
-.gradient{
-  background:linear-gradient(90deg,#69a6ff,#43dfd1);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-
-.hero-description{
-  color:var(--muted);
-  font-size:16px;
-  max-width:490px;
-  margin-bottom:30px;
-}
-
-.hero-actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-}
-
-.hero-actions .btn{
-  min-height:49px;
-  padding:12px 20px;
-  font-size:15px;
-}
-
-.hero-note{
-  margin-top:19px;
-  color:#8299bb;
-  font-size:12px;
-}
-
-/* ABSTRACT VISUAL */
-
-.visual{
-  min-height:360px;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  border:1px solid var(--border);
-  border-radius:28px;
-  background:
-    radial-gradient(circle at 50% 45%,#204a7b,#102442 65%,#0b1b35);
-}
-
-.visual-grid{
-  position:absolute;
-  inset:0;
-  opacity:.15;
-  background-image:
-    linear-gradient(#7da8e4 1px,transparent 1px),
-    linear-gradient(90deg,#7da8e4 1px,transparent 1px);
-  background-size:35px 35px;
-  mask-image:radial-gradient(ellipse at center,black,transparent 75%);
-}
-
-.orbit{
-  position:absolute;
-  width:235px;
-  height:235px;
-  border:1px solid #77a6e455;
-  border-radius:50%;
-}
-
-.orbit-two{
-  width:310px;
-  height:310px;
-  border-color:#77a6e42b;
-}
-
-.orbit-three{
-  width:380px;
-  height:380px;
-  border-color:#77a6e418;
-}
-
-.core{
-  position:relative;
-  z-index:2;
-  width:125px;
-  height:125px;
-  display:grid;
-  place-items:center;
-  border-radius:32px;
-  border:1px solid #8bb5ff66;
-  background:linear-gradient(145deg,#28558d,#102442);
-  box-shadow:0 0 65px #4f8cff30;
-  transform:rotate(-8deg);
-}
-
-.core-inner{
-  width:78px;
-  height:78px;
-  display:grid;
-  place-items:center;
-  border-radius:22px;
-  background:linear-gradient(145deg,#548cff,#43cfc9);
-  color:white;
-  font-size:29px;
-  font-weight:800;
-  transform:rotate(8deg);
-}
-
-.visual-label{
-  position:absolute;
-  z-index:3;
-  padding:10px 14px;
-  background:#102442ee;
-  border:1px solid var(--border);
-  border-radius:12px;
-  font-size:12px;
-  box-shadow:0 10px 30px #0003;
-}
-
-.visual-label strong{
-  display:block;
-  color:var(--cyan);
-  font-size:14px;
-}
-
-.label-top{
-  top:35px;
-  left:22px;
-}
-
-.label-bottom{
-  right:20px;
-  bottom:36px;
-}
-
-/* HUB CARDS */
-
-.hubs{
-  padding:20px 0 85px;
-}
-
-.hub-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:22px;
-}
-
-.hub-card{
-  position:relative;
-  overflow:hidden;
-  padding:30px;
-  border:1px solid var(--border);
-  border-radius:20px;
-  background:linear-gradient(145deg,#122a4a,#0d203d);
-  transition:border-color .2s,transform .2s;
-}
-
-.hub-card:hover{
-  transform:translateY(-4px);
-  border-color:#548cff88;
-}
-
-.hub-card.learning{
-  background:
-    radial-gradient(circle at 100% 0%,#548cff17,transparent 45%),
-    #102442;
-}
-
-.hub-card.earning{
-  background:
-    radial-gradient(circle at 100% 0%,#43dfd115,transparent 45%),
-    #102442;
-}
-
-.hub-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  margin-bottom:20px;
-}
-
-.hub-icon{
-  width:53px;
-  height:53px;
-  display:grid;
-  place-items:center;
-  font-size:25px;
-  border-radius:15px;
-  background:#548cff1c;
-  border:1px solid #548cff25;
-}
-
-.earning .hub-icon{
-  background:#43dfd115;
-  border-color:#43dfd12a;
-}
-
-.hub-tag{
-  color:var(--muted);
-  font-size:11px;
-  padding:5px 9px;
-  border:1px solid var(--border);
-  border-radius:20px;
-}
-
-.hub-card h2{
-  font-size:25px;
-  margin-bottom:9px;
-}
-
-.hub-card p{
-  color:var(--muted);
-  font-size:14px;
-  min-height:48px;
-  margin-bottom:22px;
-}
-
-.hub-link{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  color:var(--cyan);
-  font-weight:700;
-  font-size:14px;
-}
-
-.hub-link span{
-  transition:transform .2s;
-}
-
-.hub-link:hover span{
-  transform:translateX(5px);
-}
-
-/* FOOTER */
-
-footer{
-  border-top:1px solid var(--border);
-  padding:25px 0;
-  background:#061229;
-}
-
-.footer-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:20px;
-}
-
-.footer-brand p{
-  color:#8498b7;
-  font-size:12px;
-  margin-top:4px;
-}
-
-.footer-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:20px;
-  color:var(--muted);
-  font-size:12px;
-}
-
-.footer-links a:hover{
-  color:var(--cyan);
-}
-
-.copyright{
-  color:#7186a6;
-  font-size:11px;
-  margin-top:20px;
-  padding-top:15px;
-  border-top:1px solid var(--border);
-}
-
-/* LOGIN DEMO */
-
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:200;
-  background:#000b;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.modal.show{
-  display:flex;
-}
-
-.modal-box{
-  width:min(400px,100%);
-  padding:28px;
-  position:relative;
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:18px;
-}
-
-.modal-box h2{
-  margin-bottom:8px;
-  font-size:24px;
-}
-
-.modal-box p{
-  color:var(--muted);
-  font-size:13px;
-  margin-bottom:18px;
-}
-
-.modal-box input{
-  width:100%;
-  padding:13px;
-  margin:7px 0;
-  border:1px solid var(--border);
-  border-radius:9px;
-  background:var(--bg);
-  color:white;
-}
-
-.modal-box .btn{
-  width:100%;
-  margin-top:10px;
-}
-
-.close{
-  position:absolute;
-  top:10px;
-  right:14px;
-  border:0;
-  background:transparent;
-  color:white;
-  font-size:26px;
-}
-
-.notice{
-  font-size:11px!important;
-  margin-top:15px;
-  margin-bottom:0!important;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:900px){
-  .navlinks{gap:14px}
-  .hero-grid{gap:30px}
-  .visual{min-height:320px}
-}
-
-@media(max-width:760px){
-  .nav{min-height:70px}
-  .menu-btn{display:block}
-
-  .navlinks{
-    display:none;
-    position:absolute;
-    top:70px;
-    left:0;
-    width:100%;
-    padding:22px 5%;
-    background:#0b1b35;
-    border-bottom:1px solid var(--border);
-    flex-direction:column;
-    align-items:flex-start;
-    gap:17px;
-  }
-
-  .navlinks.open{display:flex}
-
-  .nav-actions .login-btn{display:none}
-  .nav-actions .get-started{
-    padding:9px 12px;
-    min-height:39px;
-    font-size:12px;
-  }
-
-  .hero{padding:60px 0 48px}
-
-  .hero-grid{
-    grid-template-columns:1fr;
-    gap:35px;
-  }
-
-  .hero-content{text-align:center}
-  .hero-description{margin-left:auto;margin-right:auto}
-  .hero-actions{justify-content:center}
-  .hero-note{text-align:center}
-
-  .visual{min-height:300px}
-  .hubs{padding:15px 0 60px}
-}
-
-@media(max-width:520px){
-  .logo{font-size:20px}
-  .nav{gap:8px}
-  .nav-actions{gap:5px}
-  .nav-actions .get-started{padding:8px 10px}
-
-  h1{
-    font-size:37px;
-    letter-spacing:-1px;
-  }
-
-  .hero-description{font-size:14px}
-
-  .hero-actions{
-    flex-direction:column;
-  }
-
-  .hero-actions .btn{width:100%}
-
-  .visual{
-    min-height:270px;
-    border-radius:20px;
-  }
-
-  .orbit{width:180px;height:180px}
-  .orbit-two{width:240px;height:240px}
-  .orbit-three{width:300px;height:300px}
-
-  .core{
-    width:100px;
-    height:100px;
-    border-radius:26px;
-  }
-
-  .core-inner{
-    width:65px;
-    height:65px;
-    font-size:24px;
-  }
-
-  .label-top{top:20px;left:12px}
-  .label-bottom{right:12px;bottom:20px}
-
-  .hub-grid{grid-template-columns:1fr}
-  .hub-card{padding:24px}
-  .hub-card h2{font-size:23px}
-  .hub-card p{min-height:auto}
-
-  .footer-row{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .footer-links{gap:15px}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071426">
+
+  <meta name="description"
+        content="Skill Mind AI — শিখুন নতুন দক্ষতা, তৈরি করুন প্রজেক্ট এবং খুঁজুন কাজের সুযোগ।">
+
+  <title>Skill Mind AI | Learn Skills. Build Your Future.</title>
+
+  <style>
+    :root {
+      --bg: #071426;
+      --bg2: #0b1d35;
+      --card: #102541;
+      --card2: #132c4b;
+      --blue: #1677ff;
+      --cyan: #20c7f7;
+      --text: #f5f9ff;
+      --muted: #a7bad2;
+      --border: rgba(255,255,255,.10);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7,20,38,.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: white;
+      font-size: 21px;
+      box-shadow: 0 5px 25px rgba(22,119,255,.25);
+    }
+
+    .brand span:last-child {
+      color: var(--cyan);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .language-select {
+      background: #102541;
+      border: 1px solid var(--border);
+      color: white;
+      border-radius: 10px;
+      padding: 9px 10px;
+      outline: none;
+    }
+
+    .language-select option {
+      background: #102541;
+      color: white;
+    }
+
+    .nav-cta {
+      padding: 10px 16px;
+      border-radius: 11px;
+      background: var(--blue);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .nav-cta:hover {
+      background: #368aff;
+      transform: translateY(-1px);
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      padding: 90px 0 75px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: rgba(22,119,255,.13);
+      filter: blur(100px);
+      top: -160px;
+      right: -100px;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 50px;
+      align-items: center;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border: 1px solid rgba(32,199,247,.25);
+      background: rgba(32,199,247,.07);
+      border-radius: 50px;
+      color: var(--cyan);
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--cyan);
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 59px);
+      line-height: 1.2;
+      letter-spacing: -1.5px;
+      margin-bottom: 22px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #3b8bff, #37d4f5);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      color: var(--muted);
+      max-width: 570px;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap;
+      margin-bottom: 27px;
+    }
+
+    .btn {
+      min-height: 52px;
+      padding: 13px 21px;
+      border-radius: 13px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      font-weight: 750;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(100deg, #176eff, #168fff);
+      color: white;
+      box-shadow: 0 8px 28px rgba(22,119,255,.24);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 10px 32px rgba(22,119,255,.38);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.18);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,.08);
+    }
+
+    .hero-note {
+      color: #91a9c5;
+      font-size: 13px;
+    }
+
+    /* ABSTRACT VISUAL */
+
+    .visual {
+      min-height: 390px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .visual-orbit {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 1px solid rgba(32,199,247,.25);
+      position: absolute;
+      animation: rotate 30s linear infinite;
+    }
+
+    .visual-orbit::before,
+    .visual-orbit::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(22,119,255,.30);
+    }
+
+    .visual-orbit::before {
+      inset: 25px;
+    }
+
+    .visual-orbit::after {
+      inset: 55px;
+    }
+
+    .visual-core {
+      position: relative;
+      width: 155px;
+      height: 155px;
+      border-radius: 36px;
+      display: grid;
+      place-items: center;
+      font-size: 65px;
+      background: linear-gradient(145deg, #126eff, #12b8ec);
+      box-shadow: 0 0 70px rgba(22,119,255,.35);
+      transform: rotate(-8deg);
+    }
+
+    .floating-card {
+      position: absolute;
+      z-index: 2;
+      padding: 13px 16px;
+      border: 1px solid rgba(255,255,255,.13);
+      background: rgba(16,37,65,.92);
+      backdrop-filter: blur(12px);
+      border-radius: 15px;
+      box-shadow: 0 15px 40px rgba(0,0,0,.2);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .floating-card strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .floating-card small {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .float-one {
+      top: 55px;
+      left: 0;
+    }
+
+    .float-two {
+      right: 0;
+      bottom: 62px;
+      animation-delay: -2s;
+    }
+
+    .float-three {
+      right: 4px;
+      top: 35px;
+      animation-delay: -1s;
+    }
+
+    @keyframes rotate {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-9px); }
+    }
+
+    /* HUB SECTION */
+
+    .hub-section {
+      padding: 65px 0 85px;
+      background: linear-gradient(180deg, rgba(11,29,53,.3), rgba(11,29,53,.8));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 42px;
+    }
+
+    .section-heading .mini-label {
+      color: var(--cyan);
+      font-weight: 750;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(27px, 4vw, 39px);
+      line-height: 1.3;
+      margin: 10px 0 13px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .hub-card {
+      position: relative;
+      overflow: hidden;
+      padding: 30px;
+      background: linear-gradient(145deg, #10294a, #0d2039);
+      border: 1px solid rgba(54,137,255,.35);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 335px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+
+    .hub-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(32,199,247,.65);
+      box-shadow: 0 18px 45px rgba(0,0,0,.18);
+    }
+
+    .hub-card::after {
+      content: "";
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: rgba(22,119,255,.12);
+      filter: blur(50px);
+      right: -75px;
+      top: -65px;
+      pointer-events: none;
+    }
+
+    .hub-icon {
+      position: relative;
+      z-index: 1;
+      width: 58px;
+      height: 58px;
+      border-radius: 17px;
+      background: linear-gradient(135deg, #176eff, #12a9f2);
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      margin-bottom: 19px;
+    }
+
+    .hub-card h3 {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(23px, 3vw, 29px);
+      margin-bottom: 10px;
+    }
+
+    .hub-card p {
+      position: relative;
+      z-index: 1;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 21px;
+      max-width: 460px;
+    }
+
+    .hub-tags {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 25px;
+    }
+
+    .hub-tags span {
+      font-size: 12px;
+      color: #c9eaff;
+      background: rgba(32,199,247,.08);
+      border: 1px solid rgba(32,199,247,.17);
+      padding: 5px 10px;
+      border-radius: 50px;
+    }
+
+    .hub-button {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      width: 100%;
+      min-height: 55px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: auto;
+      border-radius: 13px;
+      background: linear-gradient(100deg, #176eff, #168fff);
+      color: white;
+      font-size: 16px;
+      font-weight: 800;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 8px 25px rgba(22,119,255,.2);
+      transition: .2s;
+    }
+
+    .hub-button:hover {
+      background: linear-gradient(100deg, #3384ff, #21a9ff);
+      box-shadow: 0 10px 30px rgba(22,119,255,.32);
+      transform: translateY(-2px);
+    }
+
+    /* SKILLS */
+
+    .skills-section {
+      padding: 85px 0;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .skill-card {
+      padding: 23px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: var(--bg2);
+      transition: .2s;
+    }
+
+    .skill-card:hover {
+      border-color: rgba(32,199,247,.4);
+      transform: translateY(-3px);
+    }
+
+    .skill-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: rgba(22,119,255,.13);
+      font-size: 23px;
+      margin-bottom: 15px;
+    }
+
+    .skill-card h3 {
+      font-size: 17px;
+      margin-bottom: 7px;
+    }
+
+    .skill-card p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .skills-footer {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    /* HOW IT WORKS */
+
+    .steps-section {
+      padding: 75px 0;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .step-card {
+      padding: 22px 18px;
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+    }
+
+    .step-number {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--blue);
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .step-card h3 {
+      font-size: 16px;
+      margin-bottom: 7px;
+    }
+
+    .step-card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* CTA */
+
+    .cta-section {
+      padding: 80px 0;
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 52px 25px;
+      border: 1px solid rgba(32,199,247,.23);
+      border-radius: 26px;
+      background: linear-gradient(120deg, #102b4e, #10345a);
+    }
+
+    .cta-box::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(32,199,247,.12);
+      filter: blur(65px);
+      left: -90px;
+      bottom: -150px;
+    }
+
+    .cta-box h2 {
+      position: relative;
+      font-size: clamp(26px, 4vw, 38px);
+      line-height: 1.3;
+      margin-bottom: 13px;
+    }
+
+    .cta-box p {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto 25px;
+      color: var(--muted);
+    }
+
+    .cta-box .btn {
+      position: relative;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      background: #061120;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    .footer-brand span {
+      color: var(--cyan);
+    }
+
+    .footer-note {
+      color: #8ea5c0;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 17px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .copyright {
+      color: #748ba7;
+      font-size: 12px;
+      margin-top: 23px;
+      text-align: center;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .hero {
+        padding-top: 65px;
+      }
+
+      .visual {
+        min-height: 320px;
+      }
+
+      .hub-card {
+        padding: 24px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner {
+        min-height: 67px;
+      }
+
+      .brand {
+        font-size: 16px;
+        gap: 7px;
+      }
+
+      .brand-icon {
+        width: 35px;
+        height: 35px;
+        border-radius: 11px;
+      }
+
+      .nav-right {
+        gap: 8px;
+      }
+
+      .language-select {
+        padding: 8px 6px;
+        font-size: 12px;
+      }
+
+      .nav-cta {
+        padding: 9px 10px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 55px 0 45px;
+      }
+
+      .hero h1 {
+        letter-spacing: -.7px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .visual {
+        min-height: 285px;
+      }
+
+      .visual-orbit {
+        width: 230px;
+        height: 230px;
+      }
+
+      .visual-core {
+        width: 115px;
+        height: 115px;
+        border-radius: 28px;
+        font-size: 48px;
+      }
+
+      .floating-card {
+        padding: 10px 12px;
+      }
+
+      .float-one {
+        top: 25px;
+        left: -4px;
+      }
+
+      .float-two {
+        right: -4px;
+        bottom: 30px;
+      }
+
+      .float-three {
+        right: -4px;
+        top: 15px;
+      }
+
+      .hub-section,
+      .skills-section,
+      .steps-section,
+      .cta-section {
+        padding: 55px 0;
+      }
+
+      .hub-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .hub-card {
+        min-height: 320px;
+        padding: 23px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 11px;
+      }
+
+      .skill-card {
+        padding: 16px 13px;
+      }
+
+      .skill-card h3 {
+        font-size: 14px;
+      }
+
+      .skill-card p {
+        font-size: 12px;
+      }
+
+      .steps-grid {
+        gap: 11px;
+      }
+
+      .step-card {
+        padding: 17px 13px;
+      }
+
+      .step-card h3 {
+        font-size: 14px;
+      }
+
+      .step-card p {
+        font-size: 12px;
+      }
+
+      .cta-box {
+        padding: 37px 20px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="container nav">
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <div class="container nav-inner">
 
-    <a class="logo" href="index.html">
-      Skill Mind <span>AI</span>
-    </a>
-
-    <nav class="navlinks" id="navlinks">
-      <a href="index.html">Home</a>
-      <a href="learning.html">Learning Hub</a>
-      <a href="earning.html">Earning Hub</a>
-      <a href="#about">About</a>
-    </nav>
-
-    <div class="nav-actions">
-      <button
-        class="btn btn-outline login-btn"
-        onclick="openModal('login')">
-        Login
-      </button>
-
-      <a
-        class="btn btn-primary get-started"
-        href="onboarding.html">
-        Get Started
+      <a class="brand" href="index.html" aria-label="Skill Mind AI Home">
+        <span class="brand-icon">✦</span>
+        <span>Skill Mind <span>AI</span></span>
       </a>
 
-      <button
-        class="menu-btn"
-        onclick="toggleMenu()"
-        aria-label="মেনু খুলুন"
-        aria-expanded="false"
-        id="menuButton">
-        ☰
-      </button>
-    </div>
-
-  </div>
-</header>
-
-<main>
-
-  <!-- MAIN INTRODUCTION -->
-
-  <section class="hero">
-    <div class="container hero-grid">
-
-      <div class="hero-content">
-
-        <div class="badge">
-          <span class="badge-dot"></span>
-          Learn. Build. Grow.
-        </div>
-
-        <h1>
-          দক্ষতা শিখুন,<br>
-          <span class="gradient">সামনে এগিয়ে যান।</span>
-        </h1>
-
-        <p class="hero-description">
-          Skill Mind AI হলো দক্ষতা শেখা, বাস্তব প্রজেক্ট তৈরি
-          এবং কাজের সুযোগের জন্য প্রস্তুতি নেওয়ার একটি প্ল্যাটফর্ম।
-        </p>
-
-        <div class="hero-actions">
-
-          <a class="btn btn-primary" href="learning.html">
-            📚 Learning Hub
-          </a>
-
-          <a class="btn btn-outline" href="earning.html">
-            💼 Earning Hub →
-          </a>
-
-        </div>
-
-        <p class="hero-note">
-          শিখুন • অনুশীলন করুন • নিজের দক্ষতা গড়ুন
-        </p>
-
-      </div>
-
-      <!-- ABSTRACT AI VISUAL -->
-
-      <div class="visual" aria-label="Skill Mind AI প্রযুক্তি-অনুপ্রাণিত ইলাস্ট্রেশন">
-
-        <div class="visual-grid"></div>
-
-        <div class="orbit"></div>
-        <div class="orbit orbit-two"></div>
-        <div class="orbit orbit-three"></div>
-
-        <div class="core">
-          <div class="core-inner">AI</div>
-        </div>
-
-        <div class="visual-label label-top">
-          Learning
-          <strong>New Skills</strong>
-        </div>
-
-        <div class="visual-label label-bottom">
-          Your Future
-          <strong>Build & Grow</strong>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- TWO MAIN HUBS -->
-
-  <section class="hubs" id="about">
-    <div class="container">
-
-      <div class="hub-grid">
-
-        <article class="hub-card learning">
-
-          <div class="hub-top">
-            <div class="hub-icon">📚</div>
-            <span class="hub-tag">LEARN</span>
-          </div>
-
-          <h2>Learning Hub</h2>
-
-          <p>
-            নতুন দক্ষতা শিখুন, অনুশীলন করুন এবং
-            নিজের প্রজেক্ট ও পোর্টফোলিও তৈরি করুন।
-          </p>
-
-          <a class="hub-link" href="learning.html">
-            শেখা শুরু করুন <span>→</span>
-          </a>
-
-        </article>
-
-        <article class="hub-card earning">
-
-          <div class="hub-top">
-            <div class="hub-icon">💼</div>
-            <span class="hub-tag">OPPORTUNITIES</span>
-          </div>
-
-          <h2>Earning Hub</h2>
-
-          <p>
-            বাংলাদেশ ও আন্তর্জাতিক কাজের প্ল্যাটফর্ম,
-            সুযোগ এবং কাজের প্রস্তুতি সম্পর্কে জানুন।
-          </p>
-
-          <a class="hub-link" href="earning.html">
-            কাজের সুযোগ দেখুন <span>→</span>
-          </a>
-
-        </article>
-
-      </div>
-
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="container">
-
-    <div class="footer-row">
-
-      <div class="footer-brand">
-        <a class="logo" href="index.html">
-          Skill Mind <span>AI</span>
-        </a>
-
-        <p>Learn. Build. Grow.</p>
-      </div>
-
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="index.html">Home</a>
-        <a href="learning.html">Learning Hub</a>
-        <a href="earning.html">Earning Hub</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home" data-i18n="navHome">হোম</a>
+        <a href="#hubs" data-i18n="navHubs">লার্নিং ও আর্নিং</a>
+        <a href="#skills" data-i18n="navSkills">দক্ষতা</a>
+        <a href="#how" data-i18n="navHow">যেভাবে কাজ করে</a>
       </nav>
 
+      <div class="nav-right">
+        <select class="language-select" id="languageSelect"
+                aria-label="Select language">
+          <option value="bn">বাংলা</option>
+          <option value="en">English</option>
+        </select>
+
+        <a class="nav-cta" href="onboarding.html" data-i18n="getStarted">
+          শুরু করুন →
+        </a>
+      </div>
+
     </div>
+  </header>
 
-    <div class="copyright">
-      © 2026 Skill Mind AI. All rights reserved.
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+
+        <div class="hero-content">
+
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span data-i18n="eyebrow">শেখা থেকে কাজের প্রস্তুতি</span>
+          </div>
+
+          <h1>
+            <span data-i18n="heroLine1">শিখুন নতুন দক্ষতা,</span><br>
+            <span class="gradient-text" data-i18n="heroLine2">
+              গড়ুন নিজের ভবিষ্যৎ
+            </span>
+          </h1>
+
+          <p class="hero-description" data-i18n="heroDescription">
+            আপনার আগ্রহ অনুযায়ী দক্ষতা শিখুন, বাস্তব প্রজেক্ট তৈরি করুন
+            এবং বাংলাদেশ ও আন্তর্জাতিক কাজের সুযোগ খুঁজুন—একটি প্ল্যাটফর্মে।
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="learning.html"
+               data-i18n="heroLearn">
+              🎓 শেখা শুরু করুন
+            </a>
+
+            <a class="btn btn-secondary" href="earning.html"
+               data-i18n="heroEarn">
+              💼 কাজের সুযোগ দেখুন →
+            </a>
+          </div>
+
+          <p class="hero-note" data-i18n="heroNote">
+            আপনার যাত্রা শুরু হোক আপনার আগ্রহ থেকেই।
+          </p>
+
+        </div>
+
+        <!-- Abstract AI visual; no human photos -->
+        <div class="visual" aria-hidden="true">
+
+          <div class="visual-orbit"></div>
+
+          <div class="visual-core">✦</div>
+
+          <div class="floating-card float-one">
+            <strong data-i18n="visualLearning">🎓 শেখা</strong>
+            <small data-i18n="visualLearningSub">নতুন দক্ষতা অর্জন</small>
+          </div>
+
+          <div class="floating-card float-two">
+            <strong data-i18n="visualProjects">🚀 প্রজেক্ট</strong>
+            <small data-i18n="visualProjectsSub">বাস্তব অভিজ্ঞতা</small>
+          </div>
+
+          <div class="floating-card float-three">
+            <strong data-i18n="visualAI">🤖 AI সহায়তা</strong>
+            <small data-i18n="visualAISub">স্মার্ট শেখার অভিজ্ঞতা</small>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LEARNING AND EARNING HUBS -->
+    <section class="hub-section" id="hubs">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="mini-label" data-i18n="hubLabel">আপনার পরবর্তী পদক্ষেপ</span>
+
+          <h2 data-i18n="hubHeading">
+            আপনি কোন পথে এগোতে চান?
+          </h2>
+
+          <p data-i18n="hubDescription">
+            নতুন দক্ষতা শিখুন অথবা আপনার দক্ষতার উপযোগী কাজের সুযোগ খুঁজুন।
+            আপনার লক্ষ্য অনুযায়ী একটি পথ বেছে নিন।
+          </p>
+        </div>
+
+        <div class="hub-grid">
+
+          <!-- LEARNING HUB -->
+          <article class="hub-card">
+
+            <div class="hub-icon">🎓</div>
+
+            <h3 data-i18n="learningTitle">Learning Hub</h3>
+
+            <p data-i18n="learningDescription">
+              আপনার আগ্রহের বিষয় বেছে নিন। ধাপে ধাপে শিখুন,
+              অনুশীলন করুন এবং নিজের প্রজেক্ট তৈরি করুন।
+            </p>
+
+            <div class="hub-tags">
+              <span data-i18n="learnTag1">ভিডিও এডিটিং</span>
+              <span data-i18n="learnTag2">গ্রাফিক ডিজাইন</span>
+              <span data-i18n="learnTag3">ওয়েব ডেভেলপমেন্ট</span>
+              <span data-i18n="learnTag4">AI Skills</span>
+            </div>
+
+            <a href="learning.html" class="hub-button"
+               data-i18n="learningButton">
+              Learning Hub খুলুন →
+            </a>
+
+          </article>
+
+          <!-- EARNING HUB -->
+          <article class="hub-card">
+
+            <div class="hub-icon">💼</div>
+
+            <h3 data-i18n="earningTitle">Earning Hub</h3>
+
+            <p data-i18n="earningDescription">
+              বাংলাদেশ ও আন্তর্জাতিক কাজের প্ল্যাটফর্ম খুঁজুন।
+              ফ্রিল্যান্সিং, রিমোট জব ও অন্যান্য সুযোগ সম্পর্কে জানুন।
+            </p>
+
+            <div class="hub-tags">
+              <span data-i18n="earnTag1">ফ্রিল্যান্সিং</span>
+              <span data-i18n="earnTag2">রিমোট জব</span>
+              <span data-i18n="earnTag3">ডিজাইন</span>
+              <span data-i18n="earnTag4">ডিজিটাল সার্ভিস</span>
+            </div>
+
+            <a href="earning.html" class="hub-button"
+               data-i18n="earningButton">
+              Earning Hub খুলুন →
+            </a>
+
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills-section" id="skills">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="mini-label" data-i18n="skillsLabel">দক্ষতা অন্বেষণ</span>
+
+          <h2 data-i18n="skillsHeading">
+            আপনার আগ্রহ থেকেই শুরু করুন
+          </h2>
+
+          <p data-i18n="skillsDescription">
+            নিচের বিষয়গুলো থেকে আপনার পছন্দের দক্ষতা বেছে নিয়ে
+            শেখার যাত্রা শুরু করতে পারেন।
+          </p>
+        </div>
+
+        <div class="skills-grid">
+
+          <article class="skill-card">
+            <div class="skill-icon">🎬</div>
+            <h3 data-i18n="skillVideo">ভিডিও এডিটিং</h3>
+            <p data-i18n="skillVideoDesc">
+              ভিডিও তৈরি, সম্পাদনা ও কনটেন্ট প্রস্তুত করা শিখুন।
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon">🎨</div>
+            <h3 data-i18n="skillDesign">গ্রাফিক ডিজাইন</h3>
+            <p data-i18n="skillDesignDesc">
+              পোস্টার, সোশ্যাল মিডিয়া ডিজাইন ও ভিজ্যুয়াল তৈরি শিখুন।
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon">💻</div>
+            <h3 data-i18n="skillWeb">ওয়েব ডেভেলপমেন্ট</h3>
+            <p data-i18n="skillWebDesc">
+              ওয়েবসাইটের গঠন, ডিজাইন ও কোডিং শিখুন।
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon">📱</div>
+            <h3 data-i18n="skillMarketing">ডিজিটাল মার্কেটিং</h3>
+            <p data-i18n="skillMarketingDesc">
+              অনলাইন প্রচার, কনটেন্ট পরিকল্পনা ও মার্কেটিং শিখুন।
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon">🤖</div>
+            <h3 data-i18n="skillAI">AI Tools</h3>
+            <p data-i18n="skillAIDesc">
+              AI টুল ব্যবহার করে কাজের দক্ষতা বাড়াতে শিখুন।
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon">✍️</div>
+            <h3 data-i18n="skillContent">কনটেন্ট তৈরি</h3>
+            <p data-i18n="skillContentDesc">
+              লেখা, স্ক্রিপ্ট ও অনলাইন কনটেন্ট তৈরি শিখুন।
+            </p>
+          </article>
+
+        </div>
+
+        <div class="skills-footer">
+          <a href="learning.html" class="btn btn-primary"
+             data-i18n="allSkillsButton">
+            সব শেখার বিষয় দেখুন →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="steps-section" id="how">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="mini-label" data-i18n="stepsLabel">সহজ চারটি ধাপ</span>
+
+          <h2 data-i18n="stepsHeading">
+            শেখা থেকে কাজের প্রস্তুতি
+          </h2>
+
+          <p data-i18n="stepsDescription">
+            পরিকল্পিতভাবে দক্ষতা অর্জন করে বাস্তব কাজের জন্য প্রস্তুত হন।
+          </p>
+        </div>
+
+        <div class="steps-grid">
+
+          <article class="step-card">
+            <div class="step-number">01</div>
+            <h3 data-i18n="step1Title">আগ্রহ বেছে নিন</h3>
+            <p data-i18n="step1Desc">
+              কোন দক্ষতা শিখতে চান, তা ঠিক করুন।
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">02</div>
+            <h3 data-i18n="step2Title">শিখুন ও অনুশীলন করুন</h3>
+            <p data-i18n="step2Desc">
+              ধাপে ধাপে শিখুন এবং নিয়মিত অনুশীলন করুন।
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">03</div>
+            <h3 data-i18n="step3Title">প্রজেক্ট তৈরি করুন</h3>
+            <p data-i18n="step3Desc">
+              নিজের কাজের নমুনা তৈরি করে পোর্টফোলিও সাজান।
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">04</div>
+            <h3 data-i18n="step4Title">কাজের সুযোগ খুঁজুন</h3>
+            <p data-i18n="step4Desc">
+              আপনার দক্ষতা অনুযায়ী কাজের প্ল্যাটফর্ম অনুসন্ধান করুন।
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="cta-section">
+      <div class="container">
+
+        <div class="cta-box">
+
+          <h2 data-i18n="ctaHeading">
+            আজই শুরু করুন আপনার শেখার যাত্রা
+          </h2>
+
+          <p data-i18n="ctaDescription">
+            আপনার আগ্রহের দক্ষতা বেছে নিন, অনুশীলন করুন এবং
+            ভবিষ্যতের কাজের জন্য নিজেকে প্রস্তুত করুন।
+          </p>
+
+          <a href="onboarding.html" class="btn btn-primary"
+             data-i18n="ctaButton">
+            শুরু করুন →
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="about">
+    <div class="container">
+
+      <div class="footer-inner">
+
+        <div>
+          <div class="footer-brand">
+            Skill Mind <span>AI</span>
+          </div>
+
+          <p class="footer-note" data-i18n="footerDescription">
+            দক্ষতা শেখা ও কাজের সুযোগ খোঁজার একটি উদ্যোগ।
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a href="index.html" data-i18n="navHome">হোম</a>
+          <a href="learning.html" data-i18n="learningTitle">Learning Hub</a>
+          <a href="earning.html" data-i18n="earningTitle">Earning Hub</a>
+          <a href="onboarding.html" data-i18n="getStarted">শুরু করুন</a>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        © <span id="year"></span> Skill Mind AI.
+        <span data-i18n="copyright">সর্বস্বত্ব সংরক্ষিত।</span>
+      </div>
+
     </div>
+  </footer>
 
-  </div>
-</footer>
+  <script>
+    const translations = {
+      bn: {
+        pageTitle: "Skill Mind AI | শিখুন, দক্ষতা গড়ুন, কাজ খুঁজুন",
+        navHome: "হোম",
+        navHubs: "লার্নিং ও আর্নিং",
+        navSkills: "দক্ষতা",
+        navHow: "যেভাবে কাজ করে",
+        getStarted: "শুরু করুন →",
 
-<!-- LOGIN DEMO -->
+        eyebrow: "শেখা থেকে কাজের প্রস্তুতি",
+        heroLine1: "শিখুন নতুন দক্ষতা,",
+        heroLine2: "গড়ুন নিজের ভবিষ্যৎ",
+        heroDescription:
+          "আপনার আগ্রহ অনুযায়ী দক্ষতা শিখুন, বাস্তব প্রজেক্ট তৈরি করুন এবং বাংলাদেশ ও আন্তর্জাতিক কাজের সুযোগ খুঁজুন—একটি প্ল্যাটফর্মে।",
+        heroLearn: "🎓 শেখা শুরু করুন",
+        heroEarn: "💼 কাজের সুযোগ দেখুন →",
+        heroNote: "আপনার যাত্রা শুরু হোক আপনার আগ্রহ থেকেই।",
 
-<div
-  class="modal"
-  id="authModal"
-  onclick="outsideClose(event)">
+        visualLearning: "🎓 শেখা",
+        visualLearningSub: "নতুন দক্ষতা অর্জন",
+        visualProjects: "🚀 প্রজেক্ট",
+        visualProjectsSub: "বাস্তব অভিজ্ঞতা",
+        visualAI: "🤖 AI সহায়তা",
+        visualAISub: "স্মার্ট শেখার অভিজ্ঞতা",
 
-  <div class="modal-box">
+        hubLabel: "আপনার পরবর্তী পদক্ষেপ",
+        hubHeading: "আপনি কোন পথে এগোতে চান?",
+        hubDescription:
+          "নতুন দক্ষতা শিখুন অথবা আপনার দক্ষতার উপযোগী কাজের সুযোগ খুঁজুন। আপনার লক্ষ্য অনুযায়ী একটি পথ বেছে নিন।",
 
-    <button
-      class="close"
-      onclick="closeModal()"
-      aria-label="বন্ধ করুন">
-      ×
-    </button>
+        learningTitle: "Learning Hub",
+        learningDescription:
+          "আপনার আগ্রহের বিষয় বেছে নিন। ধাপে ধাপে শিখুন, অনুশীলন করুন এবং নিজের প্রজেক্ট তৈরি করুন।",
+        learnTag1: "ভিডিও এডিটিং",
+        learnTag2: "গ্রাফিক ডিজাইন",
+        learnTag3: "ওয়েব ডেভেলপমেন্ট",
+        learnTag4: "AI Skills",
+        learningButton: "Learning Hub খুলুন →",
 
-    <h2>Welcome Back</h2>
+        earningTitle: "Earning Hub",
+        earningDescription:
+          "বাংলাদেশ ও আন্তর্জাতিক কাজের প্ল্যাটফর্ম খুঁজুন। ফ্রিল্যান্সিং, রিমোট জব ও অন্যান্য সুযোগ সম্পর্কে জানুন।",
+        earnTag1: "ফ্রিল্যান্সিং",
+        earnTag2: "রিমোট জব",
+        earnTag3: "ডিজাইন",
+        earnTag4: "ডিজিটাল সার্ভিস",
+        earningButton: "Earning Hub খুলুন →",
 
-    <p>
-      Skill Mind AI-এর বাস্তব Login System এখনো তৈরি হয়নি।
-      এটি আপাতত একটি ডেমো।
-    </p>
+        skillsLabel: "দক্ষতা অন্বেষণ",
+        skillsHeading: "আপনার আগ্রহ থেকেই শুরু করুন",
+        skillsDescription:
+          "নিচের বিষয়গুলো থেকে আপনার পছন্দের দক্ষতা বেছে নিয়ে শেখার যাত্রা শুরু করতে পারেন.",
 
-    <input
-      type="email"
-      placeholder="Email address"
-      autocomplete="email"
-      aria-label="Email address"
-      disabled>
+        skillVideo: "ভিডিও এডিটিং",
+        skillVideoDesc: "ভিডিও তৈরি, সম্পাদনা ও কনটেন্ট প্রস্তুত করা শিখুন।",
+        skillDesign: "গ্রাফিক ডিজাইন",
+        skillDesignDesc: "পোস্টার, সোশ্যাল মিডিয়া ডিজাইন ও ভিজ্যুয়াল তৈরি শিখুন।",
+        skillWeb: "ওয়েব ডেভেলপমেন্ট",
+        skillWebDesc: "ওয়েবসাইটের গঠন, ডিজাইন ও কোডিং শিখুন।",
+        skillMarketing: "ডিজিটাল মার্কেটিং",
+        skillMarketingDesc: "অনলাইন প্রচার, কনটেন্ট পরিকল্পনা ও মার্কেটিং শিখুন।",
+        skillAI: "AI Tools",
+        skillAIDesc: "AI টুল ব্যবহার করে কাজের দক্ষতা বাড়াতে শিখুন।",
+        skillContent: "কনটেন্ট তৈরি",
+        skillContentDesc: "লেখা, স্ক্রিপ্ট ও অনলাইন কনটেন্ট তৈরি শিখুন.",
+        allSkillsButton: "সব শেখার বিষয় দেখুন →",
 
-    <input
-      type="password"
-      placeholder="Password"
-      autocomplete="current-password"
-      aria-label="Password"
-      disabled>
+        stepsLabel: "সহজ চারটি ধাপ",
+        stepsHeading: "শেখা থেকে কাজের প্রস্তুতি",
+        stepsDescription:
+          "পরিকল্পিতভাবে দক্ষতা অর্জন করে বাস্তব কাজের জন্য প্রস্তুত হন।",
+        step1Title: "আগ্রহ বেছে নিন",
+        step1Desc: "কোন দক্ষতা শিখতে চান, তা ঠিক করুন।",
+        step2Title: "শিখুন ও অনুশীলন করুন",
+        step2Desc: "ধাপে ধাপে শিখুন এবং নিয়মিত অনুশীলন করুন।",
+        step3Title: "প্রজেক্ট তৈরি করুন",
+        step3Desc: "নিজের কাজের নমুনা তৈরি করে পোর্টফোলিও সাজান।",
+        step4Title: "কাজের সুযোগ খুঁজুন",
+        step4Desc: "আপনার দক্ষতা অনুযায়ী কাজের প্ল্যাটফর্ম অনুসন্ধান করুন।",
 
-    <button
-      class="btn btn-primary"
-      onclick="demoMessage()">
-      Login System Coming Soon
-    </button>
+        ctaHeading: "আজই শুরু করুন আপনার শেখার যাত্রা",
+        ctaDescription:
+          "আপনার আগ্রহের দক্ষতা বেছে নিন, অনুশীলন করুন এবং ভবিষ্যতের কাজের জন্য নিজেকে প্রস্তুত করুন।",
+        ctaButton: "শুরু করুন →",
+        footerDescription: "দক্ষতা শেখা ও কাজের সুযোগ খোঁজার একটি উদ্যোগ।",
+        copyright: "সর্বস্বত্ব সংরক্ষিত।"
+      },
 
-    <p class="notice">
-      এখনো অ্যাকাউন্টে প্রবেশ করা সম্ভব নয়।
-    </p>
+      en: {
+        pageTitle: "Skill Mind AI | Learn Skills. Build Your Future.",
+        navHome: "Home",
+        navHubs: "Learning & Earning",
+        navSkills: "Skills",
+        navHow: "How It Works",
+        getStarted: "Get Started →",
 
-  </div>
+        eyebrow: "From Learning to Career Preparation",
+        heroLine1: "Learn New Skills,",
+        heroLine2: "Build Your Future",
+        heroDescription:
+          "Learn skills based on your interests, build real projects, and explore work opportunities in Bangladesh and internationally—all in one place.",
+        heroLearn: "🎓 Start Learning",
+        heroEarn: "💼 Explore Opportunities →",
+        heroNote: "Start your journey with what interests you.",
 
-</div>
+        visualLearning: "🎓 Learning",
+        visualLearningSub: "Develop new skills",
+        visualProjects: "🚀 Projects",
+        visualProjectsSub: "Build practical experience",
+        visualAI: "🤖 AI Assistance",
+        visualAISub: "A smarter learning experience",
 
-<script>
-function toggleMenu(){
-  const nav = document.getElementById('navlinks');
-  const button = document.getElementById('menuButton');
+        hubLabel: "Your Next Step",
+        hubHeading: "Which Path Do You Want to Take?",
+        hubDescription:
+          "Learn a new skill or explore opportunities that match your abilities. Choose a path based on your goals.",
 
-  nav.classList.toggle('open');
+        learningTitle: "Learning Hub",
+        learningDescription:
+          "Choose a topic that interests you. Learn step by step, practice, and build your own projects.",
+        learnTag1: "Video Editing",
+        learnTag2: "Graphic Design",
+        learnTag3: "Web Development",
+        learnTag4: "AI Skills",
+        learningButton: "Explore Learning Hub →",
 
-  button.setAttribute(
-    'aria-expanded',
-    nav.classList.contains('open') ? 'true' : 'false'
-  );
-}
+        earningTitle: "Earning Hub",
+        earningDescription:
+          "Explore work platforms in Bangladesh and internationally. Discover freelancing, remote jobs, and other opportunities.",
+        earnTag1: "Freelancing",
+        earnTag2: "Remote Jobs",
+        earnTag3: "Design",
+        earnTag4: "Digital Services",
+        earningButton: "Explore Earning Hub →",
 
-document.querySelectorAll('.navlinks a').forEach(link=>{
-  link.addEventListener('click',()=>{
-    document.getElementById('navlinks').classList.remove('open');
-    document.getElementById('menuButton').setAttribute(
-      'aria-expanded','false'
+        skillsLabel: "Explore Skills",
+        skillsHeading: "Start With Your Interests",
+        skillsDescription:
+          "Choose a skill from the topics below and begin your learning journey.",
+
+        skillVideo: "Video Editing",
+        skillVideoDesc: "Learn to create, edit, and prepare video content.",
+        skillDesign: "Graphic Design",
+        skillDesignDesc: "Learn posters, social media designs, and visual content.",
+        skillWeb: "Web Development",
+        skillWebDesc: "Learn website structure, design, and coding.",
+        skillMarketing: "Digital Marketing",
+        skillMarketingDesc: "Learn online promotion, content planning, and marketing.",
+        skillAI: "AI Tools",
+        skillAIDesc: "Learn to improve your work with AI tools.",
+        skillContent: "Content Creation",
+        skillContentDesc: "Learn writing, scripting, and creating online content.",
+        allSkillsButton: "Explore All Learning Topics →",
+
+        stepsLabel: "Four Simple Steps",
+        stepsHeading: "From Learning to Work Preparation",
+        stepsDescription:
+          "Develop your skills step by step and prepare for real-world work.",
+        step1Title: "Choose an Interest",
+        step1Desc: "Decide which skill you want to learn.",
+        step2Title: "Learn and Practice",
+        step2Desc: "Learn step by step and practice regularly.",
+        step3Title: "Build Projects",
+        step3Desc: "Create examples of your work and build a portfolio.",
+        step4Title: "Explore Opportunities",
+        step4Desc: "Search for work platforms that match your skills.",
+
+        ctaHeading: "Start Your Learning Journey Today",
+        ctaDescription:
+          "Choose a skill that interests you, practice, and prepare yourself for future work opportunities.",
+        ctaButton: "Get Started →",
+        footerDescription: "An initiative for learning skills and exploring work opportunities.",
+        copyright: "All rights reserved."
+      }
+    };
+
+    function setLanguage(language) {
+      const selectedLanguage = translations[language]
+        ? language
+        : "bn";
+
+      document.documentElement.lang = selectedLanguage;
+      document.title = translations[selectedLanguage].pageTitle;
+
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.getAttribute("data-i18n");
+        const translatedText = translations[selectedLanguage][key];
+
+        if (translatedText !== undefined) {
+          element.textContent = translatedText;
+        }
+      });
+
+      try {
+        localStorage.setItem("skillMindLanguage", selectedLanguage);
+      } catch (error) {
+        // The page still works if browser storage is unavailable.
+      }
+
+      const selector = document.getElementById("languageSelect");
+      if (selector) {
+        selector.value = selectedLanguage;
+      }
+    }
+
+    document.getElementById("languageSelect").addEventListener(
+      "change",
+      function () {
+        setLanguage(this.value);
+      }
     );
-  });
-});
 
-function openModal(){
-  document.getElementById('authModal').classList.add('show');
-}
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-function closeModal(){
-  document.getElementById('authModal').classList.remove('show');
-}
+    let savedLanguage = "bn";
 
-function outsideClose(event){
-  if(event.target.id === 'authModal'){
-    closeModal();
-  }
-}
+    try {
+      savedLanguage = localStorage.getItem("skillMindLanguage") || "bn";
+    } catch (error) {
+      savedLanguage = "bn";
+    }
 
-function demoMessage(){
-  alert(
-    'বাস্তব Login System এখনো যুক্ত করা হয়নি। ' +
-    'পরবর্তী ধাপে নিরাপদ Authentication যুক্ত করা হবে।'
-  );
-}
-
-document.addEventListener('keydown',event=>{
-  if(event.key === 'Escape'){
-    closeModal();
-    document.getElementById('navlinks').classList.remove('open');
-    document.getElementById('menuButton').setAttribute(
-      'aria-expanded','false'
-    );
-  }
-});
-</script>
+    setLanguage(savedLanguage);
+  </script>
 
 </body>
-  </html>
+              </html>
