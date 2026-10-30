@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Skill Mind AI</title>
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;min-height:100vh;display:flex;align-items:center;
+      justify-content:center;padding:20px;
+      font-family:Arial,sans-serif;color:#fff;
+      background:linear-gradient(135deg,#07152e,#123b64);
+    }
+    .card{
+      width:100%;max-width:410px;padding:30px;
+      border:1px solid #345477;border-radius:18px;
+      background:#102746;box-shadow:0 15px 40px #0004;
+    }
+    h1{text-align:center;font-size:27px;margin:0 0 8px}
+    .subtitle{text-align:center;color:#b9cbe0;margin-bottom:28px}
+    label{display:block;margin:15px 0 8px}
+    input{
+      width:100%;padding:13px;border-radius:9px;
+      border:1px solid #45627f;background:#091b33;
+      color:white;font-size:16px;outline:none;
+    }
+    input:focus{border-color:#60a5fa}
+    button{
+      width:100%;padding:14px;margin-top:22px;
+      border:0;border-radius:9px;background:#3b82f6;
+      color:white;font-size:16px;font-weight:bold;cursor:pointer;
+    }
+    button:disabled{opacity:.6}
+    #message{font-size:14px;line-height:1.6;margin-top:15px}
+    .links{text-align:center;margin-top:22px;color:#cbd5e1;line-height:2}
+    a{color:#7db7ff;text-decoration:none}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Skill Mind AI</h1>
+    <p class="subtitle">তোমার শেখার যাত্রা শুরু করো</p><form id="loginForm">
+  <label for="email">ইমেইল</label>
+  <input id="email" type="email" required autocomplete="email"
+         placeholder="তোমার ইমেইল লিখো">
+
+  <label for="password">পাসওয়ার্ড</label>
+  <input id="password" type="password" required
+         autocomplete="current-password" placeholder="পাসওয়ার্ড লিখো">
+
+  <button id="loginButton" type="submit">লগইন</button>
+  <p id="message" role="status"></p>
+</form>
+
+<div class="links">
+  অ্যাকাউন্ট নেই? <a href="register.html">নতুন অ্যাকাউন্ট খোলো</a><br>
+  <a href="index.html">হোমপেজে ফিরে যাও</a>
+</div>
+
+  </main>  <script type="module">
+    import { createClient } from
+      'https://esm.sh/@supabase/supabase-js@2';
+
+    
+    const SUPABASE_URL = 'https://twhkrlhxapoxszhvbmyw.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_kSIkMW91GzI4H0TcWsVung_bKwCz8Ak';
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+    const form = document.getElementById('loginForm');
+    const button = document.getElementById('loginButton');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      button.disabled = true;
+      message.textContent = 'লগইন করা হচ্ছে...';
+
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: document.getElementById('email').value.trim(),
+          password: document.getElementById('password').value
+        });
+
+        if (error) throw error;
+
+        message.textContent = 'লগইন সফল!';
+
+        // পরের ধাপে এখানে প্রকৃত Dashboard-এর ঠিকানা বসানো হবে।
+        window.location.href = 'dashboard.html';
+      } catch (error) {
+        message.textContent = 'লগইন করা যায়নি: ' + error.message;
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script></body>
+</html>
