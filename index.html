@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="bn">
+<!DOCTYPE html><html lang="bn">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#071426">
-
-  <title>Skill Mind AI</title>
-
-  <style>
+  <title>Skill Mind AI</title>  <style>
     :root {
       --bg: #071426;
       --blue: #1677ff;
@@ -27,17 +23,13 @@
       display: flex;
       flex-direction: column;
       font-family: Arial, sans-serif;
-      background:
-        radial-gradient(circle at 50% 35%,
-        #102b4c 0%, #071426 60%);
+      background: radial-gradient(circle at 50% 35%, #102b4c 0%, #071426 60%);
       color: var(--white);
     }
 
     a {
       text-decoration: none;
     }
-
-    /* HEADER */
 
     header {
       width: 100%;
@@ -51,6 +43,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 12px;
     }
 
     .brand {
@@ -76,6 +69,12 @@
       color: var(--cyan);
     }
 
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     .language {
       padding: 9px 12px;
       border: 1px solid rgba(255,255,255,.15);
@@ -88,8 +87,6 @@
     .language option {
       background: #102541;
     }
-
-    /* MAIN */
 
     main {
       flex: 1;
@@ -121,10 +118,9 @@
     .subtitle {
       color: var(--muted);
       font-size: 16px;
-      margin-bottom: 42px;
+      margin-bottom: 35px;
+      line-height: 1.7;
     }
-
-    /* HUB BUTTONS */
 
     .hub-container {
       width: 100%;
@@ -172,6 +168,7 @@
     .hub-text p {
       font-size: 13px;
       color: #e0edff;
+      line-height: 1.5;
     }
 
     .arrow {
@@ -179,27 +176,58 @@
       margin-left: auto;
     }
 
-    /* GET STARTED */
+    .auth-area {
+      width: 100%;
+      max-width: 520px;
+      margin-top: 30px;
+    }
 
-    .get-started {
-      margin-top: 32px;
-      padding: 13px 30px;
-      min-width: 190px;
+    .auth-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .auth-button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 48px;
+      padding: 12px 22px;
       border: 1px solid rgba(34,199,242,.5);
       border-radius: 12px;
       color: white;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       background: rgba(34,199,242,.08);
       transition: .2s;
     }
 
-    .get-started:hover {
-      background: rgba(34,199,242,.18);
+    .auth-button:hover {
       transform: translateY(-2px);
+      background: rgba(34,199,242,.18);
     }
 
-    /* FOOTER */
+    .primary-button {
+      background: linear-gradient(110deg, #1268ed, #168efb);
+      border-color: #1677ff;
+    }
+
+    .primary-button:hover {
+      background: linear-gradient(110deg, #287fff, #20a9ff);
+    }
+
+    .auth-status {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    .hidden {
+      display: none !important;
+    }
 
     footer {
       width: 100%;
@@ -210,8 +238,6 @@
       color: #91a6c0;
       font-size: 13px;
     }
-
-    /* MOBILE */
 
     @media (max-width: 500px) {
       header {
@@ -227,19 +253,22 @@
         height: 35px;
       }
 
+      .header-right {
+        gap: 6px;
+      }
+
       .language {
         padding: 8px;
         font-size: 12px;
       }
 
       main {
-        padding-top: 55px;
-        padding-bottom: 60px;
+        padding: 50px 16px 55px;
       }
 
       .subtitle {
         font-size: 14px;
-        margin-bottom: 32px;
+        margin-bottom: 30px;
       }
 
       .hub-button {
@@ -259,104 +288,117 @@
       .hub-text p {
         font-size: 12px;
       }
+
+      .auth-buttons {
+        flex-direction: column;
+      }
+
+      .auth-button {
+        width: 100%;
+      }
     }
-  </style>
-</head>
-
-<body>
-
-  <!-- HEADER -->
-  <header>
+  </style></head><body>  <header>
     <div class="navbar">
-
       <a href="index.html" class="brand">
         <div class="brand-icon">✦</div>
         <div>Skill Mind <span>AI</span></div>
-      </a>
+      </a>  <div class="header-right">
+    <select class="language" id="language" aria-label="Select language">
+      <option value="bn">বাংলা</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+</div>
 
-      <select class="language" id="language">
-        <option value="bn">বাংলা</option>
-        <option value="en">English</option>
-      </select>
-
-    </div>
-  </header>
-
-  <!-- MAIN HOME PAGE -->
-  <main>
-
+  </header>  <main>
     <h1 class="main-title">
       <span>Skill Mind AI</span>
-    </h1>
+    </h1><p class="subtitle"
+   data-bn="শিখুন দক্ষতা। গড়ুন নিজের ভবিষ্যৎ।"
+   data-en="Learn Skills. Build Your Future.">
+  শিখুন দক্ষতা। গড়ুন নিজের ভবিষ্যৎ।
+</p>
 
-    <p class="subtitle" data-bn="শিখুন দক্ষতা। গড়ুন নিজের ভবিষ্যৎ।"
-       data-en="Learn Skills. Build Your Future.">
-      শিখুন দক্ষতা। গড়ুন নিজের ভবিষ্যৎ।
-    </p>
-
-    <div class="hub-container">
-
-      <!-- LEARNING HUB -->
-      <a href="learning.html" class="hub-button">
-
-        <div class="hub-icon">🎓</div>
-
-        <div class="hub-text">
-          <h2>Learning Hub</h2>
-          <p data-bn="নতুন দক্ষতা শেখা শুরু করুন"
-             data-en="Start learning new skills">
-            নতুন দক্ষতা শেখা শুরু করুন
-          </p>
-        </div>
-
-        <div class="arrow">→</div>
-
-      </a>
-
-      <!-- EARNING HUB -->
-      <a href="earning.html" class="hub-button">
-
-        <div class="hub-icon">💼</div>
-
-        <div class="hub-text">
-          <h2>Earning Hub</h2>
-          <p data-bn="কাজের সুযোগ খুঁজে নিন"
-             data-en="Explore work opportunities">
-            কাজের সুযোগ খুঁজে নিন
-          </p>
-        </div>
-
-        <div class="arrow">→</div>
-
-      </a>
-
+<div class="hub-container">
+  <a href="learning.html" class="hub-button">
+    <div class="hub-icon">🎓</div>
+    <div class="hub-text">
+      <h2>Learning Hub</h2>
+      <p data-bn="নতুন দক্ষতা শেখা শুরু করুন"
+         data-en="Start learning new skills">
+        নতুন দক্ষতা শেখা শুরু করুন
+      </p>
     </div>
+    <div class="arrow">→</div>
+  </a>
 
-    <!-- GET STARTED -->
-    <a href="onboarding.html" class="get-started"
-       data-bn="Get Started →"
-       data-en="Get Started →">
-      Get Started →
+  <a href="earning.html" class="hub-button">
+    <div class="hub-icon">💼</div>
+    <div class="hub-text">
+      <h2>Earning Hub</h2>
+      <p data-bn="কাজের সুযোগ খুঁজে নিন"
+         data-en="Explore work opportunities">
+        কাজের সুযোগ খুঁজে নিন
+      </p>
+    </div>
+    <div class="arrow">→</div>
+  </a>
+</div>
+
+<section class="auth-area" aria-label="Account options">
+
+  <div id="guestButtons" class="auth-buttons hidden">
+    <a href="login.html" class="auth-button primary-button"
+       data-bn="লগইন করুন →"
+       data-en="Login →">
+      লগইন করুন →
     </a>
 
-  </main>
+    <a href="register.html" class="auth-button"
+       data-bn="নতুন অ্যাকাউন্ট খুলুন →"
+       data-en="Create Account →">
+      নতুন অ্যাকাউন্ট খুলুন →
+    </a>
+  </div>
 
-  <!-- FOOTER -->
-  <footer>
+  <div id="userButtons" class="auth-buttons hidden">
+    <a href="dashboard.html" class="auth-button primary-button"
+       data-bn="আমার Dashboard →"
+       data-en="My Dashboard →">
+      আমার Dashboard →
+    </a>
+
+    <button id="logoutButton" type="button" class="auth-button"
+            data-bn="লগআউট"
+            data-en="Logout">
+      লগআউট
+    </button>
+  </div>
+
+  <p id="authStatus" class="auth-status"
+     data-bn="আপনার অ্যাকাউন্টের অবস্থা যাচাই করা হচ্ছে..."
+     data-en="Checking your account status...">
+    আপনার অ্যাকাউন্টের অবস্থা যাচাই করা হচ্ছে...
+  </p>
+</section>
+
+  </main>  <footer>
     © <span id="year"></span> Skill Mind AI.
     <span id="footerText">সর্বস্বত্ব সংরক্ষিত।</span>
-  </footer>
-
-  <script>
+  </footer>  <script>
     const languageSelect = document.getElementById("language");
 
     function changeLanguage(lang) {
       document.documentElement.lang = lang;
 
       document.querySelectorAll("[data-bn]").forEach(element => {
-        element.textContent = element.getAttribute(
+        const translatedText = element.getAttribute(
           lang === "en" ? "data-en" : "data-bn"
         );
+
+        if (translatedText !== null) {
+          element.textContent = translatedText;
+        }
       });
 
       document.getElementById("footerText").textContent =
@@ -377,12 +419,122 @@
       savedLanguage = localStorage.getItem("skillMindLanguage") || "bn";
     } catch (error) {}
 
+    if (!["bn", "en"].includes(savedLanguage)) {
+      savedLanguage = "bn";
+    }
+
     languageSelect.value = savedLanguage;
     changeLanguage(savedLanguage);
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
-  </script>
 
-</body>
+    /*
+      IMPORTANT:
+      Replace these two placeholders with the same Supabase
+      Project URL and Publishable key used in login.html.
+      Never put a Supabase secret/service-role key here.
+    */
+    const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
+    const SUPABASE_PUBLISHABLE_KEY = "YOUR_SUPABASE_PUBLISHABLE_KEY";
+
+    const guestButtons = document.getElementById("guestButtons");
+    const userButtons = document.getElementById("userButtons");
+    const authStatus = document.getElementById("authStatus");
+    const logoutButton = document.getElementById("logoutButton");
+
+    function showGuestButtons(message) {
+      guestButtons.classList.remove("hidden");
+      userButtons.classList.add("hidden");
+
+      authStatus.textContent = message;
+    }
+
+    function showUserButtons() {
+      guestButtons.classList.add("hidden");
+      userButtons.classList.remove("hidden");
+
+      authStatus.textContent =
+        languageSelect.value === "en"
+          ? "You are logged in."
+          : "আপনি লগইন অবস্থায় আছেন।";
+    }
+
+    async function initializeAuth() {
+      if (
+        SUPABASE_URL === "YOUR_SUPABASE_PROJECT_URL" ||
+        SUPABASE_PUBLISHABLE_KEY === "YOUR_SUPABASE_PUBLISHABLE_KEY"
+      ) {
+        showGuestButtons(
+          "Supabase সেটিংস বসানো হয়নি। Login ও Register করতে পারবেন, তবে Dashboard অবস্থা যাচাই করতে সেটিংস প্রয়োজন।"
+        );
+        return;
+      }
+
+      try {
+        const { createClient } =
+          await import("https://esm.sh/@supabase/supabase-js@2");
+
+        const supabase = createClient(
+          SUPABASE_URL,
+          SUPABASE_PUBLISHABLE_KEY
+        );
+
+        const { data, error } = await supabase.auth.getSession();
+
+        if (error) {
+          throw error;
+        }
+
+        if (data.session) {
+          showUserButtons();
+        } else {
+          showGuestButtons(
+            languageSelect.value === "en"
+              ? "Login or create an account to get started."
+              : "শুরু করতে লগইন করুন অথবা নতুন অ্যাকাউন্ট খুলুন।"
+          );
+        }
+
+        supabase.auth.onAuthStateChange((_event, session) => {
+          if (session) {
+            showUserButtons();
+          } else {
+            showGuestButtons(
+              languageSelect.value === "en"
+                ? "Login or create an account to get started."
+                : "শুরু করতে লগইন করুন অথবা নতুন অ্যাকাউন্ট খুলুন।"
+            );
+          }
+        });
+
+        logoutButton.addEventListener("click", async () => {
+          logoutButton.disabled = true;
+
+          const { error: logoutError } = await supabase.auth.signOut();
+
+          logoutButton.disabled = false;
+
+          if (logoutError) {
+            alert(
+              languageSelect.value === "en"
+                ? "Logout failed. Please try again."
+                : "লগআউট হয়নি। আবার চেষ্টা করুন।"
+            );
+          }
+        });
+
+      } catch (error) {
+        console.error("Authentication error:", error);
+
+        showGuestButtons(
+          languageSelect.value === "en"
+            ? "Account status could not be checked. You can still open Login or Register."
+            : "অ্যাকাউন্টের অবস্থা যাচাই করা যায়নি। Login অথবা Register খুলে চেষ্টা করুন।"
+        );
+      }
+    }
+
+    initializeAuth();
+  </script></body>
 </html>
