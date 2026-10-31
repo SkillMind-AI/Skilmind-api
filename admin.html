@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Mind AI | Admin Dashboard</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f6fb;
+      color: #172033;
+    }
+    header {
+      background: #123b64;
+      color: white;
+      padding: 20px;
+    }
+    header h2 { margin: 0 0 6px; }
+    main { max-width: 1000px; margin: auto; padding: 20px; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+    }
+    .card, .panel {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px #0000000c;
+    }
+    .card p { color: #667085; margin: 0 0 12px; }
+    .number { font-size: 30px; font-weight: bold; }
+    .panel { margin-top: 20px; }
+    .status { color: #b45309; font-weight: bold; }
+    button {
+      background: #123b64;
+      color: white;
+      border: 0;
+      padding: 12px 18px;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Skill Mind AI</h2>
+    <div>Admin Dashboard</div>
+  </header>
+
+  <main>
+    <h2>Dashboard Overview</h2>
+
+    <section class="cards">
+      <div class="card">
+        <p>মোট ব্যবহারকারী</p>
+        <div class="number" id="total">—</div>
+      </div>
+      <div class="card">
+        <p>ইমেইল নিশ্চিত</p>
+        <div class="number" id="confirmed">—</div>
+      </div>
+      <div class="card">
+        <p>আজকের নিবন্ধন</p>
+        <div class="number" id="today">—</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>ব্যবহারকারীর তালিকা</h3>
+      <p class="status" id="status">
+        Backend সংযুক্ত করা বাকি।
+      </p>
+      <p>
+        নিরাপত্তা যাচাই সম্পন্ন হলে এখানে
+        ব্যবহারকারীর তথ্য দেখানো হবে।
+      </p>
+      <button onclick="location.reload()">Refresh</button>
+    </section>
+  </main>
+</body>
+</html>
