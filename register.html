@@ -110,9 +110,10 @@
         const { data, error } = await supabase.auth.signUp({
           email,
           password,
-          options: {
-            data: { full_name: name }
-          }
+options: {
+  data: { full_name: name },
+  emailRedirectTo: 'https://skillmind-ai.github.io/Skilmind-api/login.html'
+        }
         });
 
         if (error) throw error;
